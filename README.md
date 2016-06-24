@@ -1,2 +1,3 @@
 # sidewalk-map
-ArcGIS map application for displaying Sidewalk Network Inventory and Analysis data
+ArcGIS map application for displaying Sidewalk Network Inventory and
+Assessment data
