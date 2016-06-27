@@ -79,6 +79,9 @@ function(
       featureType.onchange = function() {
         populateFieldList(this.options[this.selectedIndex].value);
       };
+
+      // Set the initial values of the feature type and field name selects.
+      featureType.selectedIndex = 0;
       featureType.onchange();
 
       // Set up the click handler for the update map button.
