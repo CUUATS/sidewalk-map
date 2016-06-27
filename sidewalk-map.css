@@ -7,7 +7,7 @@ body {
 }
 
 h1 {
-  font-size: 1.25em;
+  font-size: 1.3em;
   margin: 0 0 0.5em 0;
 }
 
@@ -29,4 +29,10 @@ h1 {
 
 label {
   font-weight: bold;
+}
+
+#legend {
+  border-top: 1px solid #dddddd;
+  margin-top: 1em;
+  padding-top: 1em;
 }

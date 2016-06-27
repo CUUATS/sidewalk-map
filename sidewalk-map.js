@@ -3,6 +3,7 @@ require([
   // 'esri/tasks/ClassBreaksDefinition',
   // 'esri/renderers/ClassBreaksRenderer',
   'esri/layers/LayerDrawingOptions',
+  'esri/dijit/Legend',
   'esri/map',
   'dojo/_base/array',
   'dojo/parser',
@@ -14,13 +15,13 @@ function(
   // ClassBreaksDefinition,
   // ClassBreaksRenderer,
   LayerDrawingOptions,
+  Legend,
   Map,
   array,
   parser,
   request) {
   parser.parse();
-  var AGG_URL = 'http://utility.arcgis.com/usrsvcs/servers/97ce6d6cf87e4e3a80d7e3d25f0f0bae/rest/services/CCRPC/SidewalkInventoryAggregatedScores/MapServer',
-    AGG_FIELD_BASE = 'PCD.PCDQC.UrbanizedAreaAnalysisHexagon_SidewalkInventory.',
+  var AGG_URL = 'http://utility.arcgis.com/usrsvcs/servers/06fb34d68e7a4673ba885015b671387b/rest/services/CCRPC/SidewalkInventoryScoreAggregated/MapServer',
     AGG_DEFAULT_FEATURE = 'Sidewalk',
     AGG_DEFAULT_FIELD = 'ScoreCompliance',
     map = new Map('map', {
@@ -47,6 +48,17 @@ function(
       });
     };
 
+    aggLayer.on('load', function(e) {
+      var legend = new Legend({
+        map: map,
+        layerInfos: [{
+          layer: aggLayer,
+          title: 'Legend'
+        }],
+        autoUpdate: false
+      }, document.getElementById('legend'));
+      legend.startup();
+    });
     map.addLayer(aggLayer);
 
     request({
@@ -65,12 +77,11 @@ function(
           function(ftOption) {
         featureFields[ftOption.value] = [];
         array.forEach(res.fields, function(field) {
-          var fieldName = field.name.substr(AGG_FIELD_BASE.length);
           if (
-              fieldName.substr(0, ftOption.value.length) == ftOption.value &&
+              field.name.substr(0, ftOption.value.length) == ftOption.value &&
               field.alias.substr(field.alias.length - 5) == 'Score') {
             featureFields[ftOption.value].push({
-              value: fieldName,
+              value: field.name,
               label: field.alias.substr(ftOption.text.length)
             });
           }
@@ -89,7 +100,7 @@ function(
       // Set up the click handler for the update map button.
       updateButton.onclick = function() {
         res.drawingInfo.renderer.field =
-          AGG_FIELD_BASE + fieldName.options[fieldName.selectedIndex].value;
+          fieldName.options[fieldName.selectedIndex].value;
         aggLayer.setLayerDrawingOptions(
           [new LayerDrawingOptions(res.drawingInfo)]);
       };
