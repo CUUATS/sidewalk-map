@@ -36,3 +36,7 @@ label {
   margin-top: 1em;
   padding-top: 1em;
 }
+
+#legend .esriLegendService {
+  padding-bottom: 0;
+}
