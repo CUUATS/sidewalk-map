@@ -1,10 +1,32 @@
 html,
 body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 13px;
   margin: 0;
   padding: 0;
+}
+
+h1 {
+  font-size: 1.25em;
+  margin: 0 0 0.5em 0;
 }
 
 #map {
   height: 100vh;
   width: 100%;
+}
+
+#options {
+  background-color: white;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+  padding: 1.5em;
+  position: absolute;
+  right: 3em;
+  top: 3em;
+  width: 30%;
+  z-index: 40;
+}
+
+label {
+  font-weight: bold;
 }

@@ -4,11 +4,33 @@
     <meta charset="utf-8">
     <title>Sidewalk Network Inventory and Assessment</title>
     <link rel="stylesheet" href="https://js.arcgis.com/3.17/esri/css/esri.css">
+    <link rel="stylesheet" href="https://js.arcgis.com/3.17/dijit/themes/tundra/tundra.css">
     <link rel="stylesheet" href="sidewalk-map.css">
     <script src="https://js.arcgis.com/3.17/"></script>
     <script src="sidewalk-map.js"></script>
   </head>
-  <body>
-    <div id="map"></div>
+  <body class="tundra">
+    <div id="map">
+      <div id="options" class="shadow">
+        <h1>Sidewalk Inventory and Assessment Scores</h1>
+        <p>
+          <label for="featureType">Feature Type:</label>
+          <select id="featureType" name="featureType">
+            <option value="Sidewalk">Sidewalks</option>
+            <option value="CurbRamp">Curb Ramps</option>
+            <option value="Crosswalk">Crosswalks</option>
+            <option value="PedestrianSignal">Pedestrian Signals</option>
+          </select>
+        </p>
+        <p>
+          <label for="fieldName">Score By:</label>
+          <select id="fieldName" name="fieldName"></select>
+        </p>
+        <p>
+          <button id="updateMap" disabled="true">Update Map</button>
+        </p>
+        <div id="legendDiv"></div>
+      </div>
+    </div>
   </body>
 </html>
