@@ -40,7 +40,8 @@ function(
       array.forEach(featureFields[featureType], function(field, i) {
         var option = document.createElement('option');
         option.value = field.value;
-        option.appendChild(document.createTextNode(field.label));
+        option.appendChild(document.createTextNode(
+          field.label.substr(0, field.label.length - 6)));
         fieldName.appendChild(option);
         if (field.label == 'Compliance Score') fieldName.selectedIndex = i;
       });
@@ -63,10 +64,11 @@ function(
           featureType.children,
           function(ftOption) {
         featureFields[ftOption.value] = [];
-        array.forEach(res.fields.slice(4), function(field) {
+        array.forEach(res.fields, function(field) {
           var fieldName = field.name.substr(AGG_FIELD_BASE.length);
-          if (fieldName.substr(0, ftOption.value.length) ==
-              ftOption.value) {
+          if (
+              fieldName.substr(0, ftOption.value.length) == ftOption.value &&
+              field.alias.substr(field.alias.length - 5) == 'Score') {
             featureFields[ftOption.value].push({
               value: fieldName,
               label: field.alias.substr(ftOption.text.length)
