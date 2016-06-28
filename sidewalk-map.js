@@ -26,8 +26,8 @@ function(
     AGG_DEFAULT_FIELD = 'ScoreCompliance',
     map = new Map('map', {
       center: [-88.2, 40.1],
-      zoom: 12,
-      basemap: 'gray'
+      zoom: 11,
+      basemap: 'gray-vector'
     }),
     aggLayer = new FeatureLayer(AGG_URL + '/0', {
       mode: FeatureLayer.MODE_SNAPSHOT,
