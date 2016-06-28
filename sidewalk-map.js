@@ -1,7 +1,7 @@
 require([
-  'esri/layers/ArcGISDynamicMapServiceLayer',
   // 'esri/tasks/ClassBreaksDefinition',
-  // 'esri/renderers/ClassBreaksRenderer',
+  'esri/renderers/ClassBreaksRenderer',
+  'esri/layers/FeatureLayer',
   'esri/layers/LayerDrawingOptions',
   'esri/dijit/Legend',
   'esri/map',
@@ -11,9 +11,9 @@ require([
   'dojo/domReady!'
 ],
 function(
-  ArcGISDynamicMapServiceLayer,
   // ClassBreaksDefinition,
-  // ClassBreaksRenderer,
+  ClassBreaksRenderer,
+  FeatureLayer,
   LayerDrawingOptions,
   Legend,
   Map,
@@ -29,7 +29,9 @@ function(
       zoom: 12,
       basemap: 'gray'
     }),
-    aggLayer = new ArcGISDynamicMapServiceLayer(AGG_URL, {
+    aggLayer = new FeatureLayer(AGG_URL + '/0', {
+      mode: FeatureLayer.MODE_SNAPSHOT,
+      outFields: ['*'],
       opacity: 0.5
     }),
     fieldName = document.getElementById('fieldName'),
@@ -60,6 +62,7 @@ function(
       legend.startup();
     });
     map.addLayer(aggLayer);
+    // map.addLayer(crLayer);
 
     request({
       url: AGG_URL + '/0',
@@ -70,6 +73,7 @@ function(
     }).then(function(res) {
       // Set the minimum value for the renderer to 0.
       res.drawingInfo.renderer.minValue = 0;
+      var renderer = new ClassBreaksRenderer(res.drawingInfo.renderer);
 
       // Populate the field choices object.
       array.forEach(
@@ -99,10 +103,10 @@ function(
 
       // Set up the click handler for the update map button.
       updateButton.onclick = function() {
-        res.drawingInfo.renderer.field =
+        renderer.attributeField =
           fieldName.options[fieldName.selectedIndex].value;
-        aggLayer.setLayerDrawingOptions(
-          [new LayerDrawingOptions(res.drawingInfo)]);
+        aggLayer.setRenderer(renderer);
+        aggLayer.redraw();
       };
       updateButton.removeAttribute('disabled');
     });
