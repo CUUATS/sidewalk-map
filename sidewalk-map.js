@@ -50,6 +50,7 @@ function(
       });
     };
 
+    aggLayer.setScaleRange(0, 10000);
     aggLayer.on('load', function(e) {
       var legend = new Legend({
         map: map,
