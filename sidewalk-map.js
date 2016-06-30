@@ -106,25 +106,6 @@ function(
       }, document.getElementById('legend'));
       legend.startup();
     },
-    map = new Map('map', {
-      center: [-88.2, 40.1],
-      zoom: 11,
-      basemap: 'gray-vector'
-    }),
-    aggLayer = new FeatureLayer(AGG_URL + '/0', {
-      mode: FeatureLayer.MODE_SNAPSHOT,
-      outFields: ['*'],
-      opacity: 0.5
-    }),
-    aggRenderer,
-    crLayer = makeIndLayer(0, SimpleMarkerSymbol.STYLE_CIRCLE, 10),
-    // cwLayer = makeIndLayer(1, SimpleMarkerSymbol.STYLE_CROSS, 10),
-    // psLayer = makeIndLayer(2, SimpleMarkerSymbol.STYLE_DIAMOND, 10),
-    // swLayer = makeIndLayer(3, SimpleMarkerSymbol.STYLE_CIRCLE, 10),
-    fieldName = document.getElementById('fieldName'),
-    featureType = document.getElementById('featureType'),
-    updateButton = document.getElementById('updateMap'),
-    featureFields = {},
     populateFieldChoices = function(fields) {
       array.forEach(
           featureType.children,
@@ -152,7 +133,26 @@ function(
         fieldName.appendChild(option);
         if (field.label == 'Compliance Score') fieldName.selectedIndex = i;
       });
-    };
+    },
+    map = new Map('map', {
+      center: [-88.2, 40.1],
+      zoom: 11,
+      basemap: 'gray-vector'
+    }),
+    aggLayer = new FeatureLayer(AGG_URL + '/0', {
+      mode: FeatureLayer.MODE_SNAPSHOT,
+      outFields: ['*'],
+      opacity: 0.5
+    }),
+    aggRenderer,
+    crLayer = makeIndLayer(0, SimpleMarkerSymbol.STYLE_CIRCLE, 10),
+    // cwLayer = makeIndLayer(1, SimpleMarkerSymbol.STYLE_CROSS, 10),
+    // psLayer = makeIndLayer(2, SimpleMarkerSymbol.STYLE_DIAMOND, 10),
+    // swLayer = makeIndLayer(3, SimpleMarkerSymbol.STYLE_CIRCLE, 10),
+    fieldName = document.getElementById('fieldName'),
+    featureType = document.getElementById('featureType'),
+    updateButton = document.getElementById('updateMap'),
+    featureFields = {};
 
     aggLayer.on('load', function(e) {
       initLegend();
