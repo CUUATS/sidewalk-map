@@ -95,6 +95,17 @@ function(
       aggLayer.setRenderer(aggRenderer);
       aggLayer.redraw();
     },
+    initLegend = function() {
+      var legend = new Legend({
+        map: map,
+        layerInfos: [{
+          layer: aggLayer,
+          title: 'Legend'
+        }],
+        autoUpdate: false
+      }, document.getElementById('legend'));
+      legend.startup();
+    },
     map = new Map('map', {
       center: [-88.2, 40.1],
       zoom: 11,
@@ -127,15 +138,7 @@ function(
     };
 
     aggLayer.on('load', function(e) {
-      var legend = new Legend({
-        map: map,
-        layerInfos: [{
-          layer: aggLayer,
-          title: 'Legend'
-        }],
-        autoUpdate: false
-      }, document.getElementById('legend'));
-      legend.startup();
+      initLegend();
       aggLayer.setScaleRange(0, 10000);
     });
     map.addLayer(aggLayer);
