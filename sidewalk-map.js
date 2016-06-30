@@ -125,6 +125,23 @@ function(
     featureType = document.getElementById('featureType'),
     updateButton = document.getElementById('updateMap'),
     featureFields = {},
+    populateFieldChoices = function(fields) {
+      array.forEach(
+          featureType.children,
+          function(ftOption) {
+        featureFields[ftOption.value] = [];
+        array.forEach(fields, function(field) {
+          if (
+              field.name.substr(0, ftOption.value.length) == ftOption.value &&
+              field.alias.substr(field.alias.length - 5) == 'Score') {
+            featureFields[ftOption.value].push({
+              value: field.name,
+              label: field.alias.substr(ftOption.text.length)
+            });
+          }
+        });
+      });
+    },
     populateFieldList = function(featureType) {
       while (fieldName.firstChild) fieldName.removeChild(fieldName.firstChild);
       array.forEach(featureFields[featureType], function(field, i) {
@@ -156,21 +173,7 @@ function(
       aggRenderer = new ClassBreaksRenderer(res.drawingInfo.renderer);
 
       // Populate the field choices object.
-      array.forEach(
-          featureType.children,
-          function(ftOption) {
-        featureFields[ftOption.value] = [];
-        array.forEach(res.fields, function(field) {
-          if (
-              field.name.substr(0, ftOption.value.length) == ftOption.value &&
-              field.alias.substr(field.alias.length - 5) == 'Score') {
-            featureFields[ftOption.value].push({
-              value: field.name,
-              label: field.alias.substr(ftOption.text.length)
-            });
-          }
-        });
-      });
+      populateFieldChoices(res.fields);
 
       // Set up the change handler for feature type.
       featureType.onchange = function() {
