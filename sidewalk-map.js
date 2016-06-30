@@ -7,6 +7,7 @@ require([
   'esri/map',
   'esri/symbols/SimpleLineSymbol',
   'esri/symbols/SimpleMarkerSymbol',
+  'dojo/promise/all',
   'dojo/_base/array',
   'dojo/parser',
   'esri/request',
@@ -21,6 +22,7 @@ function(
   Map,
   SimpleLineSymbol,
   SimpleMarkerSymbol,
+  all,
   array,
   parser,
   request) {
@@ -29,6 +31,7 @@ function(
     AGG_DEFAULT_FEATURE = 'Sidewalk',
     AGG_DEFAULT_FIELD = 'ScoreCompliance',
     IND_URL = 'http://utility.arcgis.com/usrsvcs/servers/88a6a9f6dc45461f820659d2d0f13fff/rest/services/CCRPC/SidewalkInventoryScore/MapServer',
+    MARKER_TYPE_LINE = 'line',
     BREAKS = [
       {
         maxValue: 60,
@@ -56,13 +59,14 @@ function(
         color: '#2e80bf'
       }
     ],
-    makeIndLayer = function(idx, markerType, markerSize) {
+    makeIndLayer = function(idx, markerType, markerSize, visible) {
       var layer = new FeatureLayer(IND_URL + '/' + idx, {
         mode: FeatureLayer.MODE_ONDEMAND,
         outFields: ['*']
       });
       layer.setScaleRange(10001, 0);
       layer.setRenderer(makeIndRenderer(markerType, markerSize));
+      if (!visible) layer.hide();
       return layer;
     },
     makeIndRenderer = function(markerType, markerSize) {
@@ -78,6 +82,13 @@ function(
       return renderer;
     },
     makeMarkerSymbol = function(markerType, markerSize, fillColor) {
+      if (markerType == MARKER_TYPE_LINE) {
+        return new SimpleLineSymbol(
+          SimpleLineSymbol.STYLE_SOLID,
+          new Color(fillColor),
+          markerSize
+        );
+      }
       return new SimpleMarkerSymbol(
         markerType,
         markerSize,
@@ -89,11 +100,27 @@ function(
         new Color(fillColor)
       );
     },
-    updateAggRenderer = function() {
+    updateAggLayer = function() {
       aggRenderer.attributeField =
         fieldName.options[fieldName.selectedIndex].value;
       aggLayer.setRenderer(aggRenderer);
       aggLayer.redraw();
+    },
+    updateIndLayers = function() {
+      var field = fieldName.options[fieldName.selectedIndex].value;
+      console.log(field);
+      array.forEach([swLayer, crLayer, cwLayer, psLayer], function(layer, i) {
+        if (i == featureType.selectedIndex) {
+          layer.renderer.attributeField = field;
+          if (layer.visible) {
+            layer.refresh();
+          } else {
+            layer.show();
+          }
+        } else {
+          layer.hide();
+        }
+      });
     },
     initLegend = function() {
       var legend = new Legend({
@@ -134,46 +161,22 @@ function(
         if (field.label == 'Compliance Score') fieldName.selectedIndex = i;
       });
     },
-    map = new Map('map', {
-      center: [-88.2, 40.1],
-      zoom: 11,
-      basemap: 'gray-vector'
-    }),
-    aggLayer = new FeatureLayer(AGG_URL + '/0', {
-      mode: FeatureLayer.MODE_SNAPSHOT,
-      outFields: ['*'],
-      opacity: 0.5
-    }),
-    aggRenderer,
-    crLayer = makeIndLayer(0, SimpleMarkerSymbol.STYLE_CIRCLE, 10),
-    // cwLayer = makeIndLayer(1, SimpleMarkerSymbol.STYLE_CROSS, 10),
-    // psLayer = makeIndLayer(2, SimpleMarkerSymbol.STYLE_DIAMOND, 10),
-    // swLayer = makeIndLayer(3, SimpleMarkerSymbol.STYLE_CIRCLE, 10),
-    fieldName = document.getElementById('fieldName'),
-    featureType = document.getElementById('featureType'),
-    updateButton = document.getElementById('updateMap'),
-    featureFields = {};
-
-    aggLayer.on('load', function(e) {
-      initLegend();
-      aggLayer.setScaleRange(0, 10000);
-    });
-    map.addLayer(aggLayer);
-    map.addLayer(crLayer);
-
-    request({
-      url: AGG_URL + '/0',
-      content: {
-        f: 'json'
-      },
-      callbackParamName: 'callback'
-    }).then(function(res) {
+    requestLayerInfo = function(url) {
+      return request({
+        url: url,
+        content: {
+          f: 'json'
+        },
+        callbackParamName: 'callback'
+      });
+    },
+    initFieldSelection = function(aggInfo) {
       // Set the minimum value for the renderer to 0.
-      res.drawingInfo.renderer.minValue = 0;
-      aggRenderer = new ClassBreaksRenderer(res.drawingInfo.renderer);
+      aggInfo.drawingInfo.renderer.minValue = 0;
+      aggRenderer = new ClassBreaksRenderer(aggInfo.drawingInfo.renderer);
 
       // Populate the field choices object.
-      populateFieldChoices(res.fields);
+      populateFieldChoices(aggInfo.fields);
 
       // Set up the change handler for feature type.
       featureType.onchange = function() {
@@ -186,9 +189,45 @@ function(
 
       // Set up the click handler for the update map button.
       updateButton.onclick = function() {
-        updateAggRenderer();
+        updateAggLayer();
+        updateIndLayers();
       };
       updateButton.removeAttribute('disabled');
-    });
+    },
+    map = new Map('map', {
+      center: [-88.2, 40.1],
+      zoom: 11,
+      basemap: 'gray-vector'
+    }),
+    aggLayer = new FeatureLayer(AGG_URL + '/0', {
+      mode: FeatureLayer.MODE_SNAPSHOT,
+      outFields: ['*'],
+      opacity: 0.5
+    }),
+    aggRenderer,
+    crLayer = makeIndLayer(0, SimpleMarkerSymbol.STYLE_CIRCLE, 10, false),
+    cwLayer = makeIndLayer(1, SimpleMarkerSymbol.STYLE_SQUARE, 10, false),
+    psLayer = makeIndLayer(2, SimpleMarkerSymbol.STYLE_DIAMOND, 10, false),
+    swLayer = makeIndLayer(3, MARKER_TYPE_LINE, 3, true),
+    fieldName = document.getElementById('fieldName'),
+    featureType = document.getElementById('featureType'),
+    updateButton = document.getElementById('updateMap'),
+    featureFields = {};
 
+    aggLayer.on('load', function(e) {
+      initLegend();
+      aggLayer.setScaleRange(0, 10000);
+    });
+    map.addLayers([aggLayer, crLayer, cwLayer, psLayer, swLayer]);
+
+    // Request layer information.
+    all([
+      requestLayerInfo(IND_URL + '/0'),
+      requestLayerInfo(IND_URL + '/1'),
+      requestLayerInfo(IND_URL + '/2'),
+      requestLayerInfo(IND_URL + '/3'),
+      requestLayerInfo(AGG_URL + '/0')
+    ]).then(function(res) {
+      initFieldSelection(res[4]);
+    });
 });
