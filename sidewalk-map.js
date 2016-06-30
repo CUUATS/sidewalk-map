@@ -88,7 +88,13 @@ function(
         ),
         new Color(fillColor)
       );
-    }
+    },
+    updateAggRenderer = function() {
+      aggRenderer.attributeField =
+        fieldName.options[fieldName.selectedIndex].value;
+      aggLayer.setRenderer(aggRenderer);
+      aggLayer.redraw();
+    },
     map = new Map('map', {
       center: [-88.2, 40.1],
       zoom: 11,
@@ -99,6 +105,7 @@ function(
       outFields: ['*'],
       opacity: 0.5
     }),
+    aggRenderer,
     crLayer = makeIndLayer(0, SimpleMarkerSymbol.STYLE_CIRCLE, 10),
     // cwLayer = makeIndLayer(1, SimpleMarkerSymbol.STYLE_CROSS, 10),
     // psLayer = makeIndLayer(2, SimpleMarkerSymbol.STYLE_DIAMOND, 10),
@@ -143,7 +150,7 @@ function(
     }).then(function(res) {
       // Set the minimum value for the renderer to 0.
       res.drawingInfo.renderer.minValue = 0;
-      var renderer = new ClassBreaksRenderer(res.drawingInfo.renderer);
+      aggRenderer = new ClassBreaksRenderer(res.drawingInfo.renderer);
 
       // Populate the field choices object.
       array.forEach(
@@ -173,10 +180,7 @@ function(
 
       // Set up the click handler for the update map button.
       updateButton.onclick = function() {
-        renderer.attributeField =
-          fieldName.options[fieldName.selectedIndex].value;
-        aggLayer.setRenderer(renderer);
-        aggLayer.redraw();
+        updateAggRenderer();
       };
       updateButton.removeAttribute('disabled');
     });
