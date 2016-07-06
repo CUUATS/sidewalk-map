@@ -192,7 +192,8 @@ function(
             {
                label: 'Overall Compliance',
                aggField: 'CurbRampScoreCompliance',
-               indField: 'ScoreCompliance'
+               indField: 'ScoreCompliance',
+               isDefault: true
             }
           ]
         },
@@ -239,7 +240,8 @@ function(
             {
                label: 'Overall Compliance',
                aggField: 'CrosswalkScoreCompliance',
-               indField: 'ScoreCompliance'
+               indField: 'ScoreCompliance',
+               isDefault: true
             }
           ]
         }
@@ -271,7 +273,8 @@ function(
             {
                label: 'Overall Compliance',
                aggField: 'PedestrianSignalScoreCompliance',
-               indField: 'ScoreCompliance'
+               indField: 'ScoreCompliance',
+               isDefault: true
             }
           ]
         }
@@ -321,10 +324,12 @@ function(
     makeAggRenderer = function() {
       var renderer = new ClassBreaksRenderer(null, 'SidewalkScoreCompliance');
       array.forEach(BREAKS, function(b, i) {
-        renderer.addBreak(
-          (i > 0) ? BREAKS[i-1].maxValue + 0.000001 : 0,
-          b.maxValue,
-          makeFillSymbol(b.color));
+        renderer.addBreak({
+          label: b.label,
+          minValue: (i > 0) ? BREAKS[i-1].maxValue + 0.000001 : 0,
+          maxValue: b.maxValue,
+          symbol: makeFillSymbol(b.color)
+        });
       });
       return renderer;
     },
