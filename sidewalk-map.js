@@ -5,6 +5,7 @@ require([
   'esri/layers/LayerDrawingOptions',
   'esri/dijit/Legend',
   'esri/map',
+  'esri/symbols/SimpleFillSymbol',
   'esri/symbols/SimpleLineSymbol',
   'esri/symbols/SimpleMarkerSymbol',
   'dojo/promise/all',
@@ -20,6 +21,7 @@ function(
   LayerDrawingOptions,
   Legend,
   Map,
+  SimpleFillSymbol,
   SimpleLineSymbol,
   SimpleMarkerSymbol,
   all,
@@ -316,9 +318,29 @@ function(
         new Color(fillColor)
       );
     },
+    makeAggRenderer = function() {
+      var renderer = new ClassBreaksRenderer(null, 'SidewalkScoreCompliance');
+      array.forEach(BREAKS, function(b, i) {
+        renderer.addBreak(
+          (i > 0) ? BREAKS[i-1].maxValue + 0.000001 : 0,
+          b.maxValue,
+          makeFillSymbol(b.color));
+      });
+      return renderer;
+    },
+    makeFillSymbol = function(fillColor) {
+      return new SimpleFillSymbol(
+        SimpleFillSymbol.STYLE_SOLID,
+        new SimpleLineSymbol(
+          SimpleLineSymbol.STYLE_SOLID,
+          new Color('#000000'),
+          0.5
+        ),
+        new Color(fillColor)
+      );
+    },
     updateAggLayer = function(selectedField) {
-      aggRenderer.attributeField = selectedField.aggField;
-      aggLayer.setRenderer(aggRenderer);
+      aggLayer.renderer.attributeField = selectedField.aggField;
       aggLayer.redraw();
     },
     updateIndLayers = function(selectedField) {
@@ -387,11 +409,7 @@ function(
         callbackParamName: 'callback'
       });
     },
-    initFieldSelection = function(aggInfo) {
-      // Set the minimum value for the renderer to 0.
-      aggInfo.drawingInfo.renderer.minValue = 0;
-      aggRenderer = new ClassBreaksRenderer(aggInfo.drawingInfo.renderer);
-
+    initFieldSelection = function() {
       // Set up the change handler for feature type.
       featureTypeSelect.onchange = function() {
         populateFieldList(this.options[this.selectedIndex].value);
@@ -419,7 +437,6 @@ function(
       outFields: ['*'],
       opacity: 0.5
     }),
-    aggRenderer,
     crLayer = makeIndLayer(0, SimpleMarkerSymbol.STYLE_CIRCLE, 10, false),
     cwLayer = makeIndLayer(1, SimpleMarkerSymbol.STYLE_SQUARE, 10, false),
     psLayer = makeIndLayer(2, SimpleMarkerSymbol.STYLE_DIAMOND, 10, false),
@@ -429,14 +446,11 @@ function(
     updateButton = document.getElementById('updateMap'),
     featureFields = {};
 
+    aggLayer.setRenderer(makeAggRenderer());
     aggLayer.on('load', function(e) {
       initLegend();
       aggLayer.setScaleRange(0, 10000);
+      initFieldSelection();
     });
     map.addLayers([aggLayer, crLayer, cwLayer, psLayer, swLayer]);
-
-    // Request layer information.
-    requestLayerInfo(AGG_URL + '/0').then(function(res) {
-      initFieldSelection(res);
-    });
 });
