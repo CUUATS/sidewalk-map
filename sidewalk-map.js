@@ -295,10 +295,12 @@ function(
         makeMarkerSymbol(markerType, markerSize, '#bbbbbb'),
         'ScoreCompliance');
       array.forEach(BREAKS, function(b, i) {
-        renderer.addBreak(
-          (i > 0) ? BREAKS[i-1].maxValue + 0.000001 : 0,
-          b.maxValue,
-          makeMarkerSymbol(markerType, markerSize, b.color));
+        renderer.addBreak({
+          label: b.label,
+          minValue: (i > 0) ? BREAKS[i-1].maxValue + 0.000001 : 0,
+          maxValue: b.maxValue,
+          symbol: makeMarkerSymbol(markerType, markerSize, b.color)
+        });
       });
       return renderer;
     },
@@ -365,11 +367,29 @@ function(
     initLegend = function() {
       var legend = new Legend({
         map: map,
-        layerInfos: [{
-          layer: aggLayer,
-          title: 'Legend'
-        }],
-        autoUpdate: false
+        layerInfos: [
+          {
+            layer: aggLayer,
+            title: 'Average Scores'
+          },
+          {
+            layer: crLayer,
+            title: 'Curb Ramps'
+          },
+          {
+            layer: cwLayer,
+            title: 'Crosswalks'
+          },
+          {
+            layer: psLayer,
+            title: 'Pedestrian Signals'
+          },
+          {
+            layer: swLayer,
+            title: 'Sidewalks'
+          }
+        ],
+        autoUpdate: true
       }, document.getElementById('legend'));
       legend.startup();
     },
@@ -452,9 +472,10 @@ function(
     featureFields = {};
 
     aggLayer.setRenderer(makeAggRenderer());
-    aggLayer.on('load', function(e) {
+    aggLayer.setScaleRange(0, 10000);
+
+    map.on('layers-add-result', function(e) {
       initLegend();
-      aggLayer.setScaleRange(0, 10000);
       initFieldSelection();
     });
     map.addLayers([aggLayer, crLayer, cwLayer, psLayer, swLayer]);
