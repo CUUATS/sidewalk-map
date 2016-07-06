@@ -59,6 +59,222 @@ function(
         color: '#2e80bf'
       }
     ],
+    FIELDS = {
+      Sidewalk: [
+        {
+          label: 'ADA Compliance',
+          fields: [
+            {
+              label: 'Maximum Cross Slope',
+              aggField: 'SidewalkScoreMaxCrossSlope',
+              indField: 'ScoreMaxCrossSlope'
+            },
+            {
+              label: 'Largest Vertical Fault',
+              aggField: 'SidewalkScoreLargestVerticalFau',
+              indField: 'ScoreLargestVerticalFault'
+            },
+            {
+              label: 'Obstruction Types',
+              aggField: 'SidewalkScoreObstructionTypes',
+              indField: 'ScoreObstructionTypes'
+            },
+            {
+              label: 'Width',
+              aggField: 'SidewalkScoreCompliance',
+              indField: 'ScoreWidth'
+            },
+            {
+              label: 'Overall Compliance',
+              aggField: 'SidewalkScoreWidth',
+              indField: 'ScoreCompliance',
+              isDefault: true
+            }
+          ]
+        },
+        {
+          label: 'Condition',
+          fields: [
+            {
+              label: 'Surface Condition',
+              aggField: 'SidewalkScoreSurfaceCondition',
+              indField: 'ScoreSurfaceCondition'
+            },
+            {
+              label: 'Vertical Fault Count',
+              aggField: 'SidewalkScoreVerticalFaultCount',
+              indField: 'ScoreVerticalFaultCount'
+            },
+            {
+              label: 'Cracked Panels',
+              aggField: 'SidewalkScoreCrackedPanelCount',
+              indField: 'ScoreCrackedPanelCount'
+            },
+            {
+              label: 'Overall Condition',
+              aggField: 'SidewalkScoreCondition',
+              indField: 'ScoreCondition'
+            }
+          ]
+        }
+      ],
+      CurbRamp: [
+        {
+          label: 'ADA Compliance',
+          fields: [
+            {
+               label: 'Ramp Width',
+               aggField: 'CurbRampScoreRampWidth',
+               indField: 'ScoreRampWidth'
+            },
+            {
+               label: 'Ramp Cross Slope',
+               aggField: 'CurbRampScoreRampCrossSlope',
+               indField: 'ScoreRampCrossSlope'
+            },
+            {
+               label: 'Ramp Running Slope',
+               aggField: 'CurbRampScoreRampRunningSlope',
+               indField: 'ScoreRampRunningSlope'
+            },
+            {
+               label: 'Detectable Warning Type',
+               aggField: 'CurbRampScoreDetectableWarningT',
+               indField: 'ScoreDetectableWarningType'
+            },
+            {
+               label: 'Detectable Warning Width',
+               aggField: 'CurbRampScoreDetectableWarningW',
+               indField: 'ScoreDetectableWarningWidth'
+            },
+            {
+               label: 'Gutter Cross Slope',
+               aggField: 'CurbRampScoreGutterCrossSlope',
+               indField: 'ScoreGutterCrossSlope'
+            },
+            {
+               label: 'Gutter Running Slope',
+               aggField: 'CurbRampScoreGutterRunningSlope',
+               indField: 'ScoreGutterRunningSlope'
+            },
+            {
+               label: 'Landing Dimensions',
+               aggField: 'CurbRampScoreLandingDimensions',
+               indField: 'ScoreLandingDimensions'
+            },
+            {
+               label: 'Landing Slope',
+               aggField: 'CurbRampScoreLandingSlope',
+               indField: 'ScoreLandingSlope'
+            },
+            {
+               label: 'Approach Cross Slope',
+               aggField: 'CurbRampScoreApproachCrossSlope',
+               indField: 'ScoreApproachCrossSlope'
+            },
+            {
+               label: 'Flare Slope',
+               aggField: 'CurbRampScoreFlareSlope',
+               indField: 'ScoreFlareSlope'
+            },
+            {
+               label: 'Largest Vertical Fault',
+               aggField: 'CurbRampScoreLargestPavementFau',
+               indField: 'ScoreLargestPavementFault'
+            },
+            {
+               label: 'Obstruction',
+               aggField: 'CurbRampScoreObstruction',
+               indField: 'ScoreObstruction'
+            },
+            {
+               label: 'Overall Compliance',
+               aggField: 'CurbRampScoreCompliance',
+               indField: 'ScoreCompliance'
+            }
+          ]
+        },
+        {
+          label: 'Condition',
+          fields: [
+            {
+               label: 'Surface Condition',
+               aggField: 'CurbRampScoreSurfaceCondition',
+               indField: 'ScoreSurfaceCondition'
+            },
+            {
+               label: 'Vertical Fault Count',
+               aggField: 'CurbRampScorePavementFaultCount',
+               indField: 'ScorePavementFaultCount'
+            },
+            {
+               label: 'Cracked Panel Count',
+               aggField: 'CurbRampScoreCrackedPanelCount',
+               indField: 'ScoreCrackedPanelCount'
+            },
+            {
+               label: 'Overall Condition',
+               aggField: 'CurbRampScoreCondition',
+               indField: 'ScoreCondition'
+            },
+          ]
+        }
+      ],
+      Crosswalk: [
+        {
+          label: 'ADA Compliance',
+          fields: [
+            {
+               label: 'Width',
+               aggField: 'CrosswalkScoreWidth',
+               indField: 'ScoreWidth'
+            },
+            {
+               label: 'Cross Slope',
+               aggField: 'CrosswalkScoreCrossSlope',
+               indField: 'ScoreCrossSlope'
+            },
+            {
+               label: 'Overall Compliance',
+               aggField: 'CrosswalkScoreCompliance',
+               indField: 'ScoreCompliance'
+            }
+          ]
+        }
+      ],
+      PedestrianSignal: [
+        {
+          label: 'ADA Compliance',
+          fields: [
+            {
+               label: 'Button Size',
+               aggField: 'PedestrianSignalScoreButtonSize',
+               indField: 'ScoreButtonSize'
+            },
+            {
+               label: 'Button Height',
+               aggField: 'PedestrianSignalScoreButtonHeig',
+               indField: 'ScoreButtonHeight'
+            },
+            {
+               label: 'Button Position and Appearance',
+               aggField: 'PedestrianSignalScoreButtonPosi',
+               indField: 'ScoreButtonPositionAppearance'
+            },
+            {
+               label: 'Tactile Features',
+               aggField: 'PedestrianSignalScoreTactileFea',
+               indField: 'ScoreTactileFeatures'
+            },
+            {
+               label: 'Overall Compliance',
+               aggField: 'PedestrianSignalScoreCompliance',
+               indField: 'ScoreCompliance'
+            }
+          ]
+        }
+      ]
+    },
     makeIndLayer = function(idx, markerType, markerSize, visible) {
       var layer = new FeatureLayer(IND_URL + '/' + idx, {
         mode: FeatureLayer.MODE_ONDEMAND,
@@ -100,18 +316,15 @@ function(
         new Color(fillColor)
       );
     },
-    updateAggLayer = function() {
-      aggRenderer.attributeField =
-        fieldName.options[fieldName.selectedIndex].value;
+    updateAggLayer = function(selectedField) {
+      aggRenderer.attributeField = selectedField.aggField;
       aggLayer.setRenderer(aggRenderer);
       aggLayer.redraw();
     },
-    updateIndLayers = function() {
-      var field = fieldName.options[fieldName.selectedIndex].value;
-      console.log(field);
+    updateIndLayers = function(selectedField) {
       array.forEach([swLayer, crLayer, cwLayer, psLayer], function(layer, i) {
-        if (i == featureType.selectedIndex) {
-          layer.renderer.attributeField = field;
+        if (i == featureTypeSelect.selectedIndex) {
+          layer.renderer.attributeField = selectedField.indField;
           if (layer.visible) {
             layer.refresh();
           } else {
@@ -133,33 +346,37 @@ function(
       }, document.getElementById('legend'));
       legend.startup();
     },
-    populateFieldChoices = function(fields) {
-      array.forEach(
-          featureType.children,
-          function(ftOption) {
-        featureFields[ftOption.value] = [];
-        array.forEach(fields, function(field) {
-          if (
-              field.name.substr(0, ftOption.value.length) == ftOption.value &&
-              field.alias.substr(field.alias.length - 5) == 'Score') {
-            featureFields[ftOption.value].push({
-              value: field.name,
-              label: field.alias.substr(ftOption.text.length)
-            });
-          }
+    populateFieldList = function(featureType) {
+      // Clear the field name select.
+      while (fieldNameSelect.firstChild)
+        fieldNameSelect.removeChild(fieldNameSelect.firstChild);
+
+      var optionIdx = 0;
+      array.forEach(FIELDS[featureType], function(group, i) {
+        var optgroup = document.createElement('optgroup');
+        optgroup.label = group.label;
+        fieldNameSelect.appendChild(optgroup);
+        array.forEach(group.fields, function(field, i) {
+          var option = document.createElement('option');
+          option.value = optionIdx;
+          option.appendChild(document.createTextNode(field.label));
+          optgroup.appendChild(option);
+          if (field.isDefault) fieldNameSelect.selectedIndex = optionIdx;
+          optionIdx += 1;
         });
       });
     },
-    populateFieldList = function(featureType) {
-      while (fieldName.firstChild) fieldName.removeChild(fieldName.firstChild);
-      array.forEach(featureFields[featureType], function(field, i) {
-        var option = document.createElement('option');
-        option.value = field.value;
-        option.appendChild(document.createTextNode(
-          field.label.substr(0, field.label.length - 6)));
-        fieldName.appendChild(option);
-        if (field.label == 'Compliance Score') fieldName.selectedIndex = i;
-      });
+    getSelectedField = function() {
+      var featureType =
+          featureTypeSelect.options[featureTypeSelect.selectedIndex].value,
+        idx = fieldNameSelect.selectedIndex,
+        fieldIdx = 0;
+      for (var g = 0; g < FIELDS[featureType].length; g++) {
+        for (var f = 0; f < FIELDS[featureType][g].fields.length; f++) {
+          if (fieldIdx == idx) return FIELDS[featureType][g].fields[f];
+          fieldIdx += 1;
+        }
+      }
     },
     requestLayerInfo = function(url) {
       return request({
@@ -175,22 +392,20 @@ function(
       aggInfo.drawingInfo.renderer.minValue = 0;
       aggRenderer = new ClassBreaksRenderer(aggInfo.drawingInfo.renderer);
 
-      // Populate the field choices object.
-      populateFieldChoices(aggInfo.fields);
-
       // Set up the change handler for feature type.
-      featureType.onchange = function() {
+      featureTypeSelect.onchange = function() {
         populateFieldList(this.options[this.selectedIndex].value);
       };
 
       // Set the initial values of the feature type and field name selects.
-      featureType.selectedIndex = 0;
-      featureType.onchange();
+      featureTypeSelect.selectedIndex = 0;
+      featureTypeSelect.onchange();
 
       // Set up the click handler for the update map button.
       updateButton.onclick = function() {
-        updateAggLayer();
-        updateIndLayers();
+        var selectedField = getSelectedField();
+        updateAggLayer(selectedField);
+        updateIndLayers(selectedField);
       };
       updateButton.removeAttribute('disabled');
     },
@@ -209,8 +424,8 @@ function(
     cwLayer = makeIndLayer(1, SimpleMarkerSymbol.STYLE_SQUARE, 10, false),
     psLayer = makeIndLayer(2, SimpleMarkerSymbol.STYLE_DIAMOND, 10, false),
     swLayer = makeIndLayer(3, MARKER_TYPE_LINE, 3, true),
-    fieldName = document.getElementById('fieldName'),
-    featureType = document.getElementById('featureType'),
+    fieldNameSelect = document.getElementById('fieldName'),
+    featureTypeSelect = document.getElementById('featureType'),
     updateButton = document.getElementById('updateMap'),
     featureFields = {};
 
@@ -221,13 +436,18 @@ function(
     map.addLayers([aggLayer, crLayer, cwLayer, psLayer, swLayer]);
 
     // Request layer information.
-    all([
-      requestLayerInfo(IND_URL + '/0'),
-      requestLayerInfo(IND_URL + '/1'),
-      requestLayerInfo(IND_URL + '/2'),
-      requestLayerInfo(IND_URL + '/3'),
-      requestLayerInfo(AGG_URL + '/0')
-    ]).then(function(res) {
-      initFieldSelection(res[4]);
+    requestLayerInfo(AGG_URL + '/0').then(function(res) {
+      // TEMP
+      var json = [];
+      array.forEach(res.fields, function(field, i) {
+        json.push({
+          label: field.alias.replace('Sidewalk ', '').replace('Curb Ramp ', '').replace('Crosswalk ', '').replace('Pedestrian Signal ', '').replace(' Score', ''),
+          aggField: field.name,
+          indField: field.name.replace('Sidewalk', '').replace('CurbRamp', '').replace('Crosswalk', '').replace('PedestrianSignal', '')
+        });
+      });
+      console.log(JSON.stringify(json));
+
+      initFieldSelection(res);
     });
 });
