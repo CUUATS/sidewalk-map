@@ -437,17 +437,6 @@ function(
 
     // Request layer information.
     requestLayerInfo(AGG_URL + '/0').then(function(res) {
-      // TEMP
-      var json = [];
-      array.forEach(res.fields, function(field, i) {
-        json.push({
-          label: field.alias.replace('Sidewalk ', '').replace('Curb Ramp ', '').replace('Crosswalk ', '').replace('Pedestrian Signal ', '').replace(' Score', ''),
-          aggField: field.name,
-          indField: field.name.replace('Sidewalk', '').replace('CurbRamp', '').replace('Crosswalk', '').replace('PedestrianSignal', '')
-        });
-      });
-      console.log(JSON.stringify(json));
-
       initFieldSelection(res);
     });
 });
