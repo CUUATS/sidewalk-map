@@ -302,6 +302,7 @@ function(
           symbol: makeMarkerSymbol(markerType, markerSize, b.color)
         });
       });
+      renderer.defaultLabel = 'No score';
       return renderer;
     },
     makeMarkerSymbol = function(markerType, markerSize, fillColor) {
