@@ -350,6 +350,8 @@ function(
     updateAggLayer = function(selectedField) {
       aggLayer.renderer.attributeField = selectedField.aggField;
       aggLayer.redraw();
+      // Force refresh the legend to update the attribute name.
+      legend.refresh();
     },
     updateIndLayers = function(selectedField) {
       array.forEach([swLayer, crLayer, cwLayer, psLayer], function(layer, i) {
@@ -366,7 +368,7 @@ function(
       });
     },
     initLegend = function() {
-      var legend = new Legend({
+      legend = new Legend({
         map: map,
         layerInfos: [
           {
@@ -448,8 +450,8 @@ function(
       // Set up the click handler for the update map button.
       updateButton.onclick = function() {
         var selectedField = getSelectedField();
-        updateAggLayer(selectedField);
         updateIndLayers(selectedField);
+        updateAggLayer(selectedField);
       };
       updateButton.removeAttribute('disabled');
     },
@@ -470,7 +472,8 @@ function(
     fieldNameSelect = document.getElementById('fieldName'),
     featureTypeSelect = document.getElementById('featureType'),
     updateButton = document.getElementById('updateMap'),
-    featureFields = {};
+    featureFields = {},
+    legend;
 
     aggLayer.setRenderer(makeAggRenderer());
     aggLayer.setScaleRange(0, 10000);
