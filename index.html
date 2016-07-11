@@ -10,8 +10,9 @@
     <script src="sidewalk-map.js"></script>
   </head>
   <body class="tundra">
-    <div id="map">
-      <div id="options" class="shadow">
+    <div id="map"></div>
+    <div id="sidebar" class="shadow">
+      <div id="options-pane" class="sidebar-pane">
         <h1>Sidewalk Inventory and Assessment</h1>
         <p>
           <label for="featureType">Feature Type:</label>
@@ -26,9 +27,12 @@
           <label for="fieldName">Score By:</label>
           <select id="fieldName" name="fieldName"></select>
         </p>
-        <p>
+        <div>
           <button id="updateMap" disabled="true">Update Map</button>
-        </p>
+        </div>
+      </div>
+      <div id="content-pane" class="sidebar-pane">
+        <div id="variable-info"></div>
         <div id="legend"></div>
       </div>
     </div>

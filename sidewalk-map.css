@@ -11,28 +11,90 @@ h1 {
   margin: 0 0 0.5em 0;
 }
 
-#map {
-  height: 100vh;
-  width: 100%;
+h2.variable-name {
+  font-size: 1.2em;
+  font-weight: 400;
+  margin-top: 0;
 }
 
-#options {
-  background-color: white;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
-  padding: 1.5em;
-  position: absolute;
-  right: 3em;
-  top: 3em;
-  width: 30%;
-  z-index: 40;
+h3.table-label {
+  font-size: 1;
+  font-weight: 600;
+  margin-bottom: 0.5em;
 }
 
 label {
   font-weight: bold;
 }
 
+#map {
+  left: 0;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  width: 65%;
+}
+
+#sidebar {
+  background-color: white;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 35%;
+}
+
+.sidebar-pane {
+  box-sizing: border-box;
+  padding: 2em;
+  width: 100%;
+}
+
+#options-pane {
+  background-color: #666666;
+  color: white;
+  flex: 0 0 auto;
+}
+
+#content-pane {
+  flex: 1 1 100vh;
+  overflow-y: scroll;
+}
+
+.variable-image {
+  float: right;
+  margin: 0 0 1.5em 1.5em;
+  max-width: 50%;
+}
+
+.weights-table {
+	border-spacing: 0;
+  width: 100%;
+}
+
+.weights-table th,
+.weights-table td {
+  padding: 0.25em 1em;
+  text-align: right;
+}
+
+.weights-table th:first-child,
+.weights-table td:first-child {
+  text-align: left;
+}
+
+.weights-table th {
+  background-color: black;
+  color: white;
+  font-weight: bold;
+}
+
 #legend {
   border-top: 1px solid #dddddd;
+  clear: both;
   margin-top: 1em;
   padding-top: 1em;
 }

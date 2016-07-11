@@ -11,7 +11,7 @@ require([
   'dojo/promise/all',
   'dojo/_base/array',
   'dojo/parser',
-  'esri/request',
+  'dojo/request',
   'dojo/domReady!'
 ],
 function(
@@ -69,7 +69,8 @@ function(
             {
               label: 'Maximum Cross Slope',
               aggField: 'SidewalkScoreMaxCrossSlope',
-              indField: 'ScoreMaxCrossSlope'
+              indField: 'ScoreMaxCrossSlope',
+              infoUrl: 'variables/sw_max_cross_slope.html'
             },
             {
               label: 'Largest Vertical Fault',
@@ -90,7 +91,8 @@ function(
               label: 'Overall Compliance',
               aggField: 'SidewalkScoreWidth',
               indField: 'ScoreCompliance',
-              isDefault: true
+              isDefault: true,
+              infoUrl: 'variables/sw_compliance.html'
             }
           ]
         },
@@ -367,6 +369,13 @@ function(
         }
       });
     },
+    showVariableInfo = function(selectedField) {
+      if (selectedField.infoUrl) {
+        request(selectedField.infoUrl).then(function(html) {
+          variableInfo.innerHTML = html;
+        });
+      }
+    },
     initLegend = function() {
       legend = new Legend({
         map: map,
@@ -428,15 +437,6 @@ function(
         }
       }
     },
-    requestLayerInfo = function(url) {
-      return request({
-        url: url,
-        content: {
-          f: 'json'
-        },
-        callbackParamName: 'callback'
-      });
-    },
     initFieldSelection = function() {
       // Set up the change handler for feature type.
       featureTypeSelect.onchange = function() {
@@ -450,13 +450,14 @@ function(
       // Set up the click handler for the update map button.
       updateButton.onclick = function() {
         var selectedField = getSelectedField();
+        showVariableInfo(selectedField);
         updateIndLayers(selectedField);
         updateAggLayer(selectedField);
       };
       updateButton.removeAttribute('disabled');
     },
     map = new Map('map', {
-      center: [-88.2, 40.1],
+      center: [-88.25, 40.07],
       zoom: 11,
       basemap: 'gray-vector'
     }),
@@ -472,6 +473,7 @@ function(
     fieldNameSelect = document.getElementById('fieldName'),
     featureTypeSelect = document.getElementById('featureType'),
     updateButton = document.getElementById('updateMap'),
+    variableInfo = document.getElementById('variable-info'),
     featureFields = {},
     legend;
 
@@ -481,6 +483,7 @@ function(
     map.on('layers-add-result', function(e) {
       initLegend();
       initFieldSelection();
+      updateButton.click();
     });
     map.addLayers([aggLayer, crLayer, cwLayer, psLayer, swLayer]);
 });
