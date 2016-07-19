@@ -75,12 +75,14 @@ function(
             {
               label: 'Largest Vertical Fault',
               aggField: 'SidewalkScoreLargestVerticalFau',
-              indField: 'ScoreLargestVerticalFault'
+              indField: 'ScoreLargestVerticalFault',
+              infoUrl: 'variables/sw_vertical_fault_size.html'
             },
             {
               label: 'Obstruction Types',
               aggField: 'SidewalkScoreObstructionTypes',
-              indField: 'ScoreObstructionTypes'
+              indField: 'ScoreObstructionTypes',
+              infoUrl: 'variables/sw_obstruction.html'
             },
             {
               label: 'Width',
