@@ -27,6 +27,10 @@ label {
   font-weight: bold;
 }
 
+.shadow {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+}
+
 #map {
   left: 0;
   height: 100vh;
@@ -37,7 +41,6 @@ label {
 
 #sidebar {
   background-color: white;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -92,11 +95,15 @@ label {
   font-weight: bold;
 }
 
-#legend {
-  border-top: 1px solid #dddddd;
-  clear: both;
-  margin-top: 1em;
-  padding-top: 1em;
+#legend-wrapper {
+  background-color: white;
+  bottom: 1em;
+  left: 1em;
+  max-width: 200px;
+  min-width: 150px;
+  padding: 1em;
+  position: absolute;
+  width: 20%;
 }
 
 #legend .esriLegendService {
