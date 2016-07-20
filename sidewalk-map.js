@@ -87,7 +87,8 @@ function(
             {
               label: 'Width',
               aggField: 'SidewalkScoreWidth',
-              indField: 'ScoreWidth'
+              indField: 'ScoreWidth',
+              infoUrl: 'variables/sw_width.html'
             },
             {
               label: 'Overall Compliance',
@@ -104,22 +105,26 @@ function(
             {
               label: 'Surface Condition',
               aggField: 'SidewalkScoreSurfaceCondition',
-              indField: 'ScoreSurfaceCondition'
+              indField: 'ScoreSurfaceCondition',
+              infoUrl: 'variables/sw_surface_condition.html'
             },
             {
               label: 'Vertical Fault Count',
               aggField: 'SidewalkScoreVerticalFaultCount',
-              indField: 'ScoreVerticalFaultCount'
+              indField: 'ScoreVerticalFaultCount',
+              infoUrl: 'variables/sw_vertical_fault_count.html'
             },
             {
               label: 'Cracked Panels',
               aggField: 'SidewalkScoreCrackedPanelCount',
-              indField: 'ScoreCrackedPanelCount'
+              indField: 'ScoreCrackedPanelCount',
+              infoUrl: 'variables/sw_cracked_panel_count.html'
             },
             {
               label: 'Overall Condition',
               aggField: 'SidewalkScoreCondition',
-              indField: 'ScoreCondition'
+              indField: 'ScoreCondition',
+              infoUrl: 'variables/sw_condition.html'
             }
           ]
         }
@@ -131,72 +136,86 @@ function(
             {
                label: 'Ramp Width',
                aggField: 'CurbRampScoreRampWidth',
-               indField: 'ScoreRampWidth'
+               indField: 'ScoreRampWidth',
+               infoUrl: 'variables/cr_ramp_width.html'
             },
             {
                label: 'Ramp Cross Slope',
                aggField: 'CurbRampScoreRampCrossSlope',
-               indField: 'ScoreRampCrossSlope'
+               indField: 'ScoreRampCrossSlope',
+               infoUrl: 'variables/cr_ramp_cross_slope.html'
             },
             {
                label: 'Ramp Running Slope',
                aggField: 'CurbRampScoreRampRunningSlope',
-               indField: 'ScoreRampRunningSlope'
+               indField: 'ScoreRampRunningSlope',
+               infoUrl: 'variables/cr_ramp_running_slope.html'
             },
             {
                label: 'Detectable Warning Type',
                aggField: 'CurbRampScoreDetectableWarningT',
-               indField: 'ScoreDetectableWarningType'
+               indField: 'ScoreDetectableWarningType',
+               infoUrl: 'variables/cr_dws_type.html'
             },
             {
                label: 'Detectable Warning Width',
                aggField: 'CurbRampScoreDetectableWarningW',
-               indField: 'ScoreDetectableWarningWidth'
+               indField: 'ScoreDetectableWarningWidth',
+               infoUrl: 'variables/cr_dws_width.html'
             },
             {
                label: 'Gutter Cross Slope',
                aggField: 'CurbRampScoreGutterCrossSlope',
-               indField: 'ScoreGutterCrossSlope'
+               indField: 'ScoreGutterCrossSlope',
+               infoUrl: 'variables/cr_gutter_cross_slope.html'
             },
             {
                label: 'Gutter Running Slope',
                aggField: 'CurbRampScoreGutterRunningSlope',
-               indField: 'ScoreGutterRunningSlope'
+               indField: 'ScoreGutterRunningSlope',
+               infoUrl: 'variables/cr_gutter_running_slope.html'
             },
             {
                label: 'Landing Dimensions',
                aggField: 'CurbRampScoreLandingDimensions',
-               indField: 'ScoreLandingDimensions'
+               indField: 'ScoreLandingDimensions',
+               infoUrl: 'variables/cr_landing_dimensions.html'
             },
             {
                label: 'Landing Slope',
                aggField: 'CurbRampScoreLandingSlope',
-               indField: 'ScoreLandingSlope'
+               indField: 'ScoreLandingSlope',
+               infoUrl: 'variables/cr_landing_slope.html'
             },
             {
                label: 'Approach Cross Slope',
                aggField: 'CurbRampScoreApproachCrossSlope',
-               indField: 'ScoreApproachCrossSlope'
+               indField: 'ScoreApproachCrossSlope',
+               infoUrl: 'variables/cr_approach_cross_slope.html'
             },
             {
                label: 'Flare Slope',
                aggField: 'CurbRampScoreFlareSlope',
-               indField: 'ScoreFlareSlope'
+               indField: 'ScoreFlareSlope',
+               infoUrl: 'variables/cr_flare_slope.html'
             },
             {
                label: 'Largest Vertical Fault',
                aggField: 'CurbRampScoreLargestPavementFau',
-               indField: 'ScoreLargestPavementFault'
+               indField: 'ScoreLargestPavementFault',
+               infoUrl: 'variables/cr_vertical_fault_size.html'
             },
             {
                label: 'Obstruction',
                aggField: 'CurbRampScoreObstruction',
-               indField: 'ScoreObstruction'
+               indField: 'ScoreObstruction',
+               infoUrl: 'variables/cr_obstruction.html'
             },
             {
                label: 'Overall Compliance',
                aggField: 'CurbRampScoreCompliance',
                indField: 'ScoreCompliance',
+               infoUrl: 'variables/cr_compliance.html',
                isDefault: true
             }
           ]
@@ -207,22 +226,26 @@ function(
             {
                label: 'Surface Condition',
                aggField: 'CurbRampScoreSurfaceCondition',
-               indField: 'ScoreSurfaceCondition'
+               indField: 'ScoreSurfaceCondition',
+               infoUrl: 'variables/cr_surface_condition.html'
             },
             {
                label: 'Vertical Fault Count',
                aggField: 'CurbRampScorePavementFaultCount',
-               indField: 'ScorePavementFaultCount'
+               indField: 'ScorePavementFaultCount',
+               infoUrl: 'variables/cr_vertical_fault_count.html',
             },
             {
                label: 'Cracked Panel Count',
                aggField: 'CurbRampScoreCrackedPanelCount',
-               indField: 'ScoreCrackedPanelCount'
+               indField: 'ScoreCrackedPanelCount',
+               infoUrl: 'variables/cr_cracked_panel_count.html',
             },
             {
                label: 'Overall Condition',
                aggField: 'CurbRampScoreCondition',
-               indField: 'ScoreCondition'
+               indField: 'ScoreCondition',
+               infoUrl: 'variables/cr_condition.html',
             },
           ]
         }
@@ -234,17 +257,20 @@ function(
             {
                label: 'Width',
                aggField: 'CrosswalkScoreWidth',
-               indField: 'ScoreWidth'
+               indField: 'ScoreWidth',
+               infoUrl: 'variables/cw_width.html'
             },
             {
                label: 'Cross Slope',
                aggField: 'CrosswalkScoreCrossSlope',
-               indField: 'ScoreCrossSlope'
+               indField: 'ScoreCrossSlope',
+               infoUrl: 'variables/cw_cross_slope.html'
             },
             {
                label: 'Overall Compliance',
                aggField: 'CrosswalkScoreCompliance',
                indField: 'ScoreCompliance',
+               infoUrl: 'variables/cw_compliance.html',
                isDefault: true
             }
           ]
@@ -257,27 +283,32 @@ function(
             {
                label: 'Button Size',
                aggField: 'PedestrianSignalScoreButtonSize',
-               indField: 'ScoreButtonSize'
+               indField: 'ScoreButtonSize',
+               infoUrl: 'variables/ps_button_size.html'
             },
             {
                label: 'Button Height',
                aggField: 'PedestrianSignalScoreButtonHeig',
-               indField: 'ScoreButtonHeight'
+               indField: 'ScoreButtonHeight',
+               infoUrl: 'variables/ps_button_height.html'
             },
             {
                label: 'Button Position and Appearance',
                aggField: 'PedestrianSignalScoreButtonPosi',
-               indField: 'ScoreButtonPositionAppearance'
+               indField: 'ScoreButtonPositionAppearance',
+               infoUrl: 'variables/ps_button_position_appearance.html'
             },
             {
                label: 'Tactile Features',
                aggField: 'PedestrianSignalScoreTactileFea',
-               indField: 'ScoreTactileFeatures'
+               indField: 'ScoreTactileFeatures',
+               infoUrl: 'variables/ps_tactile_features.html'
             },
             {
                label: 'Overall Compliance',
                aggField: 'PedestrianSignalScoreCompliance',
                indField: 'ScoreCompliance',
+               infoUrl: 'variables/ps_compliance.html',
                isDefault: true
             }
           ]
