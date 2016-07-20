@@ -86,12 +86,12 @@ function(
             },
             {
               label: 'Width',
-              aggField: 'SidewalkScoreCompliance',
+              aggField: 'SidewalkScoreWidth',
               indField: 'ScoreWidth'
             },
             {
               label: 'Overall Compliance',
-              aggField: 'SidewalkScoreWidth',
+              aggField: 'SidewalkScoreCompliance',
               indField: 'ScoreCompliance',
               isDefault: true,
               infoUrl: 'variables/sw_compliance.html'
