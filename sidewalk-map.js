@@ -170,7 +170,7 @@ function(
                infoUrl: 'variables/cr_gutter_cross_slope.html'
             },
             {
-               label: 'Gutter Running Slope',
+               label: 'Gutter Counter Slope',
                aggField: 'CurbRampScoreGutterRunningSlope',
                indField: 'ScoreGutterRunningSlope',
                infoUrl: 'variables/cr_gutter_running_slope.html'
