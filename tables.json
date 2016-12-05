@@ -1,0 +1,1414 @@
+{
+    "CurbRamp": {
+        "ScoreRampWidth": [
+            [
+                "Ramp Width",
+                "Score",
+                "Curb Ramps",
+                "Percent of Curb Ramps"
+            ],
+            [
+                "48 inches or more",
+                "100",
+                "10,681",
+                "84.0 %"
+            ], 
+            [
+                "45 to 47 inches",
+                "80",
+                "944",
+                "7.4 %"
+            ],
+            [
+                "42 to 44 inches",
+                "60",
+                "747",
+                "5.9 %"
+            ],
+            [
+                "39 to 41 inches",
+                "40",
+                "191",
+                "1.5 %"
+            ],
+            [
+                "36 to 38 inches",
+                "20",
+                "110",
+                "0.9 %"
+            ],
+            [
+                "35 inches or less",
+                "0",
+                "44",
+                "0.3 %"
+            ]
+        ],
+        "ScoreApproachCrossSlope": [
+            [
+                "Maximum Cross Slope",
+                "Score",
+                "Curb Ramps",
+                "Percent of Curb Ramps"
+            ],
+            [
+                "2 % or less",
+                "100",
+                "4,757",
+                "39.4 %"
+            ],
+            [
+                "2.1 % to 4.0 %",
+                "80",
+                "5,163",
+                "42.8 %"
+            ],
+            [
+                "4.1 % to 6.0 %",
+                "60",
+                "1,566",
+                "13.0 %"
+            ],
+            [
+                "6.1 % to 8.0 %",
+                "40",
+                "461",
+                "3.8 %"
+            ],
+            [
+                "8.1 % to 10.0 %",
+                "20",
+                "93",
+                "0.8 %"
+            ],
+            [
+                "10.1 % or more",
+                "0",
+                "33",
+                "0.3 %"
+            ],
+            [
+                "No approaches",
+                "100",
+                "644",
+                "\u07de"
+            ]
+        ],
+        "ScoreCrackedPanelCount": [
+            [
+                "Cracked Panels",
+                "Score",
+                "Curb Ramps",
+                "Percent of Curb Ramps"
+            ],
+            [
+                "0",
+                "100",
+                "10,650",
+                "83.7 %"
+            ],
+            [
+                "1",
+                "80",
+                "1,609",
+                "12.7 %"
+            ],
+            [
+                "2",
+                "60",
+                "337",
+                "2.6 %"
+            ],
+            [
+                "3",
+                "40",
+                "97",
+                "0.8 %"
+            ],
+            [
+                "4 or more",
+                "20",
+                "24",
+                "0.2 %"
+            ]
+        ],
+        "ScoreRampRunningSlope": [
+            [
+                "Running Slope",
+                "Score",
+                "Curb Ramps",
+                "Percent of Curb Ramps"
+            ],
+            [
+                "8.3 % or less",
+                "100",
+                "8,936",
+                "70.3 %"
+            ],
+            [
+                "8.4 % to 9.3 %",
+                "67",
+                "932",
+                "7.3 %"
+            ],
+            [
+                "9.4 % to 10.3 %",
+                "33",
+                "593",
+                "4.7 %"
+            ],
+            [
+                "10.4 % or more",
+                "0",
+                "1,254",
+                "9.9 %"
+            ],
+            [
+                "Ramp length > 15 feet",
+                "100",
+                "1,002",
+                "7.9 %"
+            ]
+        ],
+        "ScorePavementFaultCount": [
+            [
+                "Vertical Faults",
+                "Score",
+                "Curb Ramps",
+                "Percent of Curb Ramps"
+            ],
+            [
+                "0",
+                "100",
+                "8,487",
+                "66.7 %"
+            ],
+            [
+                "1",
+                "80",
+                "2,832",
+                "22.3 %"
+            ],
+            [
+                "2",
+                "60",
+                "1,094",
+                "8.6 %"
+            ],
+            [
+                "3",
+                "40",
+                "237",
+                "1.9 %"
+            ],
+            [
+                "4 or more",
+                "20",
+                "67",
+                "0.5 %"
+            ]
+        ],
+        "ScoreDetectableWarningType": [
+            [
+                "Surface Type",
+                "Score",
+                "Curb Ramps",
+                "Percent of Curb Ramps"
+            ],
+            [
+                "Truncated domes",
+                "100",
+                "4,692",
+                "39.2 %"
+            ],
+            [
+                "Pavement grooves",
+                "50",
+                "4,597",
+                "38.4 %"
+            ],
+            [
+                "Other",
+                "50",
+                "13",
+                "0.1 %"
+            ],
+            [
+                "None",
+                "0",
+                "0",
+                "0.0 %"
+            ],
+            [
+                "None",
+                "0",
+                "2,655",
+                "22.2 %"
+            ],
+            [
+                "Ramp not adjacent to the street",
+                "100",
+                "760",
+                "\u07de"
+            ]
+        ],
+        "ScoreObstruction": [
+            [
+                "Presence of Obstruction",
+                "Score",
+                "Curb Ramps",
+                "Percent of Curb Ramps"
+            ],
+            [
+                "No obstructions present",
+                "100",
+                "11,431",
+                "89.9 %"
+            ],
+            [
+                "Obstructions present",
+                "0",
+                "1,286",
+                "10.1 %"
+            ]
+        ],
+        "ScoreLandingDimensions": [
+            [
+                "Minimum Dimension",
+                "Score",
+                "Curb Ramps",
+                "Percent of Curb Ramps"
+            ],
+            [
+                "48 inches or more",
+                "100",
+                "6,640",
+                "83.1 %"
+            ],
+            [
+                "42 to 47 inches",
+                "80",
+                "578",
+                "7.2 %"
+            ],
+            [
+                "36 to 41 inches",
+                "60",
+                "108",
+                "1.4 %"
+            ],
+            [
+                "30 to 35 inches",
+                "40",
+                "28",
+                "0.4 %"
+            ],
+            [
+                "24 to 29 inches",
+                "20",
+                "5",
+                "0.1 %"
+            ],
+            [
+                "Less than 24 inches",
+                "0",
+                "6",
+                "0.1 %"
+            ],
+            [
+                "No landing",
+                "0",
+                "622",
+                "7.8 %"
+            ],
+            [
+                "Running slope is 5.0 % or less",
+                "100",
+                "4,730",
+                "\u07de"
+            ]
+        ],
+        "ScoreGutterCrossSlope": [
+            [
+                "Cross Slope",
+                "Score",
+                "Curb Ramps",
+                "Percent of Curb Ramps"
+            ],
+            [
+                "2 % or less",
+                "100",
+                "8,424",
+                "70.5 %"
+            ],
+            [
+                "2.1 % to 4.0 %",
+                "80",
+                "2,665",
+                "22.3 %"
+            ],
+            [
+                "4.1 % to 6.0 %",
+                "60",
+                "671",
+                "5.6 %"
+            ],
+            [
+                "6.1 % to 8.0 %",
+                "40",
+                "145",
+                "1.2 %"
+            ],
+            [
+                "8.1 % to 10.0 %",
+                "20",
+                "34",
+                "0.3 %"
+            ],
+            [
+                "10.1 % or more",
+                "0",
+                "18",
+                "0.2 %"
+            ],
+            [
+                "Ramp not adjacent to the street",
+                "100",
+                "760",
+                "\u07de"
+            ]
+        ],
+        "ScoreDetectableWarningWidth": [
+            [
+                "Percent of Ramp or Landing Width",
+                "Score",
+                "Curb Ramps",
+                "Percent of Curb Ramps"
+            ],
+            [
+                "100 %",
+                "100",
+                "4,261",
+                "35.6 %"
+            ],
+            [
+                "90 % to 99 %",
+                "80",
+                "2,306",
+                "19.3 %"
+            ],
+            [
+                "80 % to 89 %",
+                "60",
+                "1,741",
+                "14.6 %"
+            ],
+            [
+                "70 % to 79 %",
+                "40",
+                "464",
+                "3.9 %"
+            ],
+            [
+                "69 % or less",
+                "20",
+                "530",
+                "4.4 %"
+            ],
+            [
+                "None",
+                "0",
+                "2,655",
+                "22.2 %"
+            ],
+            [
+                "Ramp not adjacent to the street",
+                "100",
+                "760",
+                "\u07de"
+            ]
+        ],
+        "ScoreLandingSlope": [
+            [
+                "Maximum Slope",
+                "Score",
+                "Curb Ramps",
+                "Percent of Curb Ramps"
+            ],
+            [
+                "2 % or less",
+                "100",
+                "2,407",
+                "30.1 %"
+            ],
+            [
+                "2.1 % to 4.0 %",
+                "80",
+                "2,999",
+                "37.5 %"
+            ],
+            [
+                "4.1 % to 6.0 %",
+                "60",
+                "1,244",
+                "15.6 %"
+            ],
+            [
+                "6.1 % to 8.0 %",
+                "40",
+                "454",
+                "5.7 %"
+            ],
+            [
+                "8.1 % to 10.0 %",
+                "20",
+                "200",
+                "2.5 %"
+            ],
+            [
+                "10.1 % or more",
+                "0",
+                "61",
+                "0.8 %"
+            ],
+            [
+                "No landing",
+                "0",
+                "622",
+                "7.8 %"
+            ],
+            [
+                "Running slope is 5.0 % or less",
+                "100",
+                "4,730",
+                "\u07de"
+            ]
+        ],
+        "ScoreGutterRunningSlope": [
+            [
+                "Running Slope",
+                "Score",
+                "Curb Ramps",
+                "Percent of Curb Ramps"
+            ],
+            [
+                "5.0 % or less",
+                "100",
+                "9,502",
+                "79.5 %"
+            ],
+            [
+                "5.1 % to 7.0 %",
+                "80",
+                "1,391",
+                "11.6 %"
+            ],
+            [
+                "7.1 % to 9.0 %",
+                "60",
+                "606",
+                "5.1 %"
+            ],
+            [
+                "9.1 % to 11.0 %",
+                "40",
+                "253",
+                "2.1 %"
+            ],
+            [
+                "11.1 % to 13.0 %",
+                "20",
+                "120",
+                "1.0 %"
+            ],
+            [
+                "13.1 % or more",
+                "0",
+                "85",
+                "0.7 %"
+            ],
+            [
+                "Ramp not adjacent to the street",
+                "100",
+                "760",
+                "\u07de"
+            ]
+        ],
+        "ScoreSurfaceCondition": [
+            [
+                "Condition Issue",
+                "Score",
+                "Curb Ramps",
+                "Percent of Curb Ramps"
+            ],
+            [
+                "None",
+                "100",
+                "9,205",
+                "72.4 %"
+            ],
+            [
+                "Other condition issue",
+                "80",
+                "34",
+                "0.3 %"
+            ],
+            [
+                "Cracking",
+                "80",
+                "367",
+                "2.9 %"
+            ],
+            [
+                "Dirt",
+                "60",
+                "888",
+                "7.0 %"
+            ],
+            [
+                "Grass",
+                "40",
+                "2,027",
+                "15.9 %"
+            ],
+            [
+                "Spalling",
+                "20",
+                "196",
+                "1.5 %"
+            ]
+        ],
+        "ScoreFlareSlope": [
+            [
+                "Flare Slope",
+                "Score",
+                "Curb Ramps",
+                "Percent of Curb Ramps"
+            ],
+            [
+                "10.0 % or less",
+                "100",
+                "148",
+                "40.2 %"
+            ],
+            [
+                "10.1 % to 12.0 %",
+                "80",
+                "39",
+                "10.6 %"
+            ],
+            [
+                "12.1 % to 14.0 %",
+                "60",
+                "41",
+                "11.1 %"
+            ],
+            [
+                "14.1 % to 16.0 %",
+                "40",
+                "20",
+                "5.4 %"
+            ],
+            [
+                "16.1 % to 18.0 %",
+                "20",
+                "21",
+                "5.7 %"
+            ],
+            [
+                "18.1 % or more",
+                "0",
+                "99",
+                "26.9 %"
+            ],
+            [
+                "No flares",
+                "100",
+                "12,349",
+                "\u07de"
+            ]
+        ],
+        "ScoreLargestPavementFault": [
+            [
+                "Largest Vertical Fault",
+                "Score",
+                "Curb Ramps",
+                "Percent of Curb Ramps"
+            ],
+            [
+                "Less than 1/4 inch, or beveled",
+                "100",
+                "8,509",
+                "66.9 %"
+            ],
+            [
+                "1/4 inch to 1/2 inch, not beveled",
+                "50",
+                "2,827",
+                "22.2 %"
+            ],
+            [
+                "More than 1/2 inch",
+                "0",
+                "1,381",
+                "10.9 %"
+            ]
+        ],
+        "ScoreRampCrossSlope": [
+            [
+                "Cross Slope",
+                "Score",
+                "Curb Ramps",
+                "Percent of Curb Ramps"
+            ],
+            [
+                "2 % or less",
+                "100",
+                "7,132",
+                "56.1 %"
+            ],
+            [
+                "2.1 % to 4.0 %",
+                "80",
+                "3,600",
+                "28.3 %"
+            ],
+            [
+                "4.1 % to 6.0 %",
+                "60",
+                "1,326",
+                "10.4 %"
+            ],
+            [
+                "6.1 % to 8.0 %",
+                "40",
+                "438",
+                "3.4 %"
+            ],
+            [
+                "8.1 % to 10.0 %",
+                "20",
+                "151",
+                "1.2 %"
+            ],
+            [
+                "10.1 % or more",
+                "0",
+                "70",
+                "0.6 %"
+            ]
+        ],
+        "ScoreCondition": [
+            [
+                "Condition Score",
+                "Curb Ramps",
+                "Percent of Curb Ramps"
+            ],
+            [
+                "> 90 to 100",
+                "7,937",
+                "62.4 %"
+            ],
+            [
+                "> 80 to 90",
+                "1,774",
+                "13.9 %"
+            ],
+            [
+                "> 70 to 80",
+                "2,252",
+                "17.7 %"
+            ],
+            [
+                "> 60 to 70",
+                "493",
+                "3.9 %"
+            ],
+            [
+                "60 or less",
+                "261",
+                "2.1 %"
+            ]
+        ],
+        "ScoreCompliance": [
+            [
+                "Compliance Score",
+                "Curb Ramps",
+                "Percent of Curb Ramps"
+            ],
+            [
+                "> 90 to 100",
+                "4,992",
+                "39.3 %"
+            ],
+            [
+                "> 80 to 90",
+                "3,500",
+                "27.5 %"
+            ],
+            [
+                "> 70 to 80",
+                "2,292",
+                "18.0 %"
+            ],
+            [
+                "> 60 to 70",
+                "1,144",
+                "9.0 %"
+            ],
+            [
+                "60 or less",
+                "789",
+                "6.2 %"
+            ]
+        ]
+    },
+    "Sidewalk": {
+        "ScoreCompliance": [
+            [
+                "Compliance Score",
+                "Miles of Sidewalk",
+                "Percent of Total Length"
+            ],
+            [
+                "> 90 to 100",
+                "57.2",
+                "8.3 %"
+            ],
+            [
+                "> 80 to 90",
+                "146.9",
+                "21.3 %"
+            ],
+            [
+                "> 70 to 80",
+                "114.6",
+                "16.6 %"
+            ],
+            [
+                "> 60 to 70",
+                "183.0",
+                "26.5 %"
+            ],
+            [
+                "60 or less",
+                "188.1",
+                "27.3 %"
+            ]
+        ],
+        "ScoreCrackedPanelCount": [
+            [
+                "Percent Cracked Panels",
+                "Score",
+                "Miles of Sidewalk",
+                "Percent of Total Length"
+            ],
+            [
+                "2.4 % or less",
+                "100",
+                "263.6",
+                "38.2 %"
+            ],
+            [
+                "2.5 % to 4.9 %",
+                "80",
+                "136.6",
+                "19.8 %"
+            ],
+            [
+                "5.0 % to 7.4 %",
+                "60",
+                "105.4",
+                "15.3 %"
+            ],
+            [
+                "7.5 % to 9.9 %",
+                "40",
+                "64.4",
+                "9.3 %"
+            ],
+            [
+                "10.0 % or greater",
+                "20",
+                "119.8",
+                "17.4 %"
+            ]
+        ],
+        "ScoreVerticalFaultCount": [
+            [
+                "Vertical Faults per Mile",
+                "Score",
+                "Miles of Sidewalk",
+                "Percent of Total Length"
+            ],
+            [
+                "49 or fewer",
+                "100",
+                "279.1",
+                "40.5 %"
+            ],
+            [
+                "50  to 99",
+                "80",
+                "188.8",
+                "27.4 %"
+            ],
+            [
+                "100 to 149",
+                "60",
+                "113.0",
+                "16.4 %"
+            ],
+            [
+                "150 to 199",
+                "40",
+                "60.2",
+                "8.7 %"
+            ],
+            [
+                "200 or more",
+                "20",
+                "48.6",
+                "7.0 %"
+            ]
+        ],
+        "ScoreMaxCrossSlope": [
+            [
+                "Maximum Cross Slope",
+                "Score",
+                "Miles of Sidewalk",
+                "Percent of Total Length"
+            ],
+            [
+                "2 % or less",
+                "100",
+                "122.1",
+                "17.7 %"
+            ],
+            [
+                "2.1 % to 4.0 %",
+                "80",
+                "277.9",
+                "40.3 %"
+            ],
+            [
+                "4.1 % to 6.0 %",
+                "60",
+                "174.0",
+                "25.2 %"
+            ],
+            [
+                "6.1 % to 8.0 %",
+                "40",
+                "70.9",
+                "10.3 %"
+            ],
+            [
+                "8.1 % to 10.0 %",
+                "20",
+                "25.9",
+                "3.7 %"
+            ],
+            [
+                "10.1 % or more",
+                "0",
+                "19.0",
+                "2.8 %"
+            ]
+        ],
+        "ScoreWidth": [
+            [
+                "Minimum Sidewalk Width",
+                "Score",
+                "Miles of Sidewalk",
+                "Percent of Total Length"
+            ],
+            [
+                "48 inches or more",
+                "100",
+                "533.5",
+                "77.3 %"
+            ],
+            [
+                "45 to 47 inches",
+                "80",
+                "68.8",
+                "10.0 %"
+            ],
+            [
+                "42 to 44 inches",
+                "60",
+                "61.8",
+                "9.0 %"
+            ],
+            [
+                "39 to 41 inches",
+                "40",
+                "17.4",
+                "2.5 %"
+            ],
+            [
+                "36 to 38 inches",
+                "20",
+                "6.4",
+                "0.9 %"
+            ],
+            [
+                "35 inches or less",
+                "0",
+                "1.9",
+                "0.3 %"
+            ]
+        ],
+        "ScoreSurfaceCondition": [
+            [
+                "Condition Issue",
+                "Score",
+                "Miles of Sidewalk",
+                "Percent of Total Length"
+            ],
+            [
+                "None",
+                "100",
+                "543.0",
+                "78.7 %"
+            ],
+            [
+                "Other condition issue",
+                "80",
+                "9.0",
+                "1.3 %"
+            ],
+            [
+                "Cracking",
+                "80",
+                "61.3",
+                "8.9 %"
+            ],
+            [
+                "Dirt",
+                "60",
+                "8.1",
+                "1.2 %"
+            ],
+            [
+                "Grass",
+                "40",
+                "46.5",
+                "6.7 %"
+            ],
+            [
+                "Spalling",
+                "20",
+                "21.9",
+                "3.2 %"
+            ]
+        ],
+        "ScoreCondition": [
+            [
+                "Condition Score",
+                "Miles of Sidewalk",
+                "Percent of Total Length"
+            ],
+            [
+                "> 90 to 100",
+                "236.3",
+                "34.3 %"
+            ],
+            [
+                "> 80 to 90",
+                "159.1",
+                "23.1 %"
+            ],
+            [
+                "> 70 to 80",
+                "99.8",
+                "14.5 %"
+            ],
+            [
+                "> 60 to 70",
+                "104.7",
+                "15.2 %"
+            ],
+            [
+                "60 or less",
+                "89.8",
+                "13.0 %"
+            ]
+        ],
+        "ScoreLargestVerticalFault": [
+            [
+                "Largest Vertical Fault",
+                "Score",
+                "Miles of Sidewalk",
+                "Percent of Total Length"
+            ],
+            [
+                "Less than 1/4 inch, or beveled",
+                "100",
+                "78.9",
+                "11.4 %"
+            ],
+            [
+                "1/4 inch to 1/2 inch, not beveled",
+                "50",
+                "264.5",
+                "38.3 %"
+            ],
+            [
+                "More than 1/2 inch",
+                "0",
+                "346.3",
+                "50.2 %"
+            ]
+        ],
+        "ScoreObstructionTypes": [
+            [
+                "Number of Obstruction Types",
+                "Score",
+                "Miles of Sidewalk",
+                "Percent of Total Length"
+            ],
+            [
+                "No obstructions present",
+                "100",
+                "561.8",
+                "81.4 %"
+            ],
+            [
+                "One type present",
+                "50",
+                "120.4",
+                "17.4 %"
+            ],
+            [
+                "Two or more types present",
+                "0",
+                "7.6",
+                "1.1 %"
+            ]
+        ]
+    },
+    "Crosswalk": {
+        "ScoreWidth": [
+            [
+                "Crosswalk Width",
+                "Score",
+                "Crosswalks",
+                "Percent of Crosswalks"
+            ],
+            [
+                "48 inches or more",
+                "100",
+                "1,188",
+                "99.9 %"
+            ],
+            [
+                "45 to 47 inches",
+                "80",
+                "0",
+                "0.0 %"
+            ],
+            [
+                "42 to 44 inches",
+                "60",
+                "0",
+                "0.0 %"
+            ],
+            [
+                "39 to 41 inches",
+                "40",
+                "0",
+                "0.0 %"
+            ],
+            [
+                "36 to 38 inches",
+                "20",
+                "0",
+                "0.0 %"
+            ],
+            [
+                "35 inches or less",
+                "0",
+                "1",
+                "0.1 %"
+            ],
+            [
+                "No painted markings",
+                "100",
+                "7",
+                "\u07de"
+            ]
+        ],
+        "ScoreCrossSlope": [
+            [
+                "Stop-Controlled",
+                "Uncontrolled",
+                "Score",
+                "Crosswalks",
+                "Percent of Crosswalks"
+            ],
+            [
+                "2 % or less",
+                "5.0 % or less",
+                "100",
+                "1,038",
+                "94.1 %"
+            ],
+            [
+                "2.1 % to 4.0 %",
+                "5.1 % to 6.0 %",
+                "80",
+                "55",
+                "5.0 %"
+            ],
+            [
+                "4.1 % to 6.0 %",
+                "6.1 % to 7.0 %",
+                "60",
+                "8",
+                "0.7 %"
+            ],
+            [
+                "6.1 % to 8.0 %",
+                "7.1 % to 8.0 %",
+                "40",
+                "2",
+                "0.2 %"
+            ],
+            [
+                "8.1 % to 10.0 %",
+                "8.1 % to 9.0 %",
+                "20",
+                "0",
+                "0.0 %"
+            ],
+            [
+                "10.1 % or more",
+                "9.1 % or more",
+                "0",
+                "0",
+                "0.0 %"
+            ],
+            [
+                "Midblock crossing",
+                "",
+                "100",
+                "93",
+                "\u07de"
+            ]
+        ],
+        "ScoreCompliance": [
+            [
+                "Compliance Score",
+                "Crosswalks",
+                "Percent of Crosswalks"
+            ],
+            [
+                "> 90 to 100",
+                "1,131",
+                "94.6 %"
+            ],
+            [
+                "> 80 to 90",
+                "54",
+                "4.5 %"
+            ],
+            [
+                "> 70 to 80",
+                "8",
+                "0.7 %"
+            ],
+            [
+                "> 60 to 70",
+                "2",
+                "0.2 %"
+            ],
+            [
+                "60 or less",
+                "1",
+                "0.1 %"
+            ]
+        ]
+    },
+    "PedestrianSignal": {
+        "ScoreCompliance": [
+            [
+                "Compliance Score",
+                "Pedestrian Signals",
+                "Percent of Pedestrian Signals"
+            ],
+            [
+                "> 90 to 100",
+                "70",
+                "11.6 %"
+            ],
+            [
+                "> 80 to 90",
+                "68",
+                "11.3 %"
+            ],
+            [
+                "> 70 to 80",
+                "66",
+                "11.0 %"
+            ],
+            [
+                "> 60 to 70",
+                "101",
+                "16.8 %"
+            ],
+            [
+                "60 or less",
+                "296",
+                "49.3 %"
+            ]
+        ],
+        "ScoreButtonPositionAppearance": [
+            [
+                "Button Position and Appearance",
+                "Score",
+                "Pedestrian Signals",
+                "Percent of Pedestrian Signals"
+            ],
+            [
+                "Pushbuttons at least 10 feet apart",
+                "15",
+                "309",
+                "51.4 %"
+            ],
+            [
+                "Pushbuttons within 10 feet of curb",
+                "15",
+                "510",
+                "84.9 %"
+            ],
+            [
+                "All-weather surface adjacent to button",
+                "15",
+                "269",
+                "44.8 %"
+            ],
+            [
+                "High contrast button",
+                "25",
+                "395",
+                "65.7 %"
+            ],
+            [
+                "Locator tone to find button",
+                "30",
+                "155",
+                "25.8 %"
+            ]
+        ],
+        "ScoreButtonHeight": [
+            [
+                "Button Height",
+                "Score",
+                "Pedestrian Signals",
+                "Percent of Pedestrian Signals"
+            ],
+            [
+                "4 inches or less",
+                "0",
+                "0",
+                "0.0 %"
+            ],
+            [
+                "5 to 9 inches",
+                "20",
+                "0",
+                "0.0 %"
+            ],
+            [
+                "10 to 14 inches",
+                "60",
+                "0",
+                "0.0 %"
+            ],
+            [
+                "15 to 48 inches",
+                "100",
+                "552",
+                "93.6 %"
+            ],
+            [
+                "49 to 53 inches",
+                "60",
+                "17",
+                "2.9 %"
+            ],
+            [
+                "54 to 58 inches",
+                "20",
+                "20",
+                "3.4 %"
+            ],
+            [
+                "59 inches or greater",
+                "0",
+                "1",
+                "0.2 %"
+            ],
+            [
+                "No button",
+                "None",
+                "11",
+                "\u07de"
+            ]
+        ],
+        "ScoreTactileFeatures": [
+            [
+                "Tactile Features",
+                "Score",
+                "Pedestrian Signals",
+                "Percent of Pedestrian Signals"
+            ],
+            [
+                "Tactile arrow",
+                "50",
+                "244",
+                "40.6 %"
+            ],
+            [
+                "Vibrotactile signal or button",
+                "50",
+                "136",
+                "22.6 %"
+            ]
+        ],
+        "ScoreButtonSize": [
+            [
+                "Button Diameter",
+                "Score",
+                "Pedestrian Signals",
+                "Percent of Pedestrian Signals"
+            ],
+            [
+                "2 inches or greater",
+                "100",
+                "422",
+                "71.5 %"
+            ],
+            [
+                "0.5 to 1.9 inches",
+                "67",
+                "111",
+                "18.8 %"
+            ],
+            [
+                "0.4 inches or less",
+                "33",
+                "57",
+                "9.7 %"
+            ],
+            [
+                "No button",
+                "None",
+                "11",
+                "\u07de"
+            ]
+        ]
+    }
+}

@@ -4,10 +4,10 @@
 <head>
     <meta charset="utf-8">
     <title>Sidewalk Network Inventory and Assessment</title>
-    <link rel="stylesheet" href="https://js.arcgis.com/3.17/esri/css/esri.css">
-    <link rel="stylesheet" href="https://js.arcgis.com/3.17/dijit/themes/tundra/tundra.css">
+    <link rel="stylesheet" href="https://js.arcgis.com/3.18/esri/css/esri.css">
+    <link rel="stylesheet" href="https://js.arcgis.com/3.18/dijit/themes/tundra/tundra.css">
     <link rel="stylesheet" href="sidewalk-map.css">
-    <script src="https://js.arcgis.com/3.17/"></script>
+    <script src="https://js.arcgis.com/3.18/"></script>
     <script src="sidewalk-map.js"></script>
 </head>
 
@@ -15,22 +15,24 @@
     <div id="map"></div>
     <div id="sidebar" class="shadow">
         <div id="options-pane" class="sidebar-pane">
-            <h1>Sidewalk Inventory and Assessment</h1>
-            <p>
-                <label for="featureType">Feature Type:</label>
+            <h1><strong id="title-feature">Sidewalks:</strong> <span id="title-field">Overall Compliance</span></h1>
+            <div class="controls control-feature">
+              <div class="control">
+                <label for="featureType">Feature:</label>
                 <select id="featureType" name="featureType">
                     <option value="Sidewalk">Sidewalks</option>
                     <option value="CurbRamp">Curb Ramps</option>
                     <option value="Crosswalk">Crosswalks</option>
                     <option value="PedestrianSignal">Pedestrian Signals</option>
                 </select>
-            </p>
-            <p>
-                <label for="fieldName">Score By:</label>
+              </div>
+              <div class="control control-score">
+                <label for="fieldName">Score:</label>
                 <select id="fieldName" name="fieldName"></select>
-            </p>
-            <div>
-                <button id="updateMap" disabled="true">Update Map</button>
+              </div>
+              <div class="control control-update">
+                  <button id="updateMap" disabled="true">Update</button>
+              </div>
             </div>
         </div>
         <div id="content-pane" class="sidebar-pane">

@@ -1,0 +1,289 @@
+{
+    "CurbRamp": [
+        {
+            "fields": [
+                {
+                    "aggField": "CurbRampScoreRampWidth",
+                    "imageUrl": "images/cr_ramp_width.jpg",
+                    "indField": "ScoreRampWidth",
+                    "description": "<p>In order to be ADA compliant, curb ramps must be at least four feet wide, excluding returned curbs (PROWAG R304.5.1). For curb ramps within medians or pedestrians islands, the minimum required width is five feet (PROWAG R302.3.1). Field staff measured the width of curb ramps at the top of the ramp and measured blended transitions adjacent to the street. The compliance score is based on the width measurement.</p>",
+                    "label": "Ramp Width"
+                },
+                {
+                    "aggField": "CurbRampScoreRampCrossSlope",
+                    "imageUrl": "images/cr_ramp_cross_slope.jpg",
+                    "indField": "ScoreRampCrossSlope",
+                    "description": "<p>Cross slope is the slope of the ramp perpendicular to the direction of travel. In order to be ADA compliant, curb ramp cross slopes must be 2.0 percent or less (PROWAG R304.5.3). Greater cross slopes can make wheelchairs, walkers and other mobility devices unstable. Field staff recorded the cross slope for each ramp, and the cross slope measurement was used to calculate the compliance score.</p>",
+                    "label": "Ramp Cross Slope"
+                },
+                {
+                    "aggField": "CurbRampScoreRampRunningSlope",
+                    "imageUrl": "images/cr_ramp_running_slope.jpg",
+                    "indField": "ScoreRampRunningSlope",
+                    "description": "<p>Running slope is the slope of the curb ramp in the direction of travel. To be ADA compliant, curb ramps must have a running slope of 5.0 percent to 8.3 percent, but they are not required to exceed 15 feet in length in order to meet the maximum slope requirement (PROWAG R304.2.2 and R304.3.2). Blended transitions must have a maximum running slope of 5.0 percent (PROWAG R304.4.1). The running slope measurement for each ramp or blended transition was used to calculate its running slope compliance score.</p>",
+                    "label": "Ramp Running Slope"
+                },
+                {
+                    "aggField": "CurbRampScoreDetectableWarningT",
+                    "imageUrl": "images/cr_dws_type.jpg",
+                    "indField": "ScoreDetectableWarningType",
+                    "description": "<p>Detectable warning surfaces provide a tactile indication that a curb ramp is ending and the street is beginning. In order to be ADA compliant, ramps must include a detectable warning surface composed of truncated domes (PROWAG R305). Field staff recorded the type of detectable warning surface, if any, and this value was used to calculate the score for detectable warning surface type. Upper combination ramps and other ramps not adjacent to the street were given a score of 100 since they do not require detectable warnings.</p>",
+                    "label": "Detectable Warning Type"
+                },
+                {
+                    "aggField": "CurbRampScoreDetectableWarningW",
+                    "imageUrl": "images/cr_dws_width.jpg",
+                    "indField": "ScoreDetectableWarningWidth",
+                    "description": "<p>In order to be ADA compliant, the width of the detectable warning surface must be the same as the width of the ramp (PROWAG R305.1.4). However, PROWAG provides for a two-inch border around the detectable warning surface needed to secure some truncated dome panels to the ramp surface (Advisory R305.2). Detectable warning surfaces that are too narrow may be missed by pedestrians traveling along the edge of the ramp. Field staff measured the width of the detectable warning surface. Using the width of the ramp, the percent coverage of the detectable warning surface was calculated and was used to determine the detectable warning surface width compliance score.</p>",
+                    "label": "Detectable Warning Width"
+                },
+                {
+                    "aggField": "CurbRampScoreGutterCrossSlope",
+                    "imageUrl": "images/cr_gutter_cross_slope.jpg",
+                    "indField": "ScoreGutterCrossSlope",
+                    "description": "<p>Gutters lie between the end of a curb ramp and the street, creating a channel for water drainage. Though some slope is required for effective drainage, excessive slope perpendicular to the direction of pedestrian travel can be hazardous to pedestrians, particularly those using mobility devices. In order to be ADA compliant, gutters within pedestrian access routes must have a cross slope of 2.0 percent or less (PROWAG R304.5.3). Field staff measured the cross slope of the gutter, and the measurement was used to calculate the gutter cross slope compliance score.</p>",
+                    "label": "Gutter Cross Slope"
+                },
+                {
+                    "aggField": "CurbRampScoreGutterRunningSlope",
+                    "imageUrl": "images/cr_gutter_running_slope.jpg",
+                    "indField": "ScoreGutterRunningSlope",
+                    "description": "<p>Counter slope is the slope on the street side of the gutter in the direction of pedestrian travel. In order to be ADA compliant, gutters adjacent to curb ramps must have a counter slope of 5.0 percent or less (PROWAG R304.5.4). Higher counter slopes indicate an excessive change in angle between the curb ramp and the street, creating a tipping hazard for wheelchairs and other mobility devices. Field staff recorded the slope from the base of the gutter to the street, and the counter slope measurement was used to calculate the gutter counter slope score.</p>",
+                    "label": "Gutter Counter Slope"
+                },
+                {
+                    "aggField": "CurbRampScoreLandingDimensions",
+                    "imageUrl": "images/cr_landing_dimensions.jpg",
+                    "indField": "ScoreLandingDimensions",
+                    "description": "<p>The landing, or flat surface adjacent to the ramp, provides pedestrians with a safe space to stop or change their direction of travel. Landings that are too small may restrict the movement of pedestrians using mobility devices. Field staff recorded the length and width of the landing area for each ramp. In order to be ADA complaint, both the length and width must be at least four feet (PROWAG R304.2.1, R304.3.1 and R407.6.4). The minimum landing dimension was used to calculate the compliance score.</p>",
+                    "label": "Landing Dimensions"
+                },
+                {
+                    "aggField": "CurbRampScoreLandingSlope",
+                    "imageUrl": "images/cr_landing_slope.jpg",
+                    "indField": "ScoreLandingSlope",
+                    "description": "<p>The landing, or flat surface adjacent to the ramp, provides pedestrians with a safe space to stop or change their direction of travel. Landings that are too small may restrict the movement of pedestrians using mobility devices. Field staff recorded the length and width of the landing area for each ramp. In order to be ADA complaint, both the length and width must be at least four feet (PROWAG R304.2.1, R304.3.1 and R407.6.4). The minimum landing dimension was used to calculate the compliance score.</p>",
+                    "label": "Landing Slope"
+                },
+                {
+                    "aggField": "CurbRampScoreApproachCrossSlope",
+                    "imageUrl": "images/cr_approach_cross_slope.jpg",
+                    "indField": "ScoreApproachCrossSlope",
+                    "description": "<p>Approaches are the sidewalk segments leading to a ramp. In order to be compliant, approaches must have a cross slope of 2.0 percent or less (PROWAG R304.5.3). Greater cross slopes reduce the stability of mobility devices and often indicate a poorly-designed ramp. Field staff recorded the cross slope of approaches on the first panel immediately adjacent to the ramp or landing. The maximum cross slope for the left and right approaches was used to calculate the approach cross slope compliance score.</p>",
+                    "label": "Approach Cross Slope"
+                },
+                {
+                    "aggField": "CurbRampScoreFlareSlope",
+                    "imageUrl": "images/cr_flare_slope.jpg",
+                    "indField": "ScoreFlareSlope",
+                    "description": "<p>Curb flares create a safe transition between the ramp and the adjacent surface when that surface is walkable. In order to be compliant, curb flares must have a slope of 10.0 percent or less (PROWAG R304.2.3). Greater flare slopes can be unsafe for pedestrians who use wheelchairs or other mobility devices. For ramps with curb flares, field staff measured the slope of the flare parallel to the curb. The slope measurement was used to calculate the flare slope compliance score.</p>",
+                    "label": "Flare Slope"
+                },
+                {
+                    "aggField": "CurbRampScoreLargestPavementFau",
+                    "imageUrl": "images/cr_vertical_fault_size.jpg",
+                    "indField": "ScoreLargestPavementFault",
+                    "description": "<p>Vertical faults are points where the surface of the ramp is uneven, usually due to heaving or settling of panels. In order to be ADA compliant, all vertical faults must be less than &frac12; inch. In addition, all faults between &frac14; inch and &frac12; inch must be beveled, or ground down to remove the fault (PROWAG R302.7.2). Larger vertical faults can create a tripping hazard and can impede mobility devices such as wheelchairs. Field staff recorded the size of the largest vertical fault in each ramp as well as the total number of vertical faults (included in the condition index). The largest vertical fault was used to calculate the compliance score.</p>",
+                    "label": "Largest Vertical Fault"
+                },
+                {
+                    "aggField": "CurbRampScoreObstruction",
+                    "imageUrl": "images/cr_obstruction.jpg",
+                    "indField": "ScoreObstruction",
+                    "description": "<p>Obstructions are objects that impede travel on the curb ramp. In order to be ADA compliant, ramps must have a four-foot wide clear path free from obstructions (PROWAG R210). Ramps where the clear width is less than four feet may be impassible for some users. Field staff recorded the type of the most serious obstruction present, if any, for each ramp. The compliance score for curb ramp obstructions was assigned based on whether obstructions were present.</p>",
+                    "label": "Obstruction"
+                },
+                {
+                    "indField": "ScoreCompliance",
+                    "description": "<p>The combined compliance score for curb ramps was calculated by weighting the scores for compliance criteria. Each criterion was assigned a weight of 5 or 10 percent depending on its importance to curb ramp accessibility and the range of scores observed. Factors like dimensions and slopes of the ramp and landing; detectable warning surface type; and hazards were given the highest weight because they have the greatest impact on individuals with disabilities. Other factors, such as ramp width and gutter slopes, were given lower weight because most of the curb ramps measured fell within the compliant range.</p>",
+                    "imageUrl": "images/cr_compliance.jpg",
+                    "label": "Overall Compliance",
+                    "aggField": "CurbRampScoreCompliance",
+                    "isDefault": true
+                }
+            ],
+            "label": "ADA Compliance"
+        },
+        {
+            "fields": [
+                {
+                    "aggField": "CurbRampScoreSurfaceCondition",
+                    "imageUrl": "images/cr_surface_condition.jpg",
+                    "indField": "ScoreSurfaceCondition",
+                    "description": "<p>As curb ramps age, they can develop a variety of condition issues. Common surface condition issues, from least to most serious, include:</p><ul><li><strong>Cracking</strong> &mdash; The panels are cracked but generally intact.</li><li><strong>Dirt</strong> &mdash; Water has deposited a layer of dirt, reducing traction.</li><li><strong>Grass</strong> &mdash; Grass or other vegetation is growing through cracks.</li><li><strong>Spalling</strong> &mdash; The smooth top layer of the surface has chipped away.</li></ul><p>Field staff recorded the most serious surface condition issue, if any, for each curb ramp.</p>",
+                    "label": "Surface Condition"
+                },
+                {
+                    "aggField": "CurbRampScorePavementFaultCount",
+                    "imageUrl": "images/cr_vertical_fault_count.jpg",
+                    "indField": "ScorePavementFaultCount",
+                    "description": "<p>Vertical faults are points where the panels that make up the curb ramp are uneven, usually due to heaving or settling. A high concentration of vertical faults indicates a generally uneven surface that may pose a greater than average trip hazard. In addition to the largest vertical fault (included in the compliance index), field staff recorded the total number of vertical faults in each curb ramp.</p>",
+                    "label": "Vertical Fault Count"
+                },
+                {
+                    "aggField": "CurbRampScoreCrackedPanelCount",
+                    "imageUrl": "images/cr_cracked_panel_count.jpg",
+                    "indField": "ScoreCrackedPanelCount",
+                    "description": "<p>Cracked panels create an uneven travel surface that can be hazardous to all pedestrians, particularly those who use mobility devices. Since cracks allow water to pass through the surface of the curb ramp, they can also lead to more serious condition issues. Field staff recorded the number of panels in each curb ramp that showed cracking.</p>",
+                    "label": "Cracked Panel Count"
+                },
+                {
+                    "aggField": "CurbRampScoreCondition",
+                    "imageUrl": "images/cr_condition.jpg",
+                    "indField": "ScoreCondition",
+                    "description": "<p>The combined condition score for curb ramps was calculated by equally weighting each of the three compliance criteria (see Table 5-7). Equal weights were used because any of the defects, if severe, can significantly impact use of the facility, particularly for individuals with disabilities.</p>",
+                    "label": "Overall Condition"
+                }
+            ],
+            "label": "Condition"
+        }
+    ],
+    "Sidewalk": [
+        {
+            "fields": [
+                {
+                    "aggField": "SidewalkScoreMaxCrossSlope",
+                    "imageUrl": "images/sw_max_cross_slope.jpg",
+                    "indField": "ScoreMaxCrossSlope",
+                    "description": "<p>Cross slope is the slope of the sidewalk perpendicular to the direction of travel. In order to be ADA compliant, sidewalk cross slopes must be 2.0 percent or less (PROWAG R302.6). Greater cross slopes can make wheelchairs, walkers and other mobility devices unstable. Field staff recorded the sidewalk cross slope every time a driveway crossed the sidewalk as well as a representative summary cross slope for each block. The score for cross slope is based on the maximum value for the block.</p>",
+                    "label": "Maximum Cross Slope"
+                },
+                {
+                    "aggField": "SidewalkScoreLargestVerticalFau",
+                    "imageUrl": "images/sw_vertical_fault_size.jpg",
+                    "indField": "ScoreLargestVerticalFault",
+                    "description": "<p>Vertical faults are points where the surface of the sidewalk is uneven, usually due to heaving or settling of panels. In order to be ADA compliant, all vertical faults must be less than \u00bd inch. In addition, all faults between &frac14; inch and &frac12; inch must be beveled, or ground down to remove the fault (PROWAG R302.7.2). Larger vertical faults can create a tripping hazard and can impede mobility devices such as wheelchairs. Field staff recorded the size of the largest vertical fault in each block as well as the total number of vertical faults (included in the condition index). The compliance score for vertical faults is based on the maximum vertical fault size observed in each block of sidewalk.</p>",
+                    "label": "Largest Vertical Fault"
+                },
+                {
+                    "aggField": "SidewalkScoreObstructionTypes",
+                    "imageUrl": "images/sw_obstruction.jpg",
+                    "indField": "ScoreObstructionTypes",
+                    "description": "<p>Obstructions are objects that impede travel on the sidewalk. In order to be ADA compliant, sidewalks must have a four-foot wide clear path free from obstructions (PROWAG R210). Sidewalks where the clear width is less than four feet may be impassible for some users. Field staff recorded the type of obstruction present, if any, for each block of sidewalk. They also recorded specific point geolocations of major obstructions. The compliance score for sidewalk obstructions is based on the number of types of obstructions present in each block.</p>",
+                    "label": "Obstruction Types"
+                },
+                {
+                    "aggField": "SidewalkScoreWidth",
+                    "imageUrl": "images/sw_width.jpg",
+                    "indField": "ScoreWidth",
+                    "description": "<p>In order to be ADA compliant, sidewalks must have a continuous width of at least four feet (PROWAG R302.3). The PROWAG advisory group recommends a total sidewalk width of at least five feet in order to accommodate street furniture and other obstructions. Sidewalks that are narrower than four feet may be impassible to some users. Field staff recorded the narrowest passable width of the sidewalk for each block. The compliance score for each block feature is based on this minimum width measurements.</p>",
+                    "label": "Width"
+                },
+                {
+                    "indField": "ScoreCompliance",
+                    "description": "<p>The combined compliance score for sidewalks was calculated by equally weighting each of the four compliance criteria. Equal weights were used because any of these factors can severely reduce the mobility and safety of individuals with disabilities.</p>",
+                    "imageUrl": "images/sw_compliance.jpg",
+                    "label": "Overall Compliance",
+                    "aggField": "SidewalkScoreCompliance",
+                    "isDefault": true
+                }
+            ],
+            "label": "ADA Compliance"
+        },
+        {
+            "fields": [
+                {
+                    "aggField": "SidewalkScoreSurfaceCondition",
+                    "imageUrl": "images/sw_surface_condition.jpg",
+                    "indField": "ScoreSurfaceCondition",
+                    "description": "<p>As sidewalks age, they can develop a variety of condition issues. Common surface condition issues, from least to most serious, include:</p><ul><li><strong>Cracking</strong> &mdash; The panels are cracked but generally intact.</li><li><strong>Dirt</strong> &mdash; Water has deposited a layer of dirt, reducing traction.</li><li><strong>Grass</strong> &mdash; Grass or other vegetation is growing through cracks.</li><li><strong>Spalling</strong> &mdash; The smooth top layer of the surface has chipped away.</li></ul><p>Field staff recorded the most serious surface condition issue, if any, for each block of sidewalk.</p>",
+                    "label": "Surface Condition"
+                },
+                {
+                    "aggField": "SidewalkScoreVerticalFaultCount",
+                    "imageUrl": "images/sw_vertical_fault_count.jpg",
+                    "indField": "ScoreVerticalFaultCount",
+                    "description": "<p>Vertical faults are points where the panels that make up the sidewalk are uneven, usually due to heaving or settling. A high concentration of vertical faults indicates a generally uneven surface that may pose a greater than average trip hazard. In addition to the largest vertical fault (included in the compliance index), field staff recorded the total number of vertical faults in each block of sidewalk.</p>",
+                    "label": "Vertical Fault Count"
+                },
+                {
+                    "aggField": "SidewalkScoreCrackedPanelCount",
+                    "imageUrl": "images/sw_cracked_panel_count.jpg",
+                    "indField": "ScoreCrackedPanelCount",
+                    "description": "<p>Cracked panels create an uneven travel surface that can be hazardous to all pedestrians, particularly those who use mobility devices. Since cracks allow water to pass through the surface of the sidewalk, they can also lead to more serious condition issues.</p><p>Field staff recorded the number of panels in each block of sidewalk that showed cracking. The count was converted to an estimated percentage of cracked panels using an average panel length of five feet, and the percentage was used to calculate the condition score.</p>",
+                    "label": "Cracked Panels"
+                },
+                {
+                    "aggField": "SidewalkScoreCondition",
+                    "imageUrl": "images/sw_condition.jpg",
+                    "indField": "ScoreCondition",
+                    "description": "<p>The combined condition score for sidewalks was calculated by equally weighting each of the three compliance criteria (see Table 5-7). Equal weights were used because any of the defects, if severe, can significantly impact use of the facility, particularly for individuals with disabilities.</p>",
+                    "label": "Overall Condition"
+                }
+            ],
+            "label": "Condition"
+        }
+    ],
+    "Crosswalk": [
+        {
+            "fields": [
+                {
+                    "aggField": "CrosswalkScoreWidth",
+                    "imageUrl": "images/cw_width.jpg",
+                    "indField": "ScoreWidth",
+                    "description": "<p>In order to be ADA complaint, crosswalks must have a minimum width of four feet, though PROWAG standards recommend a width of at least five feet (PROWAG R302.3). Crosswalks that are too narrow may not provide a safe crossing space for all pedestrians. Field staff measured the width of marked crosswalks, measuring from the inside of the painted markings in the case of standard or dashed crosswalks. The width measurement was used to calculate the crosswalk width compliance score.</p>",
+                    "label": "Width"
+                },
+                {
+                    "aggField": "CrosswalkScoreCrossSlope",
+                    "imageUrl": "images/cw_cross_slope.jpg",
+                    "indField": "ScoreCrossSlope",
+                    "description": "<p>Cross slope is the slope of the crosswalk perpendicular to the direction of travel. In order to be ADA compliant, crosswalks must have cross slopes of 2.0 percent or less (PROWAG R302.6.0). Pedestrian crossings without stop control are allowed to have cross slopes up to 5.0 percent (PROWAG R302.6.1), and midblock crossings are allowed to match the grade of the street (PROWAG R302.6.2).Greater cross slopes can make wheelchairs, walkers and other mobility devices unstable. Field staff recorded the cross slope at the midpoint of each marked crosswalk, and the cross slope measurement was used to calculate the compliance score.</p>",
+                    "label": "Cross Slope"
+                },
+                {
+                    "indField": "ScoreCompliance",
+                    "description": "<p>The combined compliance score for crosswalks was calculated by equally weighting each of compliance criteria (see Table 4-27). Equal weights were used because both width and cross slope impact the mobility and safety of individuals with disabilities.</p>",
+                    "imageUrl": "images/cw_compliance.jpg",
+                    "label": "Overall Compliance",
+                    "aggField": "CrosswalkScoreCompliance",
+                    "isDefault": true
+                }
+            ],
+            "label": "ADA Compliance"
+        }
+    ],
+    "PedestrianSignal": [
+        {
+            "fields": [
+                {
+                    "aggField": "PedestrianSignalScoreButtonSize",
+                    "imageUrl": "images/ps_button_size.jpg",
+                    "indField": "ScoreButtonSize",
+                    "description": "<p>Pedestrian signal pushbuttons come in several sizes. Accessible buttons are those that are 2.0 inches in diameter or larger (CUUATS Accessible Pedestrian Signal Design Standards). Buttons with diameters between 0.5 and 1.9 inches are considered somewhat accessible, while those less than 0.5 inches are the least accessible. Field staff recorded the size of the pushbutton using three size categories, and the button size was used to calculate the compliance score.</p>",
+                    "label": "Button Size"
+                },
+                {
+                    "aggField": "PedestrianSignalScoreButtonHeig",
+                    "imageUrl": "images/ps_button_height.jpg",
+                    "indField": "ScoreButtonHeight",
+                    "description": "<p>In order to be ADA compliant, pushbuttons must be mounted between 15 and 48 inches above the adjacent surface (PROWAG R406.2 and R406.3). Buttons that are positioned higher or lower may be out of reach for some users. Field staff measured the height of the pushbutton from the ground, and this measurement was used to calculate the compliance score.</p>",
+                    "label": "Button Height"
+                },
+                {
+                    "aggField": "PedestrianSignalScoreButtonPosi",
+                    "imageUrl": "images/ps_button_position_appearance.jpg",
+                    "indField": "ScoreButtonPositionAppearance",
+                    "description": "<p>In order to be ADA compliant, pushbuttons must contrast with the surrounding surface and must emit a locator tone for vision-impaired pedestrians to find them (MUTCD 4E.12.02). In addition, MUTCD standards recommend that pushbuttons be at least 10 feet apart, within 10 feet of the curb, and adjacent to an &ldquo;all-weather surface&rdquo; (MUTCD 4E.08.04A, 4E.08.07 and 4E.08.06). Field staff recorded the presence or absence of these accessibility features, and each feature was assigned a point value. The score for each pedestrian signal was the sum of the points for the button accessibility features that were present.</p>",
+                    "label": "Button Position and Appearance"
+                },
+                {
+                    "aggField": "PedestrianSignalScoreTactileFea",
+                    "imageUrl": "images/ps_tactile_features.jpg",
+                    "indField": "ScoreTactileFeatures",
+                    "description": "<p>In order to be ADA compliant, pedestrian signals must be accompanied by a tactile arrow indicating the direction of crossing (MUTCD 4E.12.01). In addition, signals must have a vibrotactile walk indicator (MUTCD 4E.11.02). Field staff recorded the presence or absence of tactile features, and each feature was assigned a point value. The compliance score for each pedestrian signal was the sum of the points for the tactile features that were present.</p>",
+                    "label": "Tactile Features"
+                },
+                {
+                    "indField": "ScoreCompliance",
+                    "description": "<p>The combined compliance score for pedestrian signals was calculated by weighting the compliance criteria. Signals with pushbuttons were scored using all of the possible compliance criteria, while signals without buttons were scored based only on the tactile features criterion. For signals with pushbuttons, the weights reflect the fundamental importance of button size and height in allowing pedestrians with disabilities to activate a pushbutton, as well as the number of possible accessibility features that make buttons and signals accessible to a wide range of users.</p>",
+                    "imageUrl": "images/ps_compliance.jpg",
+                    "label": "Overall Compliance",
+                    "aggField": "PedestrianSignalScoreCompliance",
+                    "isDefault": true
+                }
+            ],
+            "label": "ADA Compliance"
+        }
+    ]
+}
