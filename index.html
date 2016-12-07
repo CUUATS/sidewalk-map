@@ -19,16 +19,20 @@
             <div class="controls control-feature">
               <div class="control control-feature">
                 <label for="featureType" class="sr">Feature:</label>
-                <select id="featureType" name="featureType">
-                    <option value="Sidewalk">Sidewalks</option>
-                    <option value="CurbRamp">Curb Ramps</option>
-                    <option value="Crosswalk">Crosswalks</option>
-                    <option value="PedestrianSignal">Pedestrian Signals</option>
-                </select>
+                <div class="select-wrapper">
+                  <select id="featureType" name="featureType">
+                      <option value="Sidewalk">Sidewalks</option>
+                      <option value="CurbRamp">Curb Ramps</option>
+                      <option value="Crosswalk">Crosswalks</option>
+                      <option value="PedestrianSignal">Pedestrian Signals</option>
+                  </select>
+                </div>
               </div>
               <div class="control control-score">
                 <label for="fieldName" class="sr">Score:</label>
-                <select id="fieldName" name="fieldName"></select>
+                <div class="select-wrapper">
+                  <select id="fieldName" name="fieldName"></select>
+                </div>
               </div>
               <div class="control control-update">
                   <button id="updateMap" disabled="true"><span class="sr">Update</span></button>

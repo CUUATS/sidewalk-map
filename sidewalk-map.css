@@ -85,7 +85,7 @@ h1.gradient {
   bottom: 0;
   box-sizing: border-box;
   left: 0;
-  padding: 15px 25px;
+  padding: 10px 25px;
   position: absolute;
   width: 100%;
 }
@@ -103,17 +103,71 @@ h1.gradient {
 }
 
 .control-update button {
-  border: 0;
-  padding: 0;
+  background-color: rgba(30, 190, 20, 0.5);
+  border: 1px solid white;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 3px;
+  box-sizing: border-box;
+  cursor: pointer;
+  height: 30px;
+  padding: 5px 8px;
   width: 100%;
+}
+
+.control-update button:active,
+.control-update button:hover,
+.control-update button:focus {
+  background-color: rgba(40, 220, 40, 0.5);
 }
 
 .control-update button::after {
+  color: white;
   content: '\25B6';
 }
 
+.control .select-wrapper {
+  background-color: #666666;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid white;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 3px;
+}
+
+.control .select-wrapper::after {
+  content: '\25BC';
+  position: absolute;
+  right: 10px;
+  top: 8px;
+  z-index: 10;
+}
+
 .control select {
+  appearance: none;
+  background-color: transparent;
+  background-image: none;
+  border: 0 none transparent;
+  box-shadow: none;
+  box-sizing: border-box;
+  color: white;
+  cursor: pointer;
+  height: 30px;
+  padding: 5px 8px;
+  position: relative;
   width: 100%;
+  z-index: 20;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+.control select:active,
+.control select:hover,
+.control select:focus {
+  background-color: rgba(255, 255, 255, 0.1);
+  outline: none;
+}
+
+.control select::-ms-expand {
+  display: none;
 }
 
 #content-pane {
