@@ -14,11 +14,11 @@
 <body class="tundra">
     <div id="map"></div>
     <div id="sidebar" class="shadow">
-        <div id="options-pane" class="sidebar-pane">
-            <h1><strong id="title-feature">Sidewalks:</strong> <span id="title-field">Overall Compliance</span></h1>
+        <div id="options-pane" class="sidebar-pane title-gradient">
+            <h1 class="gradient"><strong id="title-feature">Sidewalks:</strong> <span id="title-field">Overall Compliance</span></h1>
             <div class="controls control-feature">
-              <div class="control">
-                <label for="featureType">Feature:</label>
+              <div class="control control-feature">
+                <label for="featureType" class="sr">Feature:</label>
                 <select id="featureType" name="featureType">
                     <option value="Sidewalk">Sidewalks</option>
                     <option value="CurbRamp">Curb Ramps</option>
@@ -27,11 +27,11 @@
                 </select>
               </div>
               <div class="control control-score">
-                <label for="fieldName">Score:</label>
+                <label for="fieldName" class="sr">Score:</label>
                 <select id="fieldName" name="fieldName"></select>
               </div>
               <div class="control control-update">
-                  <button id="updateMap" disabled="true">Update</button>
+                  <button id="updateMap" disabled="true"><span class="sr">Update</span></button>
               </div>
             </div>
         </div>
