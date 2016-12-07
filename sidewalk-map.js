@@ -3,9 +3,9 @@ require([
   'dojo/_base/Color',
   'dojo/Deferred',
   'esri/layers/FeatureLayer',
-  'esri/layers/LayerDrawingOptions',
-  'esri/dijit/Legend',
-  'esri/map',
+  'esri/widgets/Legend',
+  'esri/Map',
+  'esri/views/MapView',
   'esri/symbols/SimpleFillSymbol',
   'esri/symbols/SimpleLineSymbol',
   'esri/symbols/SimpleMarkerSymbol',
@@ -20,9 +20,9 @@ function(
   Color,
   Deferred,
   FeatureLayer,
-  LayerDrawingOptions,
   Legend,
   Map,
+  MapView,
   SimpleFillSymbol,
   SimpleLineSymbol,
   SimpleMarkerSymbol,
@@ -74,17 +74,21 @@ function(
         mode: FeatureLayer.MODE_ONDEMAND,
         outFields: ['*']
       });
-      layer.setScaleRange(10001, 0);
-      layer.setRenderer(makeIndRenderer(markerType, markerSize));
-      if (!visible) layer.hide();
+
+      layer.minScale = 10001
+      layer.maxScale = 0;
+
+      layer.renderer = makeIndRenderer(markerType, markerSize);
+      if (!visible) layer.visible = false;
       return layer;
     },
     makeIndRenderer = function(markerType, markerSize) {
-      var renderer = new ClassBreaksRenderer(
-        makeMarkerSymbol(markerType, markerSize, '#bbbbbb'),
-        'ScoreCompliance');
+      var renderer = new ClassBreaksRenderer({
+        defaultSymbol: makeMarkerSymbol(markerType, markerSize, '#bbbbbb'),
+        field: 'ScoreCompliance'
+      });
       array.forEach(BREAKS, function(b, i) {
-        renderer.addBreak({
+        renderer.addClassBreakInfo({
           label: b.label,
           minValue: (i > 0) ? BREAKS[i-1].maxValue + 0.000001 : 0,
           maxValue: b.maxValue,
@@ -114,9 +118,11 @@ function(
       );
     },
     makeAggRenderer = function() {
-      var renderer = new ClassBreaksRenderer(null, 'SidewalkScoreCompliance');
+      var renderer = new ClassBreaksRenderer({
+        field: 'SidewalkScoreCompliance'
+      });
       array.forEach(BREAKS, function(b, i) {
-        renderer.addBreak({
+        renderer.addClassBreakInfo({
           label: b.label,
           minValue: (i > 0) ? BREAKS[i-1].maxValue + 0.000001 : 0,
           maxValue: b.maxValue,
@@ -137,22 +143,25 @@ function(
       );
     },
     updateAggLayer = function(selectedField) {
-      aggLayer.renderer.attributeField = selectedField.aggField;
-      aggLayer.redraw();
+      var renderer = aggLayer.renderer.clone();
+      renderer.field = selectedField.aggField;
+      aggLayer.renderer = renderer;
       // Force refresh the legend to update the attribute name.
       if (legend) legend.refresh();
     },
     updateIndLayers = function(selectedField) {
       array.forEach([swLayer, crLayer, cwLayer, psLayer], function(layer, i) {
         if (i == featureTypeSelect.selectedIndex) {
-          layer.renderer.attributeField = selectedField.indField;
+          var renderer = layer.renderer.clone();
+          renderer.field = selectedField.indField;
+          layer.renderer = renderer;
           if (layer.visible) {
             layer.refresh();
           } else {
-            layer.show();
+            layer.visible = true;
           }
         } else {
-          layer.hide();
+          layer.visible = false;
         }
       });
     },
@@ -269,10 +278,14 @@ function(
       };
       updateButton.removeAttribute('disabled');
     },
-    map = new Map('map', {
-      center: [-88.25, 40.07],
-      zoom: 11,
+    map = new Map({
       basemap: 'gray-vector'
+    }),
+    view = new MapView({
+      container: 'map',
+      map: map,
+      center: [-88.25, 40.07],
+      zoom: 11
     }),
     aggLayer = new FeatureLayer(AGG_URL + '/0', {
       mode: FeatureLayer.MODE_SNAPSHOT,
@@ -294,15 +307,14 @@ function(
     legend,
     tables;
 
-    aggLayer.setRenderer(makeAggRenderer());
-    aggLayer.setScaleRange(0, 10000);
+    aggLayer.renderer = makeAggRenderer();
+    aggLayer.minScale = 0;
+    aggLayer.maxScale = 10000;
 
-    map.on('load', function(e) {
-      map.on('layers-add-result', function(e) {
-        initLegend();
-      });
-      map.addLayers([aggLayer, crLayer, cwLayer, psLayer, swLayer]);
+    map.on('layers-add-result', function(e) {
+      initLegend();
     });
+    map.addMany([aggLayer, crLayer, cwLayer, psLayer, swLayer]);
 
     all({
       fields: request('fields.json', {handleAs: 'json'}),
