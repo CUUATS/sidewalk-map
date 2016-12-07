@@ -172,6 +172,7 @@ h1.gradient {
 
 #content-pane {
   flex: 1 1 100vh;
+  line-height: 1.3em;
   overflow-y: scroll;
 }
 
@@ -188,7 +189,7 @@ h1.gradient {
 
 .scores-table th,
 .scores-table td {
-  padding: 0.25em 1em;
+  padding: 0.5em 1em;
   text-align: right;
 }
 
@@ -201,6 +202,14 @@ h1.gradient {
   background-color: black;
   color: white;
   font-weight: bold;
+}
+
+.scores-table tbody tr:nth-child(even) {
+  background-color: #eeeeee;
+}
+
+.scores-table tbody tr:nth-child(odd) {
+  background-color: #fefefe;
 }
 
 #legend-wrapper {
