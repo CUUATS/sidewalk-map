@@ -10,6 +10,7 @@ h1 {
   font-size: 1.5em;
   font-weight: normal;
   margin: 0 0 0.5em 0;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
   text-transform: uppercase;
 }
 
