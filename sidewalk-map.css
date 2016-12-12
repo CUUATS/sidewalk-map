@@ -226,3 +226,50 @@ h1.gradient {
 #legend .esriLegendService {
   padding-bottom: 0;
 }
+
+.esriPopup h2 {
+  font-size: 1.2em;
+  text-transform: uppercase;
+}
+.esriPopup h2:first-child {
+  margin-top: 0;
+}
+.esriPopup .field-label {
+  display: block;
+}
+.esriPopup .scale {
+  border: 1px solid #666666;
+  display: inline-block;
+  height: 5px;
+  margin: 3px 10px 5px 0;
+  padding: 2px;
+  position: relative;
+  vertical-align: middle;
+  width: 70%;
+}
+.esriPopup .scale-inner {
+  background-color: #bbbbbb;
+  display: block;
+  height: 5px;
+}
+.esriPopup .scale-over-90 .scale-inner {
+  background-color: #2e80bf;
+}
+.esriPopup .scale-over-80 .scale-inner {
+  background-color: #80cee8;
+}
+.esriPopup .scale-over-70 .scale-inner {
+  background-color: #fcfc5d;
+}
+.esriPopup .scale-over-60 .scale-inner {
+  background-color: #ffb061;
+}
+.esriPopup .scale-60-under .scale-inner {
+  background-color: #e61c1f;
+}
+.esriPopup .field-ScoreCompliance .field-label,
+.esriPopup .field-ScoreCompliance .scale-value,
+.esriPopup .field-ScoreCondition .field-label,
+.esriPopup .field-ScoreCondition .scale-value {
+  font-weight: bold;
+}

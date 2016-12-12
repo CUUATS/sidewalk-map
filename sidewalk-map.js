@@ -3,6 +3,7 @@ require([
   'dojo/_base/Color',
   'dojo/Deferred',
   'esri/layers/FeatureLayer',
+  'esri/InfoTemplate',
   'esri/layers/LayerDrawingOptions',
   'esri/dijit/Legend',
   'esri/map',
@@ -20,6 +21,7 @@ function(
   Color,
   Deferred,
   FeatureLayer,
+  InfoTemplate,
   LayerDrawingOptions,
   Legend,
   Map,
@@ -279,6 +281,45 @@ function(
       outFields: ['*'],
       opacity: 0.5
     }),
+    initInfoWindows = function(fields) {
+      crLayer.setInfoTemplate(makeInfoTemplate('Curb Ramp', fields.CurbRamp));
+      swLayer.setInfoTemplate(makeInfoTemplate('Sidewalk', fields.Sidewalk));
+    },
+    makeInfoTemplate = function(label, groups) {
+      var info = new InfoTemplate();
+      info.setTitle(label);
+
+      var html = '';
+      array.forEach(groups, function(group, i) {
+        html += '<h2>' + group.label + '</h2>';
+        array.forEach(group.fields, function(field, i) {
+          html += '<div class="field field-' + field.indField +
+            '"><span class="field-label">' + field.label + '</span>' +
+            '${' + field.indField + ':renderScale}</div>';
+        });
+      });
+      info.setContent(html);
+      return info;
+    },
+    scaleBar = function(value, field, data) {
+      if (value > 90) {
+        var cls = 'scale-over-90';
+      } else if (value > 80) {
+        var cls = 'scale-over-80';
+      } else if (value > 70) {
+        var cls = 'scale-over-70';
+      } else if (value > 60) {
+        var cls = 'scale-over-60';
+      } else if (value >= 0) {
+        var cls = 'scale-60-under';
+      } else {
+        var cls = 'scale-none';
+      }
+      return '<span class="scale ' + cls +
+        '"><span class="scale-inner" style="width:' + value +
+        '%;"></span></span><span class="scale-value">' + Math.round(value) +
+        '</span>';
+    },
     crLayer = makeIndLayer(0, SimpleMarkerSymbol.STYLE_CIRCLE, 10, false),
     cwLayer = makeIndLayer(1, SimpleMarkerSymbol.STYLE_SQUARE, 10, false),
     psLayer = makeIndLayer(2, SimpleMarkerSymbol.STYLE_DIAMOND, 10, false),
@@ -293,6 +334,10 @@ function(
     featureFields = {},
     legend,
     tables;
+
+    // The scale renderer function needs to be a global variable so that
+    // the info window logic can access it.
+    renderScale = scaleBar;
 
     aggLayer.setRenderer(makeAggRenderer());
     aggLayer.setScaleRange(0, 10000);
@@ -310,6 +355,7 @@ function(
     }).then(function(res) {
       tables = res.tables;
       initFieldSelection(res.fields);
+      initInfoWindows(res.fields);
       updateButton.click();
     });
 });
