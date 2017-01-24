@@ -292,14 +292,21 @@ function(
       var html = '';
       array.forEach(groups, function(group, i) {
         html += '<h2>' + group.label + '</h2>';
+        html += '<table class="field-values"><thead><tr><th>Variable</th><th>Value</th><th>Chart</th></tr></thead><tbody>';
         array.forEach(group.fields, function(field, i) {
-          html += '<div class="field field-' + field.indField +
-            '"><span class="field-label">' + field.label + '</span>' +
-            '${' + field.indField + ':renderScale}</div>';
+          html += '<tr class="field field-' + field.indField +
+            '"><td class="field-label">' + field.label + '</td>' +
+            '<td class="field-value">${' + field.indField +
+            ':renderRounded}</td>' + '${' + field.indField +
+            ':renderScale}</tr>';
         });
+        html += '</tbody></table>';
       });
       info.setContent(html);
       return info;
+    },
+    roundValue = function(value, field, data) {
+      return Math.round(value);
     },
     scaleBar = function(value, field, data) {
       if (value > 90) {
@@ -315,10 +322,8 @@ function(
       } else {
         var cls = 'scale-none';
       }
-      return '<span class="scale ' + cls +
-        '"><span class="scale-inner" style="width:' + value +
-        '%;"></span></span><span class="scale-value">' + Math.round(value) +
-        '</span>';
+      return '<td class="field-scale"><div class="scale-bar ' + cls +
+        '" style="width:' + Math.round(value) + '%;"></div></td>';
     },
     crLayer = makeIndLayer(0, SimpleMarkerSymbol.STYLE_CIRCLE, 10, false),
     cwLayer = makeIndLayer(1, SimpleMarkerSymbol.STYLE_SQUARE, 10, false),
@@ -338,6 +343,7 @@ function(
     // The scale renderer function needs to be a global variable so that
     // the info window logic can access it.
     renderScale = scaleBar;
+    renderRounded = roundValue;
 
     aggLayer.setRenderer(makeAggRenderer());
     aggLayer.setScaleRange(0, 10000);

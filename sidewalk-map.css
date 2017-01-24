@@ -234,37 +234,45 @@ h1.gradient {
 .esriPopup h2:first-child {
   margin-top: 0;
 }
-.esriPopup .field-label {
-  display: block;
+.esriPopup .field-values {
+  background-color: white;
+  border-collapse: collapse;
+  width: 100%;
 }
-.esriPopup .scale {
-  border: 1px solid #666666;
-  display: inline-block;
-  height: 5px;
-  margin: 3px 10px 5px 0;
-  padding: 2px;
+.esriPopup .field-values th {
+  display: none;
+}
+.esriPopup .field-values td {
+  border: 1px solid #bbbbbb;
+}
+.esriPopup .field-values td.field-label {
+  border-right: 0 none transparent;
+}
+.esriPopup .field-values td.field-value {
+  border-left: 0 none transparent;
+  text-align: right;
+}
+.esriPopup .field-values td.field-scale {
   position: relative;
   vertical-align: middle;
-  width: 70%;
+  width: 15%;
 }
-.esriPopup .scale-inner {
-  background-color: #bbbbbb;
-  display: block;
-  height: 5px;
+.esriPopup .field-values td.field-scale .scale-bar {
+  height: 1em;
 }
-.esriPopup .scale-over-90 .scale-inner {
+.esriPopup .scale-over-90 {
   background-color: #2e80bf;
 }
-.esriPopup .scale-over-80 .scale-inner {
+.esriPopup .scale-over-80 {
   background-color: #80cee8;
 }
-.esriPopup .scale-over-70 .scale-inner {
+.esriPopup .scale-over-70 {
   background-color: #fcfc5d;
 }
-.esriPopup .scale-over-60 .scale-inner {
+.esriPopup .scale-over-60 {
   background-color: #ffb061;
 }
-.esriPopup .scale-60-under .scale-inner {
+.esriPopup .scale-60-under {
   background-color: #e61c1f;
 }
 .esriPopup .field-ScoreCompliance .field-label,
