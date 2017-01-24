@@ -64,6 +64,7 @@ label {
 }
 
 #options-pane {
+  background-color: #bbbbbb;
   background-image: url('images/sw_width.jpg');
   background-repeat: no-repeat;
   background-size: cover;
@@ -227,57 +228,56 @@ h1.gradient {
   padding-bottom: 0;
 }
 
-.esriPopup h2 {
+h2.variable-group-title {
   font-size: 1.2em;
   text-transform: uppercase;
 }
-.esriPopup h2:first-child {
+h2.variable-group-title:first-child {
   margin-top: 0;
 }
-.esriPopup .field-values {
+.field-values {
   background-color: white;
   border-collapse: collapse;
   width: 100%;
 }
-.esriPopup .field-values th {
+.field-values th {
   display: none;
 }
-.esriPopup .field-values td {
-  border: 1px solid #bbbbbb;
-}
-.esriPopup .field-values td.field-label {
-  border-right: 0 none transparent;
-}
-.esriPopup .field-values td.field-value {
-  border-left: 0 none transparent;
+.field-values td.field-value {
   text-align: right;
 }
-.esriPopup .field-values td.field-scale {
-  position: relative;
+.field-values td.field-scale {
   vertical-align: middle;
   width: 15%;
 }
-.esriPopup .field-values td.field-scale .scale-bar {
+.field-values td.field-scale .scale-outer {
+  background-color: white;
+  border: 1px solid #cccccc;
+  height: 1em;
+  position: relative;
+  width: 100%;
+}
+.field-values td.field-scale .scale-bar {
   height: 1em;
 }
-.esriPopup .scale-over-90 {
+.scale-over-90 {
   background-color: #2e80bf;
 }
-.esriPopup .scale-over-80 {
+.scale-over-80 {
   background-color: #80cee8;
 }
-.esriPopup .scale-over-70 {
+.scale-over-70 {
   background-color: #fcfc5d;
 }
-.esriPopup .scale-over-60 {
+.scale-over-60 {
   background-color: #ffb061;
 }
-.esriPopup .scale-60-under {
+.scale-60-under {
   background-color: #e61c1f;
 }
-.esriPopup .field-ScoreCompliance .field-label,
-.esriPopup .field-ScoreCompliance .scale-value,
-.esriPopup .field-ScoreCondition .field-label,
-.esriPopup .field-ScoreCondition .scale-value {
+.field-ScoreCompliance .field-label,
+.field-ScoreCompliance .scale-value,
+.field-ScoreCondition .field-label,
+.field-ScoreCondition .scale-value {
   font-weight: bold;
 }

@@ -268,6 +268,7 @@ function(
         showVariableInfo(selected.featureType, selected.field);
         updateIndLayers(selected.field);
         updateAggLayer(selected.field);
+        map.infoWindow.clearFeatures();
       };
       updateButton.removeAttribute('disabled');
     },
@@ -284,6 +285,20 @@ function(
     initInfoWindows = function(fields) {
       crLayer.setInfoTemplate(makeInfoTemplate('Curb Ramp', fields.CurbRamp));
       swLayer.setInfoTemplate(makeInfoTemplate('Sidewalk', fields.Sidewalk));
+      map.infoWindow.set('popupWindow', false);
+      map.infoWindow.on('selection-change', function(e){
+        var feature = map.infoWindow.getSelectedFeature();
+        if (feature) {
+          showFeatureDetails(feature);
+        } else {
+          updateButton.click();
+        }
+      });
+    },
+    showFeatureDetails = function(feature) {
+      optionsPane.style.backgroundImage = 'none';
+      variableInfo.innerHTML = feature.getContent();
+      titleField.innerHTML = 'Feature Details';
     },
     makeInfoTemplate = function(label, groups) {
       var info = new InfoTemplate();
@@ -291,8 +306,8 @@ function(
 
       var html = '';
       array.forEach(groups, function(group, i) {
-        html += '<h2>' + group.label + '</h2>';
-        html += '<table class="field-values"><thead><tr><th>Variable</th><th>Value</th><th>Chart</th></tr></thead><tbody>';
+        html += '<h2 class="variable-group-title">' + group.label + '</h2>';
+        html += '<table class="field-values scores-table"><thead><tr><th>Variable</th><th>Value</th><th>Chart</th></tr></thead><tbody>';
         array.forEach(group.fields, function(field, i) {
           html += '<tr class="field field-' + field.indField +
             '"><td class="field-label">' + field.label + '</td>' +
@@ -322,8 +337,9 @@ function(
       } else {
         var cls = 'scale-none';
       }
-      return '<td class="field-scale"><div class="scale-bar ' + cls +
-        '" style="width:' + Math.round(value) + '%;"></div></td>';
+      return '<td class="field-scale"><div class="scale-outer">' +
+        '<div class="scale-bar ' + cls + '" style="width:' +
+        Math.round(value) + '%;"></div></div></td>';
     },
     crLayer = makeIndLayer(0, SimpleMarkerSymbol.STYLE_CIRCLE, 10, false),
     cwLayer = makeIndLayer(1, SimpleMarkerSymbol.STYLE_SQUARE, 10, false),
@@ -349,6 +365,13 @@ function(
     aggLayer.setScaleRange(0, 10000);
     aggLayer.on('click', function(e) {
       map.centerAndZoom(e.graphic.geometry.getCentroid(), 15);
+    });
+
+    crLayer.on('click', function(e) {
+      var id = e.graphic.attributes.OBJECTID;
+      crLayer.queryAttachmentInfos(id).then(function(res) {
+        console.log(res);
+      });
     });
 
     map.on('load', function(e) {
