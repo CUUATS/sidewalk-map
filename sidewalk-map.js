@@ -347,6 +347,9 @@ function(
 
     aggLayer.setRenderer(makeAggRenderer());
     aggLayer.setScaleRange(0, 10000);
+    aggLayer.on('click', function(e) {
+      map.centerAndZoom(e.graphic.geometry.getCentroid(), 15);
+    });
 
     map.on('load', function(e) {
       map.on('layers-add-result', function(e) {
