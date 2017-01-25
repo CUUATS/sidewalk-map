@@ -266,3 +266,29 @@ h2.variable-group-title:first-child {
   color: black;
   text-decoration: none;
 }
+@media screen and (max-width: 800px) {
+  #map {
+    height: 30%;
+    width: 100%;
+  }
+  #sidebar {
+    top: 30%;
+    height: 70%;
+    width: 100%;
+  }
+  #legend-wrapper {
+    border-bottom: 1px solid #bbbbbb;
+    border-left: 1px solid #bbbbbb;
+    bottom: auto;
+    left: auto;
+    padding: 0.5em;
+    right: 0;
+    top: 0;
+  }
+  .shadow {
+    box-shadow: none;
+  }
+  .esriLegendLayer {
+    font-size: 0.9em;
+  }
+}
