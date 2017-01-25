@@ -1,7 +1,7 @@
 html,
 body {
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 13px;
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
   margin: 0;
   padding: 0;
 }
@@ -80,6 +80,39 @@ label {
 #attribution:hover,
 #attribution:focus {
   border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+}
+#about-text {
+  display: none;
+}
+#about-controls a {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  color: white;
+  display: block;
+  font-size: 1.2em;
+  padding: 0.75em;
+  margin: 0 0 0.25em;
+  text-decoration: none;
+  text-align: center;
+}
+#about-controls a.explore {
+  background-color: #00554e;
+}
+#about-controls a.download {
+  background-color: #56235d;
+}
+#about-controls a:active,
+#about-controls a:hover,
+#about-controls a:focus {
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.2);
+}
+#about-controls .file-size {
+  display: block;
+  font-size: 0.7em;
+}
+#about-image {
+  height: auto;
+  max-width: 100%;
 }
 #map {
   box-sizing: border-box;
@@ -199,6 +232,7 @@ h1.gradient {
   box-sizing: border-box;
   color: white;
   cursor: pointer;
+  font-family: 'Lato', sans-serif;
   height: 30px;
   padding: 5px 28px 5px 8px;
   position: relative;
@@ -319,6 +353,20 @@ h2.variable-group-title:first-child {
 .variable-link {
   color: black;
   text-decoration: none;
+}
+.dijitDialogPaneContent {
+  font-size: 16px;
+  line-height: 1.2em;
+}
+.dijitDialogPaneContent p a {
+  border-bottom: 2px solid #70c4bd;
+  color: black;
+  text-decoration: none;
+}
+.dijitDialogPaneContent p a:active,
+.dijitDialogPaneContent p a:hover,
+.dijitDialogPaneContent p a:focus {
+  border-bottom-color: black;
 }
 @media screen and (max-width: 800px) {
   #map {

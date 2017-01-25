@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://js.arcgis.com/3.19/esri/css/esri.css">
     <link rel="stylesheet" href="https://js.arcgis.com/3.19/dijit/themes/tundra/tundra.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,900" rel="stylesheet">
     <link rel="stylesheet" href="sidewalk-map.css">
     <script src="https://js.arcgis.com/3.19/"></script>
     <script src="sidewalk-map.js"></script>
@@ -16,15 +17,57 @@
     <div id="nav-container" class="shadow">
         <span id="app-title">Sidewalk Explorer</span>
         <a id="attribution" href="https://cuuats.org/">by CUUATS</a>
-        <a id="report-link" class="nav-link"
-            href="http://www.ccrpc.org/wp-content/uploads/2016/02/SidewalkNetworkInventoryAssessment.pdf">
-          <i class="fa fa-download" aria-hidden="true"></i>
-          <span class="text">Download Report</span>
-        </a>
         <a id="about-link" class="nav-link" href="#">
           <i class="fa fa-info-circle" aria-hidden="true"></i>
           <span class="text">About</span>
         </a>
+        <div id="about-text">
+            <img id="about-image" src="images/about_banner.jpg" width="600" height="108" alt="Banner image showing scenes from the data collection process" />
+            <p>
+                Welcome to Sidewalk Explorer, an interactive viewer for the
+                Sidewalk Network Inventory and Assessment. The inventory and
+                assessment process is an effort to create a comprehensive
+                database of sidewalk network features within the Champaign
+                Urbana Urbanized Area. The database is designed to track the
+                condition and Americans with Disabilities Act (ADA) compliance
+                of the sidewalk network.
+            </p>
+            <p>
+                Initial data collection took place between May 2014
+                and August 2015. The database is updated each summer with
+                features constructed or modified during the previous calendar
+                year. Field staff examine and record measurements
+                for all sidewalks, curb ramps, crosswalks, and pedestrian
+                signals in the public right-of-way.
+            </p>
+            <p>
+                The results of the inventory are analyzed using an ADA
+                compliance index that scores each variable on a scale
+                from 0 to 100. A score of 100 represents preliminary compliance
+                with the proposed
+                <a href="https://www.access-board.gov/guidelines-and-standards/streets-sidewalks/public-rights-of-way">Public
+                Right-of-Way Accessibility Guidelines</a>
+                (PROWAG). A similar index rates condition for sidewalks and
+                curb ramps.
+            </p>
+            <p>
+                The assessment scores are one of several factors local agencies
+                use in prioritizing sidewalk network improvements. For a
+                discussion of other factors influencing prioritization, download
+                the report document.
+            </p>
+            <div id="about-controls">
+                <a href="#" class="explore">
+                  <i class="fa fa-map-marker" aria-hidden="true"></i>
+                  Start Exploring
+                </a>
+                <a href="http://www.ccrpc.org/wp-content/uploads/2016/02/SidewalkNetworkInventoryAssessment.pdf" class="download">
+                  <i class="fa fa-download" aria-hidden="true"></i>
+                  Download Report
+                  <span class="file-size">(PDF, 22MB)</span>
+                </a>
+            </div>
+        </div>
     </div>
     <div id="app-container">
         <div id="map"></div>

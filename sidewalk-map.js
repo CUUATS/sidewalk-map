@@ -398,6 +398,17 @@ function(
         '<div class="scale-bar ' + cls + '" style="width:' +
         Math.round(value) + '%;"></div></div></td>';
     },
+    initDialogLinks = function() {
+      imageLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        imageDialog.show();
+      });
+
+      aboutLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        aboutDialog.show();
+      });
+    },
     crLayer = makeIndLayer(0, SimpleMarkerSymbol.STYLE_CIRCLE, 10, false),
     cwLayer = makeIndLayer(1, SimpleMarkerSymbol.STYLE_SQUARE, 10, false),
     psLayer = makeIndLayer(2, SimpleMarkerSymbol.STYLE_DIAMOND, 10, false),
@@ -411,6 +422,13 @@ function(
     optionsPane = document.getElementById('options-pane'),
     noImage = document.getElementById('no-image'),
     imageLink = document.getElementById('image-link'),
+    aboutLink = document.getElementById('about-link'),
+    aboutText = document.getElementById('about-text'),
+    aboutDialog = new Dialog({
+      title: 'About Sidewalk Explorer',
+      content: aboutText.innerHTML,
+      style: 'max-width: 620px;'
+    }),
     imageDialog = new Dialog({
       title: 'Feature Image'
     }),
@@ -448,8 +466,5 @@ function(
       updateState();
     });
 
-    imageLink.addEventListener('click', function(e) {
-      e.preventDefault();
-      imageDialog.show();
-    });
+    initDialogLinks();
 });
