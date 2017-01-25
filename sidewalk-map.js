@@ -224,40 +224,36 @@ function(
       while (fieldNameSelect.firstChild)
         fieldNameSelect.removeChild(fieldNameSelect.firstChild);
 
-      var optionIdx = 0;
       array.forEach(fields[featureType], function(group, i) {
         var optgroup = document.createElement('optgroup');
         optgroup.label = group.label;
         fieldNameSelect.appendChild(optgroup);
         array.forEach(group.fields, function(field, i) {
           var option = document.createElement('option');
-          option.value = optionIdx;
+          option.value = field.indField;
           option.appendChild(document.createTextNode(field.label));
           optgroup.appendChild(option);
-          if (field.isDefault) fieldNameSelect.selectedIndex = optionIdx;
-          optionIdx += 1;
+          if (field.isDefault) fieldNameSelect.value = field.indField;
         });
       });
     },
     getSelectedField = function(fields) {
-      var featureType =
-          featureTypeSelect.options[featureTypeSelect.selectedIndex].value,
-        idx = fieldNameSelect.selectedIndex,
-        fieldIdx = 0;
+      var featureType = featureTypeSelect.value,
+        indField = fieldNameSelect.value;
       for (var g = 0; g < fields[featureType].length; g++) {
         for (var f = 0; f < fields[featureType][g].fields.length; f++) {
-          if (fieldIdx == idx) return {
+          var field = fields[featureType][g].fields[f];
+          if (field.indField == indField) return {
             featureType: featureType,
-            field: fields[featureType][g].fields[f]
+            field: field
           };
-          fieldIdx += 1;
         }
       }
     },
     initFieldSelection = function(fields) {
       // Set up the change handler for feature type.
       featureTypeSelect.onchange = function() {
-        populateFieldList(fields, this.options[this.selectedIndex].value);
+        populateFieldList(fields, this.value);
       };
 
       // Set the initial values of the feature type and field name selects.
