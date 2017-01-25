@@ -269,6 +269,7 @@ function(
         updateIndLayers(selected.field);
         updateAggLayer(selected.field);
         map.infoWindow.clearFeatures();
+        noImage.style.display = 'none';
       };
       updateButton.removeAttribute('disabled');
     },
@@ -299,6 +300,18 @@ function(
       optionsPane.style.backgroundImage = 'none';
       variableInfo.innerHTML = feature.getContent();
       titleField.innerHTML = 'Feature Details';
+
+      var oid = feature.attributes.OBJECTID;
+      feature.getLayer().queryAttachmentInfos(oid, function(res) {
+        if (res) {
+          optionsPane.style.backgroundImage = 'url("' + res[0].url + '")';
+          noImage.style.display = 'none';
+        } else {
+          noImage.style.display = 'block';
+        }
+      }, function(err) {
+        noImage.style.display = 'block';
+      });
     },
     makeInfoTemplate = function(label, groups) {
       var info = new InfoTemplate();
@@ -352,6 +365,7 @@ function(
     titleFeature = document.getElementById('title-feature'),
     titleField = document.getElementById('title-field'),
     optionsPane = document.getElementById('options-pane'),
+    noImage = document.getElementById('no-image'),
     featureFields = {},
     legend,
     tables;
@@ -365,13 +379,6 @@ function(
     aggLayer.setScaleRange(0, 10000);
     aggLayer.on('click', function(e) {
       map.centerAndZoom(e.graphic.geometry.getCentroid(), 15);
-    });
-
-    crLayer.on('click', function(e) {
-      var id = e.graphic.attributes.OBJECTID;
-      crLayer.queryAttachmentInfos(id).then(function(res) {
-        console.log(res);
-      });
     });
 
     map.on('load', function(e) {

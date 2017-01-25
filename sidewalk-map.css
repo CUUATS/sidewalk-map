@@ -64,7 +64,7 @@ label {
 }
 
 #options-pane {
-  background-color: #bbbbbb;
+  background-color: #666666;
   background-image: url('images/sw_width.jpg');
   background-repeat: no-repeat;
   background-size: cover;
@@ -79,6 +79,13 @@ label {
 h1.gradient {
   background: -webkit-linear-gradient(top, rgba(0,0,0,0.5) 0%,rgba(0,0,0,0) 100%);
   padding: 25px 25px 50px;
+}
+
+#no-image {
+  font-size: 1.5em;
+  font-weight: 200;
+  margin-top: 1.5em;
+  text-align: center;
 }
 
 .controls {
