@@ -301,17 +301,19 @@ function(
       variableInfo.innerHTML = feature.getContent();
       titleField.innerHTML = 'Feature Details';
 
-      var oid = feature.attributes.OBJECTID;
-      feature.getLayer().queryAttachmentInfos(oid, function(res) {
-        if (res) {
-          optionsPane.style.backgroundImage = 'url("' + res[0].url + '")';
-          noImage.style.display = 'none';
-        } else {
+      var oid = feature.attributes.OBJECTID,
+        layer = feature.getLayer();
+      if (layer.hasAttachments) {
+        feature.getLayer().queryAttachmentInfos(oid, function(res) {
+          if (res)
+            optionsPane.style.backgroundImage = 'url("' + res[0].url + '")';
+          noImage.style.display = (res) ? 'none' : 'block';
+        }, function(err) {
           noImage.style.display = 'block';
-        }
-      }, function(err) {
+        });
+      } else {
         noImage.style.display = 'block';
-      });
+      }
     },
     makeInfoTemplate = function(label, groups) {
       var info = new InfoTemplate();
