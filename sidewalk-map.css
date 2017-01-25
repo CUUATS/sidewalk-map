@@ -146,7 +146,7 @@ h1.gradient {
   color: white;
   cursor: pointer;
   height: 30px;
-  padding: 5px 8px;
+  padding: 5px 28px 5px 8px;
   position: relative;
   width: 100%;
   z-index: 20;
