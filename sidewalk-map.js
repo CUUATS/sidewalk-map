@@ -140,20 +140,18 @@ function(
         new Color(fillColor)
       );
     },
-    updateAggLayer = function(selectedField, refresh) {
+    updateAggLayer = function(selectedField) {
       aggLayer.renderer.attributeField = selectedField.aggField;
-      if (refresh) {
-        aggLayer.redraw();
-        // Force refresh the legend to update the attribute name.
-        if (legend) legend.refresh();
-      }
+      aggLayer.redraw();
+      // Force refresh the legend to update the attribute name.
+      if (legend) legend.refresh();
     },
-    updateIndLayers = function(selectedField, refresh) {
+    updateIndLayers = function(selectedField) {
       array.forEach([swLayer, crLayer, cwLayer, psLayer], function(layer, i) {
         if (i == featureTypeSelect.selectedIndex) {
           layer.renderer.attributeField = selectedField.indField;
           if (layer.visible) {
-            if (refresh) layer.refresh();
+            layer.refresh();
           } else {
             layer.show();
           }
@@ -221,7 +219,7 @@ function(
       }, document.getElementById('legend'));
       legend.startup();
     },
-    populateFieldList = function(fields, featureType) {
+    populateFieldList = function(featureType) {
       // Clear the field name select.
       while (fieldNameSelect.firstChild)
         fieldNameSelect.removeChild(fieldNameSelect.firstChild);
@@ -239,7 +237,7 @@ function(
         });
       });
     },
-    getSelectedField = function(fields) {
+    getSelectedField = function() {
       var featureType = featureTypeSelect.value,
         indField = fieldNameSelect.value;
       for (var g = 0; g < fields[featureType].length; g++) {
@@ -252,10 +250,30 @@ function(
         }
       }
     },
-    initFieldSelection = function(fields) {
+    updateInfoPane = function(selected) {
+      showVariableInfo(selected.featureType, selected.field);
+      noImage.style.display = 'none';
+      imageLink.style.display = 'none';
+    },
+    updateMap = function(selected) {
+      updateIndLayers(selected.field);
+      updateAggLayer(selected.field);
+    },
+    updateState = function() {
+      if (map.infoWindow.getSelectedFeature()) {
+        // Clearing the selection will cause the onclick method to be called
+        // again, updating the map.
+        map.infoWindow.clearFeatures();
+      } else {
+        var selected = getSelectedField();
+        updateInfoPane(selected);
+        updateMap(selected);
+      }
+    },
+    initFieldSelection = function() {
       // Set up the change handler for feature type.
       featureTypeSelect.onchange = function() {
-        populateFieldList(fields, this.value);
+        populateFieldList(this.value);
       };
 
       // Set the initial values of the feature type and field name selects.
@@ -263,17 +281,7 @@ function(
       featureTypeSelect.onchange();
 
       // Set up the click handler for the update map button.
-      updateButton.onclick = function() {
-        var selected = getSelectedField(fields);
-        showVariableInfo(selected.featureType, selected.field);
-        var refresh =
-          typeof map.infoWindow.getSelectedFeature() === 'undefined';
-        updateIndLayers(selected.field, refresh);
-        updateAggLayer(selected.field, refresh);
-        map.infoWindow.clearFeatures();
-        noImage.style.display = 'none';
-        imageLink.style.display = 'none';
-      };
+      updateButton.onclick = updateState;
       updateButton.removeAttribute('disabled');
     },
     map = new Map('map', {
@@ -286,7 +294,7 @@ function(
       outFields: ['*'],
       opacity: 0.5
     }),
-    initInfoWindows = function(fields) {
+    initInfoWindows = function() {
       crLayer.setInfoTemplate(makeInfoTemplate('Curb Ramp', fields.CurbRamp));
       swLayer.setInfoTemplate(makeInfoTemplate('Sidewalk', fields.Sidewalk));
       map.infoWindow.set('popupWindow', false);
@@ -295,7 +303,7 @@ function(
         if (feature) {
           showFeatureDetails(feature);
         } else {
-          updateButton.click();
+          updateState();
         }
       });
     },
@@ -337,10 +345,10 @@ function(
         if (links[i].className == 'variable-link') {
           links[i].addEventListener('click', function(e) {
             e.preventDefault();
-            featureTypeSelect.value = featureType;
+            featureTypeSelect.value = featureType.replace(' ', '');
             featureTypeSelect.onchange();
             fieldNameSelect.value = e.target.hash.substring(1);
-            updateButton.click();
+            updateState();
           });
         }
       }
@@ -405,7 +413,8 @@ function(
     }),
     featureFields = {},
     legend,
-    tables;
+    tables,
+    fields;
 
     // The scale renderer function needs to be a global variable so that
     // the info window logic can access it.
@@ -430,9 +439,10 @@ function(
       tables: request('tables.json', {handleAs: 'json'})
     }).then(function(res) {
       tables = res.tables;
-      initFieldSelection(res.fields);
-      initInfoWindows(res.fields);
-      updateButton.click();
+      fields = res.fields;
+      initFieldSelection();
+      initInfoWindows();
+      updateState();
     });
 
     imageLink.addEventListener('click', function(e) {
