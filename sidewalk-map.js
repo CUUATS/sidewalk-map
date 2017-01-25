@@ -10,6 +10,7 @@ require([
   'esri/symbols/SimpleFillSymbol',
   'esri/symbols/SimpleLineSymbol',
   'esri/symbols/SimpleMarkerSymbol',
+  'dijit/Dialog',
   'dojo/promise/all',
   'dojo/_base/array',
   'dojo/parser',
@@ -28,6 +29,7 @@ function(
   SimpleFillSymbol,
   SimpleLineSymbol,
   SimpleMarkerSymbol,
+  Dialog,
   all,
   array,
   parser,
@@ -270,6 +272,7 @@ function(
         updateAggLayer(selected.field);
         map.infoWindow.clearFeatures();
         noImage.style.display = 'none';
+        imageLink.style.display = 'none';
       };
       updateButton.removeAttribute('disabled');
     },
@@ -305,14 +308,24 @@ function(
         layer = feature.getLayer();
       if (layer.hasAttachments) {
         feature.getLayer().queryAttachmentInfos(oid, function(res) {
-          if (res)
+          if (res) {
             optionsPane.style.backgroundImage = 'url("' + res[0].url + '")';
+            imageLink.href = res[0].url;
+            imageDialog.set('content',
+              '<img src="' + res[0].url + '" style="max-height:' +
+              Math.round(window.innerHeight * 0.8) + 'px;max-width:' +
+              Math.round(window.innerWidth * 0.8) + 'px;" />');
+            imageLink.style.display = 'inline';
+          }
           noImage.style.display = (res) ? 'none' : 'block';
+          imageLink.style.display = (res) ? 'inline' : 'none';
         }, function(err) {
           noImage.style.display = 'block';
+          imageLink.style.display = 'none';
         });
       } else {
         noImage.style.display = 'block';
+        imageLink.style.display = 'none';
       }
     },
     makeInfoTemplate = function(label, groups) {
@@ -368,6 +381,10 @@ function(
     titleField = document.getElementById('title-field'),
     optionsPane = document.getElementById('options-pane'),
     noImage = document.getElementById('no-image'),
+    imageLink = document.getElementById('image-link'),
+    imageDialog = new Dialog({
+      title: 'Feature Image'
+    }),
     featureFields = {},
     legend,
     tables;
@@ -398,5 +415,10 @@ function(
       initFieldSelection(res.fields);
       initInfoWindows(res.fields);
       updateButton.click();
+    });
+
+    imageLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      imageDialog.show();
     });
 });
