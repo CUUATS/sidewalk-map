@@ -409,6 +409,20 @@ function(
         aboutDialog.show();
       });
     },
+    initAboutDialog = function() {
+      var links = document.getElementsByTagName('a');
+      for (var i = 0; i < links.length; i++) {
+        if (links[i].className === 'explore')
+          links[i].addEventListener('click', function(e) {
+            e.preventDefault();
+            aboutDialog.hide();
+          });
+      }
+      if (!(document.cookie && document.cookie.search('se_about=1') > -1)) {
+        document.cookie = 'se_about=1;Max-Age=' + (60 * 60 * 24 * 365);
+        aboutDialog.show();
+      }
+    },
     crLayer = makeIndLayer(0, SimpleMarkerSymbol.STYLE_CIRCLE, 10, false),
     cwLayer = makeIndLayer(1, SimpleMarkerSymbol.STYLE_SQUARE, 10, false),
     psLayer = makeIndLayer(2, SimpleMarkerSymbol.STYLE_DIAMOND, 10, false),
@@ -427,7 +441,7 @@ function(
     aboutDialog = new Dialog({
       title: 'About Sidewalk Explorer',
       content: aboutText.innerHTML,
-      style: 'max-width: 620px;'
+      style: 'max-width: 600px;'
     }),
     imageDialog = new Dialog({
       title: 'Feature Image'
@@ -441,6 +455,8 @@ function(
     // the info window logic can access it.
     renderScale = scaleBar;
     renderRounded = roundValue;
+
+    initAboutDialog();
 
     aggLayer.setRenderer(makeAggRenderer());
     aggLayer.setScaleRange(0, 10000);

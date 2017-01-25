@@ -84,22 +84,33 @@ label {
 #about-text {
   display: none;
 }
+#about-controls {
+  display: table;
+  width: 100%;
+}
 #about-controls a {
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 3px;
   color: white;
-  display: block;
+  display: table-cell;
   font-size: 1.2em;
   padding: 0.75em;
-  margin: 0 0 0.25em;
   text-decoration: none;
   text-align: center;
+  vertical-align: middle;
+  width: 50%;
 }
 #about-controls a.explore {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
   background-color: #00554e;
+  margin-right: 10px;
 }
 #about-controls a.download {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
   background-color: #56235d;
+  margin-left: 10px;
 }
 #about-controls a:active,
 #about-controls a:hover,
@@ -109,6 +120,10 @@ label {
 #about-controls .file-size {
   display: block;
   font-size: 0.7em;
+}
+#about-banner {
+  margin: -10px -10px 0 -10px;
+  position: relative;
 }
 #about-image {
   height: auto;
@@ -357,16 +372,6 @@ h2.variable-group-title:first-child {
 .dijitDialogPaneContent {
   font-size: 16px;
   line-height: 1.2em;
-}
-.dijitDialogPaneContent p a {
-  border-bottom: 2px solid #70c4bd;
-  color: black;
-  text-decoration: none;
-}
-.dijitDialogPaneContent p a:active,
-.dijitDialogPaneContent p a:hover,
-.dijitDialogPaneContent p a:focus {
-  border-bottom-color: black;
 }
 @media screen and (max-width: 800px) {
   #map {
