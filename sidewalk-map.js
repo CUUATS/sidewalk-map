@@ -297,6 +297,9 @@ function(
     initInfoWindows = function() {
       crLayer.setInfoTemplate(makeInfoTemplate('Curb Ramp', fields.CurbRamp));
       swLayer.setInfoTemplate(makeInfoTemplate('Sidewalk', fields.Sidewalk));
+      cwLayer.setInfoTemplate(makeInfoTemplate('Crosswalk', fields.Crosswalk));
+      psLayer.setInfoTemplate(
+        makeInfoTemplate('Pedestrian Signal', fields.PedestrianSignal));
       map.infoWindow.set('popupWindow', false);
       map.infoWindow.on('selection-change', function(e){
         var feature = map.infoWindow.getSelectedFeature();
