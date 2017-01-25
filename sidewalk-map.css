@@ -5,7 +5,6 @@ body {
   margin: 0;
   padding: 0;
 }
-
 h1 {
   font-size: 1.5em;
   font-weight: normal;
@@ -13,31 +12,25 @@ h1 {
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
   text-transform: uppercase;
 }
-
 h2.variable-name {
   font-size: 1.2em;
   font-weight: 400;
   margin-top: 0;
 }
-
 h3.table-label {
   font-size: 1;
   font-weight: 600;
   margin-bottom: 0.5em;
 }
-
 label {
   font-weight: bold;
 }
-
 .sr {
   display: none;
 }
-
 .shadow {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
 }
-
 #map {
   left: 0;
   height: 100vh;
@@ -45,7 +38,6 @@ label {
   top: 0;
   width: 65%;
 }
-
 #sidebar {
   background-color: white;
   display: flex;
@@ -56,13 +48,11 @@ label {
   top: 0;
   width: 35%;
 }
-
 .sidebar-pane {
   box-sizing: border-box;
   padding: 25px;
   width: 100%;
 }
-
 #options-pane {
   background-color: #666666;
   background-image: url('images/sw_width.jpg');
@@ -75,19 +65,16 @@ label {
   padding: 0;
   position: relative;
 }
-
 h1.gradient {
   background: -webkit-linear-gradient(top, rgba(0,0,0,0.5) 0%,rgba(0,0,0,0) 100%);
   padding: 25px 50px 50px 25px;
 }
-
 #no-image {
   font-size: 1.5em;
   font-weight: 200;
   margin-top: 1.5em;
   text-align: center;
 }
-
 #image-link {
   color: white;
   display: none;
@@ -96,7 +83,6 @@ h1.gradient {
   right: 25px;
   top: 25px;
 }
-
 .controls {
   background-color: rgba(0, 0, 0, 0.5);
   bottom: 0;
@@ -106,19 +92,16 @@ h1.gradient {
   position: absolute;
   width: 100%;
 }
-
 .control {
   float: left;
   margin-right: 2%;
   position: relative;
   width: 42%;
 }
-
 .control-update {
   margin-right: 0;
   width: 12%;
 }
-
 .control-update button {
   background-color: rgba(30, 190, 20, 0.5);
   border: 1px solid white;
@@ -130,18 +113,15 @@ h1.gradient {
   padding: 5px 8px;
   width: 100%;
 }
-
 .control-update button:active,
 .control-update button:hover,
 .control-update button:focus {
   background-color: rgba(40, 220, 40, 0.5);
 }
-
 .control-update button::after {
   color: white;
   content: '\25B6';
 }
-
 .control .select-wrapper {
   background-color: #666666;
   background-color: rgba(0, 0, 0, 0.5);
@@ -149,7 +129,6 @@ h1.gradient {
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 3px;
 }
-
 .control .select-wrapper::after {
   content: '\25BC';
   position: absolute;
@@ -157,7 +136,6 @@ h1.gradient {
   top: 8px;
   z-index: 10;
 }
-
 .control select {
   appearance: none;
   background-color: transparent;
@@ -175,60 +153,49 @@ h1.gradient {
   -moz-appearance: none;
   -webkit-appearance: none;
 }
-
 .control select:active,
 .control select:hover,
 .control select:focus {
   background-color: rgba(255, 255, 255, 0.1);
   outline: none;
 }
-
 .control select::-ms-expand {
   display: none;
 }
-
 #content-pane {
   flex: 1 1 100vh;
   line-height: 1.3em;
   overflow-y: scroll;
 }
-
 .variable-image {
   float: right;
   margin: 0 0 1.5em 1.5em;
   max-width: 50%;
 }
-
 .scores-table {
 	border-spacing: 0;
   width: 100%;
 }
-
 .scores-table th,
 .scores-table td {
   padding: 0.5em 1em;
   text-align: right;
 }
-
 .scores-table th:first-child,
 .scores-table td:first-child {
   text-align: left;
 }
-
 .scores-table th {
   background-color: black;
   color: white;
   font-weight: bold;
 }
-
 .scores-table tbody tr:nth-child(even) {
   background-color: #eeeeee;
 }
-
 .scores-table tbody tr:nth-child(odd) {
   background-color: #fefefe;
 }
-
 #legend-wrapper {
   background-color: white;
   bottom: 1em;
@@ -239,11 +206,9 @@ h1.gradient {
   position: absolute;
   width: 20%;
 }
-
 #legend .esriLegendService {
   padding-bottom: 0;
 }
-
 h2.variable-group-title {
   font-size: 1.2em;
   text-transform: uppercase;
