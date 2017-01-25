@@ -13,41 +13,56 @@
 </head>
 
 <body class="tundra">
-    <div id="map"></div>
-    <div id="sidebar" class="shadow">
-        <div id="options-pane" class="sidebar-pane title-gradient">
-            <h1 class="gradient"><strong id="title-feature">Sidewalks:</strong> <span id="title-field">Overall Compliance</span></h1>
-            <div id="no-image" style="display:none;">No image found.</div>
-            <a id="image-link" href="#" title="View larger image"><span class="sr">View Larger Image</span><i class="fa fa-arrows-alt" aria-hidden="true"></i></a>
-            <div class="controls control-feature">
-              <div class="control control-feature">
-                <label for="featureType" class="sr">Feature:</label>
-                <div class="select-wrapper">
-                  <select id="featureType" name="featureType">
-                      <option value="Sidewalk">Sidewalks</option>
-                      <option value="CurbRamp">Curb Ramps</option>
-                      <option value="Crosswalk">Crosswalks</option>
-                      <option value="PedestrianSignal">Pedestrian Signals</option>
-                  </select>
+    <div id="nav-container" class="shadow">
+        <span id="app-title">Sidewalk Explorer</span>
+        <a id="attribution" href="https://cuuats.org/">by CUUATS</a>
+        <a id="report-link" class="nav-link"
+            href="http://www.ccrpc.org/wp-content/uploads/2016/02/SidewalkNetworkInventoryAssessment.pdf">
+          <i class="fa fa-download" aria-hidden="true"></i>
+          <span class="text">Download Report</span>
+        </a>
+        <a id="about-link" class="nav-link" href="#">
+          <i class="fa fa-info-circle" aria-hidden="true"></i>
+          <span class="text">About</span>
+        </a>
+    </div>
+    <div id="app-container">
+        <div id="map"></div>
+        <div id="sidebar" class="shadow">
+            <div id="options-pane" class="sidebar-pane title-gradient">
+                <h1 class="gradient"><strong id="title-feature">Sidewalks:</strong> <span id="title-field">Overall Compliance</span></h1>
+                <div id="no-image" style="display:none;">No image found.</div>
+                <a id="image-link" href="#" title="View larger image"><span class="sr">View Larger Image</span><i class="fa fa-arrows-alt" aria-hidden="true"></i></a>
+                <div class="controls control-feature">
+                  <div class="control control-feature">
+                    <label for="featureType" class="sr">Feature:</label>
+                    <div class="select-wrapper">
+                      <select id="featureType" name="featureType">
+                          <option value="Sidewalk">Sidewalks</option>
+                          <option value="CurbRamp">Curb Ramps</option>
+                          <option value="Crosswalk">Crosswalks</option>
+                          <option value="PedestrianSignal">Pedestrian Signals</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="control control-score">
+                    <label for="fieldName" class="sr">Score:</label>
+                    <div class="select-wrapper">
+                      <select id="fieldName" name="fieldName"></select>
+                    </div>
+                  </div>
+                  <div class="control control-update">
+                      <button id="updateMap" disabled="true"><span class="sr">Update</span></button>
+                  </div>
                 </div>
-              </div>
-              <div class="control control-score">
-                <label for="fieldName" class="sr">Score:</label>
-                <div class="select-wrapper">
-                  <select id="fieldName" name="fieldName"></select>
-                </div>
-              </div>
-              <div class="control control-update">
-                  <button id="updateMap" disabled="true"><span class="sr">Update</span></button>
-              </div>
+            </div>
+            <div id="content-pane" class="sidebar-pane">
+                <div id="variable-info"></div>
             </div>
         </div>
-        <div id="content-pane" class="sidebar-pane">
-            <div id="variable-info"></div>
+        <div id="legend-wrapper" class="shadow">
+            <div id="legend"></div>
         </div>
-    </div>
-    <div id="legend-wrapper" class="shadow">
-        <div id="legend"></div>
     </div>
 </body>
 
