@@ -299,7 +299,10 @@ function(
       optionsPane.style.backgroundImage = 'none';
       variableInfo.innerHTML = feature.getContent();
       titleField.innerHTML = 'Feature Details';
-
+      initVariableLinks(feature.getLayer().name);
+      showAttachmentImage(feature);
+    },
+    showAttachmentImage = function(feature) {
       var oid = feature.attributes.OBJECTID,
         layer = feature.getLayer();
       if (layer.hasAttachments) {
@@ -324,6 +327,20 @@ function(
         imageLink.style.display = 'none';
       }
     },
+    initVariableLinks = function(featureType) {
+      var links = document.getElementsByTagName('a');
+      for (var i = 0; i < links.length; i++) {
+        if (links[i].className == 'variable-link') {
+          links[i].addEventListener('click', function(e) {
+            e.preventDefault();
+            featureTypeSelect.value = featureType;
+            featureTypeSelect.onchange();
+            fieldNameSelect.value = e.target.hash.substring(1);
+            updateButton.click();
+          });
+        }
+      }
+    },
     makeInfoTemplate = function(label, groups) {
       var info = new InfoTemplate();
       info.setTitle(label);
@@ -334,7 +351,8 @@ function(
         html += '<table class="field-values scores-table"><thead><tr><th>Variable</th><th>Value</th><th>Chart</th></tr></thead><tbody>';
         array.forEach(group.fields, function(field, i) {
           html += '<tr class="field field-' + field.indField +
-            '"><td class="field-label">' + field.label + '</td>' +
+            '"><td class="field-label"><a class="variable-link" href="#' +
+            field.indField + '">' + field.label + '</a></td>' +
             '<td class="field-value">${' + field.indField +
             ':renderRounded}</td>' + '${' + field.indField +
             ':renderScale}</tr>';

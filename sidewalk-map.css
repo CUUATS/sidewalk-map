@@ -297,3 +297,7 @@ h2.variable-group-title:first-child {
 .field-ScoreCondition .scale-value {
   font-weight: bold;
 }
+.variable-link {
+  color: black;
+  text-decoration: none;
+}
