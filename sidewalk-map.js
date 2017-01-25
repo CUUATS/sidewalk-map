@@ -140,18 +140,20 @@ function(
         new Color(fillColor)
       );
     },
-    updateAggLayer = function(selectedField) {
+    updateAggLayer = function(selectedField, refresh) {
       aggLayer.renderer.attributeField = selectedField.aggField;
-      aggLayer.redraw();
-      // Force refresh the legend to update the attribute name.
-      if (legend) legend.refresh();
+      if (refresh) {
+        aggLayer.redraw();
+        // Force refresh the legend to update the attribute name.
+        if (legend) legend.refresh();
+      }
     },
-    updateIndLayers = function(selectedField) {
+    updateIndLayers = function(selectedField, refresh) {
       array.forEach([swLayer, crLayer, cwLayer, psLayer], function(layer, i) {
         if (i == featureTypeSelect.selectedIndex) {
           layer.renderer.attributeField = selectedField.indField;
           if (layer.visible) {
-            layer.refresh();
+            if (refresh) layer.refresh();
           } else {
             layer.show();
           }
@@ -264,8 +266,10 @@ function(
       updateButton.onclick = function() {
         var selected = getSelectedField(fields);
         showVariableInfo(selected.featureType, selected.field);
-        updateIndLayers(selected.field);
-        updateAggLayer(selected.field);
+        var refresh =
+          typeof map.infoWindow.getSelectedFeature() === 'undefined';
+        updateIndLayers(selected.field, refresh);
+        updateAggLayer(selected.field, refresh);
         map.infoWindow.clearFeatures();
         noImage.style.display = 'none';
         imageLink.style.display = 'none';
