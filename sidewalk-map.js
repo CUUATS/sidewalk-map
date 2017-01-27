@@ -432,7 +432,6 @@ function(
       }
     },
     isDirty = function() {
-      console.log(currentFeatureType, featureTypeSelect.value, currentFieldName, fieldNameSelect.value);
       return (currentFeatureType != featureTypeSelect.value ||
         currentFieldName != fieldNameSelect.value);
     },
