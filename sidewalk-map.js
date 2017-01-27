@@ -5,6 +5,7 @@ require([
   'esri/layers/FeatureLayer',
   'esri/InfoTemplate',
   'esri/layers/LayerDrawingOptions',
+  'esri/layers/VectorTileLayer',
   'esri/dijit/Legend',
   'esri/map',
   'esri/symbols/SimpleFillSymbol',
@@ -24,6 +25,7 @@ function(
   FeatureLayer,
   InfoTemplate,
   LayerDrawingOptions,
+  VectorTileLayer,
   Legend,
   Map,
   SimpleFillSymbol,
@@ -437,6 +439,35 @@ function(
     },
     setDirty = function() {
       updateButton.className = (isDirty()) ? 'button-dirty' : 'button-clean';
+    },
+    customizeBasemapStyle = function() {
+      var baseLayer = map.getLayer(map.basemapLayerIds[0]);
+      // baseLayer.suspend();
+      baseLayer.setStyle({
+        version: 8,
+        sources: {
+          esri: {
+            type: 'vector',
+            url: 'https://basemaps.arcgis.com/b2/arcgis/rest/services/World_Basemap/VectorTileServer',
+          }
+        },
+        layers: [
+          {
+            "minzoom":5,
+            "paint": {
+              "line-color":"#bbbbbb",
+              "line-width": 2
+            },
+            "source-layer":"Urban area",
+            "id":"Urban area",
+            "layout":{},
+            "source":"esri",
+            "type":"line",
+            "maxzoom":12
+          }
+        ]
+      });
+      // baseLayer.resume();
     },
     crLayer = makeIndLayer(0, SimpleMarkerSymbol.STYLE_CIRCLE, 10, false),
     cwLayer = makeIndLayer(1, SimpleMarkerSymbol.STYLE_SQUARE, 10, false),
