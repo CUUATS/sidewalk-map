@@ -267,18 +267,25 @@ function(
       } else {
         var selected = getSelectedField();
         updateInfoPane(selected);
-        updateMap(selected);
+        if (isDirty()) updateMap(selected);
+        currentFeatureType = featureTypeSelect.value;
+        currentFieldName = fieldNameSelect.value;
+        setDirty();
       }
     },
     initFieldSelection = function() {
       // Set up the change handler for feature type.
       featureTypeSelect.onchange = function() {
         populateFieldList(this.value);
+        setDirty();
       };
 
       // Set the initial values of the feature type and field name selects.
       featureTypeSelect.selectedIndex = 0;
       featureTypeSelect.onchange();
+
+      // Set the change handler for field name.
+      fieldNameSelect.addEventListener('change', setDirty);
 
       // Set up the click handler for the update map button.
       updateButton.onclick = updateState;
@@ -424,6 +431,14 @@ function(
         aboutDialog.show();
       }
     },
+    isDirty = function() {
+      console.log(currentFeatureType, featureTypeSelect.value, currentFieldName, fieldNameSelect.value);
+      return (currentFeatureType != featureTypeSelect.value ||
+        currentFieldName != fieldNameSelect.value);
+    },
+    setDirty = function() {
+      updateButton.className = (isDirty()) ? 'button-dirty' : 'button-clean';
+    },
     crLayer = makeIndLayer(0, SimpleMarkerSymbol.STYLE_CIRCLE, 10, false),
     cwLayer = makeIndLayer(1, SimpleMarkerSymbol.STYLE_SQUARE, 10, false),
     psLayer = makeIndLayer(2, SimpleMarkerSymbol.STYLE_DIAMOND, 10, false),
@@ -450,7 +465,9 @@ function(
     featureFields = {},
     legend,
     tables,
-    fields;
+    fields,
+    currentFeatureType,
+    currentFieldName;
 
     // The scale renderer function needs to be a global variable so that
     // the info window logic can access it.

@@ -205,24 +205,32 @@ h1.gradient {
   width: 12%;
 }
 .control-update button {
-  background-color: rgba(30, 190, 20, 0.5);
+  background-color: rgba(10, 100, 200, 0.5);
   border: 1px solid white;
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 3px;
   box-sizing: border-box;
+  color: white;
   cursor: pointer;
   height: 30px;
   padding: 5px 8px;
   width: 100%;
 }
+.control-update button.button-dirty {
+  background-color: rgba(200, 10, 10, 0.75);
+}
 .control-update button:active,
 .control-update button:hover,
 .control-update button:focus {
-  background-color: rgba(40, 220, 40, 0.5);
+  background-color: rgba(20, 120, 240, 0.5);
 }
-.control-update button::after {
-  color: white;
-  content: '\25B6';
+.control-update button.button-dirty:active,
+.control-update button.button-dirty:hover,
+.control-update button.button-dirty:focus {
+  background-color: rgba(240, 20, 20, 0.75);
+}
+.control-update button .fa {
+  font-size: 1.4em;
 }
 .control .select-wrapper {
   background-color: #666666;
