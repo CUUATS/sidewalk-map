@@ -323,10 +323,11 @@ function(
       if (layer.hasAttachments) {
         feature.getLayer().queryAttachmentInfos(oid, function(res) {
           if (res) {
-            optionsPane.style.backgroundImage = 'url("' + res[0].url + '")';
-            imageLink.href = res[0].url;
+            var imageURL = location.protocol + res[0].url.slice(5);
+            optionsPane.style.backgroundImage = 'url("' + imageURL + '")';
+            imageLink.href = imageURL;
             imageDialog.set('content',
-              '<img src="' + res[0].url + '" style="max-height:' +
+              '<img src="' + imageURL + '" style="max-height:' +
               Math.round(window.innerHeight * 0.8) + 'px;max-width:' +
               Math.round(window.innerWidth * 0.8) + 'px;" />');
             imageLink.style.display = 'inline';
