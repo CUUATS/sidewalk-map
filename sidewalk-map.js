@@ -1,3 +1,4 @@
+google.charts.load('current', {packages:['corechart']});
 require([
   'esri/renderers/ClassBreaksRenderer',
   'dojo/_base/Color',
@@ -46,6 +47,7 @@ function(
       Crosswalk: 'Crosswalks',
       PedestrianSignal: 'Pedestrian Signals'
     },
+    YEAR_CURRENT = 2016,
     BREAKS = [
       {
         maxValue: 60,
@@ -179,30 +181,62 @@ function(
       return html;
     },
     makeChartData = function(table) {
-      var result = {
-        series: [],
-        labels: []
-      };
+      var data = [table[0].slice(0, 2)];
       for (var i = 1; i < table.length; i++) {
-        var row = table[i],
-          value = row[row.length - 1];
-        result.labels.push(value);
-        result.series.push(parseFloat(value.slice(0, -2)));
+        var row = table[i];
+        if (row[row.length - 1].indexOf('%') > -1)
+          data.push([
+            row[0],
+            parseFloat(row[row.length - 2].replace(',', ''))
+          ]);
       }
-      return result;
+      return data;
+    },
+    makeChartSlices = function(table) {
+      var slices = {};
+      for (var i = 1; i < table.length; i++) {
+        var row = table[i];
+        if (row[row.length - 1].indexOf('%') > -1)
+          slices[i - 1] = {
+            color: getScoreColor(row[row.length - 3])
+          };
+      }
+      return slices;
+    },
+    getScoreColor = function(text) {
+      var scoreInt = parseInt(text);
+      for (var i = 0; i < BREAKS.length; i++) {
+        var breakDef = BREAKS[i];
+        if (text == breakDef.label ||
+            (!isNaN(scoreInt) && scoreInt <= breakDef.maxValue))
+          return breakDef.color;
+      }
     },
     makeChart = function(containerId, table) {
-      var chart = new Chartist.Pie('#' + containerId, makeChartData(table), {
-        donut: true,
-        donutWidth: 30,
-        showLabel: true,
-        labelOffset: 33,
-        chartPadding: 35
+      // If the library hasn't loaded yet, defer drawing the chart unitl it has.
+      if (typeof google.visualization.PieChart === 'undefined')
+        return google.charts.setOnLoadCallback(function() {
+          makeChart(containerId, table);
+        });
+
+      makeChartSlices(table);
+      var container = document.getElementById(containerId),
+        chart = new google.visualization.PieChart(container);
+      chart.draw(google.visualization.arrayToDataTable(makeChartData(table)), {
+        fontName: 'Lato',
+        legend: 'none',
+        pieHole: 0.4,
+        pieSliceTextStyle: {
+          color: '#000000'
+        },
+        slices: makeChartSlices(table)
       });
     },
     makeChartDiv = function(id, label) {
-      return '<div class="variable-chart" id="' + id + '" aria-hidden="true">' +
-        '<span class="label">' + label + '</span></div>'
+      return '<div class="chart-wrapper" aria-hidden="true">' +
+        '<span class="chart-label">' + label +
+        '</span><div class="chart" id="' + id + '">' +
+        '</div></div>'
     },
     showVariableInfo = function(featureType, field) {
       var featureLabel = FEATURE_LABELS[featureType];
@@ -211,12 +245,12 @@ function(
       optionsPane.style.backgroundImage = 'url("' + field.imageUrl + '")';
       var html = '<div class="field-description">' + field.description +
         '</div>';
-      html += '<h3 class="table-label">' + featureLabel + ' ' + field.label  +
-        ' Scores</h3>';
+      html += '<h2 class="table-label">' + featureLabel + ' ' + field.label  +
+        ' Scores</h2>';
+      html += makeChartDiv('current-chart', YEAR_CURRENT);
       html += makeTable(tables[featureType][field.indField]);
-      html += makeChartDiv('baseline-chart', 2015);
       variableInfo.innerHTML = html;
-      makeChart('baseline-chart', tables[featureType][field.indField]);
+      makeChart('current-chart', tables[featureType][field.indField]);
     },
     initLegend = function() {
       legend = new Legend({

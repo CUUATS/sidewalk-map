@@ -28,13 +28,8 @@ h1 {
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
   text-transform: uppercase;
 }
-h2.variable-name {
+h2.table-label {
   font-size: 1.2em;
-  font-weight: 400;
-  margin-top: 0;
-}
-h3.table-label {
-  font-size: 1;
   font-weight: 600;
   margin-bottom: 0.5em;
 }
@@ -285,6 +280,7 @@ h1.gradient {
 }
 .scores-table {
 	border-spacing: 0;
+  margin-bottom: 1em;
   width: 100%;
 }
 .scores-table th,
@@ -319,6 +315,9 @@ h1.gradient {
 }
 #legend .esriLegendService {
   padding-bottom: 0;
+}
+.field-description p:first-child {
+  margin-top: 0;
 }
 h2.variable-group-title {
   font-size: 1.2em;
@@ -381,12 +380,12 @@ h2.variable-group-title:first-child {
   font-size: 16px;
   line-height: 1.2em;
 }
-.variable-chart {
+.chart-wrapper {
   height: 300px;
   position: relative;
-  width: 50%;
+  width: 100%;
 }
-.variable-chart .label {
+.chart-label {
   font-weight: bold;
   height: 1em;
   left: 50%;
@@ -396,6 +395,11 @@ h2.variable-group-title:first-child {
   text-align: center;
   top: 50%;
   width: 3em;
+  z-index: 10;
+}
+.chart {
+  height: 300px;
+  width: 100%;
 }
 .ct-series-a .ct-slice-donut {
   stroke: #2e80bf;
