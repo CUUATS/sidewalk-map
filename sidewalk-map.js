@@ -178,6 +178,32 @@ function(
       html += '</tbody></table>';
       return html;
     },
+    makeChartData = function(table) {
+      var result = {
+        series: [],
+        labels: []
+      };
+      for (var i = 1; i < table.length; i++) {
+        var row = table[i],
+          value = row[row.length - 1];
+        result.labels.push(value);
+        result.series.push(parseFloat(value.slice(0, -2)));
+      }
+      return result;
+    },
+    makeChart = function(containerId, table) {
+      var chart = new Chartist.Pie('#' + containerId, makeChartData(table), {
+        donut: true,
+        donutWidth: 30,
+        showLabel: true,
+        labelOffset: 33,
+        chartPadding: 35
+      });
+    },
+    makeChartDiv = function(id, label) {
+      return '<div class="variable-chart" id="' + id + '" aria-hidden="true">' +
+        '<span class="label">' + label + '</span></div>'
+    },
     showVariableInfo = function(featureType, field) {
       var featureLabel = FEATURE_LABELS[featureType];
       titleFeature.innerHTML = featureLabel + ':';
@@ -188,7 +214,9 @@ function(
       html += '<h3 class="table-label">' + featureLabel + ' ' + field.label  +
         ' Scores</h3>';
       html += makeTable(tables[featureType][field.indField]);
+      html += makeChartDiv('baseline-chart', 2015);
       variableInfo.innerHTML = html;
+      makeChart('baseline-chart', tables[featureType][field.indField]);
     },
     initLegend = function() {
       legend = new Legend({

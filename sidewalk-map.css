@@ -381,6 +381,42 @@ h2.variable-group-title:first-child {
   font-size: 16px;
   line-height: 1.2em;
 }
+.variable-chart {
+  height: 300px;
+  position: relative;
+  width: 50%;
+}
+.variable-chart .label {
+  font-weight: bold;
+  height: 1em;
+  left: 50%;
+  line-height: 1em;
+  margin: -0.5em 0 0 -1.5em;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  width: 3em;
+}
+.ct-series-a .ct-slice-donut {
+  stroke: #2e80bf;
+}
+.ct-series-b .ct-slice-donut {
+  stroke: #80cee8;
+}
+.ct-series-c .ct-slice-donut {
+  stroke: #fcfc5d;
+}
+.ct-series-d .ct-slice-donut {
+  stroke: #ffb061;
+}
+.ct-series-e .ct-slice-donut {
+  stroke: #e61c1f;
+}
+.ct-label {
+  color: black;
+  fill: black;
+  font-size: 0.85rem;
+}
 @media screen and (max-width: 800px) {
   #map {
     height: 30%;
