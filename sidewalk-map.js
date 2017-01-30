@@ -5,8 +5,10 @@ require([
   'esri/layers/FeatureLayer',
   'esri/InfoTemplate',
   'esri/layers/LayerDrawingOptions',
+  'esri/layers/VectorTileLayer',
   'esri/dijit/Legend',
   'esri/map',
+  'esri/renderers/SimpleRenderer',
   'esri/symbols/SimpleFillSymbol',
   'esri/symbols/SimpleLineSymbol',
   'esri/symbols/SimpleMarkerSymbol',
@@ -24,8 +26,10 @@ function(
   FeatureLayer,
   InfoTemplate,
   LayerDrawingOptions,
+  VectorTileLayer,
   Legend,
   Map,
+  SimpleRenderer,
   SimpleFillSymbol,
   SimpleLineSymbol,
   SimpleMarkerSymbol,
@@ -39,6 +43,8 @@ function(
     AGG_DEFAULT_FEATURE = 'Sidewalk',
     AGG_DEFAULT_FIELD = 'ScoreCompliance',
     IND_URL = 'http://utility.arcgis.com/usrsvcs/servers/88a6a9f6dc45461f820659d2d0f13fff/rest/services/CCRPC/SidewalkInventoryScore/MapServer',
+    MUNIC_URL = 'https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/tigerWMS_Current/MapServer/28',
+    MUNIC_DEF = "STATE = 17 AND BASENAME IN ('Champaign', 'Urbana', 'Savoy', 'Bondville', 'Tolono')",
     MARKER_TYPE_LINE = 'line',
     FEATURE_LABELS = {
       Sidewalk: 'Sidewalks',
@@ -73,6 +79,18 @@ function(
         color: '#2e80bf'
       }
     ],
+    makeMunicLayer = function() {
+      var layer = new FeatureLayer(MUNIC_URL, {
+        definitionExpression: MUNIC_DEF,
+        mode: FeatureLayer.MODE_SNAPSHOT
+      });
+      layer.setRenderer(new SimpleRenderer(new SimpleLineSymbol(
+        SimpleLineSymbol.STYLE_DASH,
+        new Color('#444444'),
+        1
+      )));
+      return layer;
+    },
     makeIndLayer = function(idx, markerType, markerSize, visible) {
       var layer = new FeatureLayer(IND_URL + '/' + idx, {
         mode: FeatureLayer.MODE_ONDEMAND,
@@ -438,6 +456,7 @@ function(
     setDirty = function() {
       updateButton.className = (isDirty()) ? 'button-dirty' : 'button-clean';
     },
+    municLayer = makeMunicLayer(),
     crLayer = makeIndLayer(0, SimpleMarkerSymbol.STYLE_CIRCLE, 10, false),
     cwLayer = makeIndLayer(1, SimpleMarkerSymbol.STYLE_SQUARE, 10, false),
     psLayer = makeIndLayer(2, SimpleMarkerSymbol.STYLE_DIAMOND, 10, false),
@@ -485,7 +504,7 @@ function(
       map.on('layers-add-result', function(e) {
         initLegend();
       });
-      map.addLayers([aggLayer, crLayer, cwLayer, psLayer, swLayer]);
+      map.addLayers([municLayer, aggLayer, crLayer, cwLayer, psLayer, swLayer]);
     });
 
     all({
