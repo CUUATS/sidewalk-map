@@ -380,10 +380,36 @@ h2.variable-group-title:first-child {
   font-size: 16px;
   line-height: 1.2em;
 }
-.chart {
+.chart-wrapper {
   height: 300px;
+  margin: 0 0 1em 0;
+  padding: 0 0 0.9em 0.9em;
   position: relative;
   width: 100%;
+}
+.chart {
+  height: 300px;
+  width: 100%;
+}
+.chart-xaxis-label {
+  bottom: 0;
+  font-size: 0.9em;
+  font-weight: bold;
+  left: 0;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+.chart-yaxis-label {
+  font-size: 0.9em;
+  font-weight: bold;
+  left: -300px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  transform: rotate(270deg);
+  transform-origin: 100% 0;
+  width: 300px;
 }
 .ct-bar {
   stroke-width: 3.75%;

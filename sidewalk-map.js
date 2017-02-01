@@ -202,7 +202,11 @@ function(
       }
       return {
         data: data,
-        colors: colors
+        colors: colors,
+        axisLabels: {
+          x: baseline[0][0],
+          y: baseline[0][baseline[0].length - 2]
+        }
       };
     },
     getScoreColor = function(text) {
@@ -214,8 +218,18 @@ function(
           return breakDef.color;
       }
     },
+    addAxisLabel = function(container, className, text) {
+      var el = document.createElement('div');
+      el.className = className;
+      el.appendChild(document.createTextNode(text));
+      container.parentNode.appendChild(el);
+    },
     makeChart = function(containerId, baseline, current) {
-      chartInfo = getChartInfo(baseline, current);
+      var chartInfo = getChartInfo(baseline, current),
+        container = document.getElementById(containerId);
+
+      addAxisLabel(container, 'chart-xaxis-label', chartInfo.axisLabels.x);
+      addAxisLabel(container, 'chart-yaxis-label', chartInfo.axisLabels.y);
       new Chartist.Bar('#' + containerId, chartInfo.data, {})
         .on('draw', function(item) {
           if (item.type === 'bar' && item.seriesIndex === 1)
@@ -225,7 +239,8 @@ function(
         });
     },
     makeChartDiv = function(id, label) {
-      return '<div class="chart" id="' + id + '" aria-hidden="true"></div>';
+      return '<div class="chart-wrapper"><div class="chart" id="' + id +
+        '" aria-hidden="true"></div></div>';
     },
     showVariableInfo = function(featureType, field) {
       var featureLabel = FEATURE_LABELS[featureType];
