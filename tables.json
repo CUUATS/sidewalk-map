@@ -12,7 +12,7 @@
                 "100",
                 "10,681",
                 "84.0 %"
-            ], 
+            ],
             [
                 "45 to 47 inches",
                 "80",
@@ -91,7 +91,7 @@
                 "No approaches",
                 "100",
                 "644",
-                "\u07de"
+                "&mdash;"
             ]
         ],
         "ScoreCrackedPanelCount": [
@@ -249,7 +249,7 @@
                 "Ramp not adjacent to the street",
                 "100",
                 "760",
-                "\u07de"
+                "&mdash;"
             ]
         ],
         "ScoreObstruction": [
@@ -325,7 +325,7 @@
                 "Running slope is 5.0 % or less",
                 "100",
                 "4,730",
-                "\u07de"
+                "&mdash;"
             ]
         ],
         "ScoreGutterCrossSlope": [
@@ -375,7 +375,7 @@
                 "Ramp not adjacent to the street",
                 "100",
                 "760",
-                "\u07de"
+                "&mdash;"
             ]
         ],
         "ScoreDetectableWarningWidth": [
@@ -425,7 +425,7 @@
                 "Ramp not adjacent to the street",
                 "100",
                 "760",
-                "\u07de"
+                "&mdash;"
             ]
         ],
         "ScoreLandingSlope": [
@@ -481,7 +481,7 @@
                 "Running slope is 5.0 % or less",
                 "100",
                 "4,730",
-                "\u07de"
+                "&mdash;"
             ]
         ],
         "ScoreGutterRunningSlope": [
@@ -531,7 +531,7 @@
                 "Ramp not adjacent to the street",
                 "100",
                 "760",
-                "\u07de"
+                "&mdash;"
             ]
         ],
         "ScoreSurfaceCondition": [
@@ -625,7 +625,7 @@
                 "No flares",
                 "100",
                 "12,349",
-                "\u07de"
+                "&mdash;"
             ]
         ],
         "ScoreLargestPavementFault": [
@@ -1100,8 +1100,8 @@
             [
                 "48 inches or more",
                 "100",
-                "1,188",
-                "99.9 %"
+                "1,189",
+                "100.0 %"
             ],
             [
                 "45 to 47 inches",
@@ -1130,14 +1130,14 @@
             [
                 "35 inches or less",
                 "0",
-                "1",
-                "0.1 %"
+                "0",
+                "0.0 %"
             ],
             [
                 "No painted markings",
                 "100",
                 "7",
-                "\u07de"
+                "&mdash;"
             ]
         ],
         "ScoreCrossSlope": [
@@ -1195,7 +1195,7 @@
                 "",
                 "100",
                 "93",
-                "\u07de"
+                "&mdash;"
             ]
         ],
         "ScoreCompliance": [
@@ -1211,8 +1211,8 @@
             ],
             [
                 "> 80 to 90",
-                "54",
-                "4.5 %"
+                "55",
+                "4.6 %"
             ],
             [
                 "> 70 to 80",
@@ -1226,8 +1226,8 @@
             ],
             [
                 "60 or less",
-                "1",
-                "0.1 %"
+                "0",
+                "0.0 %"
             ]
         ]
     },
@@ -1355,7 +1355,7 @@
                 "No button",
                 "None",
                 "11",
-                "\u07de"
+                "&mdash;"
             ]
         ],
         "ScoreTactileFeatures": [
@@ -1407,7 +1407,7 @@
                 "No button",
                 "None",
                 "11",
-                "\u07de"
+                "&mdash;"
             ]
         ]
     }
