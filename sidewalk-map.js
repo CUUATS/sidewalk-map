@@ -251,7 +251,7 @@ function(
         YEAR_CURRENT + ')</span></div>';
     },
     showVariableInfo = function(featureType, field) {
-      var featureLabel = FEATURE_LABELS[featureType];
+      var featureLabel = FEATURE_LABELS[featureType].slice(0, -1);
       titleFeature.innerHTML = featureLabel + ':';
       titleField.innerHTML = field.label;
       optionsPane.style.backgroundImage = 'url("' + field.imageUrl + '")';
@@ -261,7 +261,12 @@ function(
         ' Scores</h2>';
       html += makeLegend();
       html += makeChartDiv('chart');
+      html += '<h2 class="table-title">Current (' + YEAR_CURRENT +
+        ') Scores</h2>';
       html += makeTable(tablesCurrent[featureType][field.indField]);
+      html += '<h2 class="table-title">Baseline (' + YEAR_BASELINE +
+        ') Scores</h2>';
+      html += makeTable(tablesBaseline[featureType][field.indField]);
       variableInfo.innerHTML = html;
       makeChart(
         'chart',

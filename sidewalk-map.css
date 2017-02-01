@@ -28,7 +28,8 @@ h1 {
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
   text-transform: uppercase;
 }
-h2.chart-title {
+h2.chart-title,
+h2.table-title {
   font-size: 1.2em;
   font-weight: 600;
   margin-bottom: 0.5em;
