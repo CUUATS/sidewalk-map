@@ -175,7 +175,8 @@
                     "imageUrl": "images/sw_compliance.jpg",
                     "label": "Overall Compliance",
                     "aggField": "SidewalkScoreCompliance",
-                    "isDefault": true
+                    "isDefault": true,
+                    "trends": "<p>While overall ADA compliance for sidewalks appears to have declined between the baseline and current years, the numbers only tell part of the story. The decrease in overall compliance is almost entirely due to changes in vertical fault scores, which can be attributed to several factors:</p>"
                 }
             ],
             "label": "ADA Compliance"

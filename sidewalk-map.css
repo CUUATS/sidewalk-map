@@ -451,23 +451,54 @@ h2.variable-group-title:first-child {
   fill: black;
   font-size: 0.85rem;
 }
-
-.ct-series-a .ct-slice-donut {
-  stroke: #2e80bf;
+.expander {
+  background-color: #dbeff6;
+  border: 1px solid #00aeef;
+  color: #206e8b;
+  font-size: 0.9em;
+  padding: 10px 15px;
 }
-.ct-series-b .ct-slice-donut {
-  stroke: #80cee8;
+.expander-closed .expander-body {
+  display: none;
 }
-.ct-series-c .ct-slice-donut {
-  stroke: #fcfc5d;
+.expander-heading {
+  font-size: 1em;
+  line-height: 1em;
+  margin: 0;
+  padding: 0;
 }
-.ct-series-d .ct-slice-donut {
-  stroke: #ffb061;
+.expander-open .expander-heading {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #00aeef;
 }
-.ct-series-e .ct-slice-donut {
-  stroke: #e61c1f;
+.expander-toggle {
+  color: #206e8b;
+  display: block;
+  text-decoration: none;
 }
-
+.expander-toggle:hover {
+  text-decoration: underline;
+}
+.expander-toggle::after {
+  content: '\f0d7';
+  float: right;
+  font-family: FontAwesome;
+  font-weight: normal;
+  margin: 0 0 5px 10px;
+  text-decoration: none;
+}
+.expander-closed .expander-toggle::after {
+  content: '\f0da';
+}
+.trends .expander-toggle::before {
+  content: '\f080';
+  float: left;
+  font-family: FontAwesome;
+  font-size: 1.2em;
+  font-weight: normal;
+  margin: 0 10px 5px 0;
+  text-decoration: none;
+}
 @media screen and (max-width: 800px) {
   #map {
     height: 30%;

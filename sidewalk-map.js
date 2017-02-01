@@ -250,6 +250,26 @@ function(
         '<span class="legend-symbol symbol-current"></span> Current (' +
         YEAR_CURRENT + ')</span></div>';
     },
+    makeExpander = function(className, title, body) {
+      return '<div class="' + className + ' expander expander-closed">' +
+        '<h2 class="expander-heading">' +
+        '<a href="#" class="expander-toggle">' + title + '</a></h2>' +
+        '<div class="expander-body">' + body + '</div></div>';
+    },
+    initExpanders = function() {
+      var links = document.getElementsByTagName('a');
+      for (var i = 0; i < links.length; i++) {
+        if (links[i].className == 'expander-toggle') {
+          links[i].addEventListener('click', function(e) {
+            e.preventDefault();
+            var container = e.target.parentNode.parentNode,
+              cls = container.className;
+            container.className = (cls.indexOf('-closed') > -1) ?
+              cls.replace('-closed', '-open') : cls.replace('-open', '-closed');
+          });
+        }
+      }
+    },
     showVariableInfo = function(featureType, field) {
       var featureLabel = FEATURE_LABELS[featureType].slice(0, -1);
       titleFeature.innerHTML = featureLabel + ':';
@@ -257,6 +277,8 @@ function(
       optionsPane.style.backgroundImage = 'url("' + field.imageUrl + '")';
       var html = '<div class="field-description">' + field.description +
         '</div>';
+      if (field.trends) html +=
+        makeExpander('trends', 'What&apos;s going on here?', field.trends);
       html += '<h2 class="chart-title">' + featureLabel + ' ' + field.label  +
         ' Scores</h2>';
       html += makeLegend();
@@ -268,6 +290,7 @@ function(
         ') Scores</h2>';
       html += makeTable(tablesBaseline[featureType][field.indField]);
       variableInfo.innerHTML = html;
+      initExpanders();
       makeChart(
         'chart',
         tablesBaseline[featureType][field.indField],
