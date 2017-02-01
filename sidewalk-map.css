@@ -28,10 +28,11 @@ h1 {
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
   text-transform: uppercase;
 }
-h2.table-label {
+h2.chart-title {
   font-size: 1.2em;
   font-weight: 600;
   margin-bottom: 0.5em;
+  text-align: center;
 }
 label {
   font-weight: bold;
@@ -380,6 +381,33 @@ h2.variable-group-title:first-child {
   font-size: 16px;
   line-height: 1.2em;
 }
+.chart-legend {
+  text-align: center;
+}
+.legend-symbol {
+  display: inline-block;
+  height: 15px;
+  vertical-align: middle;
+  width: 15px;
+}
+.symbol-baseline {
+  background-color: #bbbbbb;
+}
+.symbol-current {
+  border-left: 3px solid #2e80bf;
+  border-right: 3px solid #e61c1f;
+  width: 9px;
+  margin-left: 1em;
+}
+.symbol-current::after {
+  background-color: #fcfc5d;
+  border-left: 3px solid #80cee8;
+  border-right: 3px solid #ffb061;
+  content: '';
+  height: 15px;
+  display: block;
+  width: 3px;
+}
 .chart-wrapper {
   height: 300px;
   margin: 0 0 1em 0;
@@ -417,6 +445,12 @@ h2.variable-group-title:first-child {
 .ct-series-a .ct-bar {
   stroke: #bbbbbb;
 }
+.ct-label {
+  color: black;
+  fill: black;
+  font-size: 0.85rem;
+}
+
 .ct-series-a .ct-slice-donut {
   stroke: #2e80bf;
 }
@@ -432,11 +466,7 @@ h2.variable-group-title:first-child {
 .ct-series-e .ct-slice-donut {
   stroke: #e61c1f;
 }
-.ct-label {
-  color: black;
-  fill: black;
-  font-size: 0.85rem;
-}
+
 @media screen and (max-width: 800px) {
   #map {
     height: 30%;

@@ -46,7 +46,8 @@ function(
       Crosswalk: 'Crosswalks',
       PedestrianSignal: 'Pedestrian Signals'
     },
-    YEAR_CURRENT = 2016,
+    YEAR_BASELINE = '2014-2015',
+    YEAR_CURRENT = '2016',
     BREAKS = [
       {
         maxValue: 60,
@@ -238,9 +239,16 @@ function(
             });
         });
     },
-    makeChartDiv = function(id, label) {
+    makeChartDiv = function(id) {
       return '<div class="chart-wrapper"><div class="chart" id="' + id +
         '" aria-hidden="true"></div></div>';
+    },
+    makeLegend = function() {
+      return '<div class="chart-legend"><span class="legend-item">' +
+        '<span class="legend-symbol symbol-baseline"></span> Baseline (' +
+        YEAR_BASELINE + ')</span>' +
+        '<span class="legend-symbol symbol-current"></span> Current (' +
+        YEAR_CURRENT + ')</span></div>';
     },
     showVariableInfo = function(featureType, field) {
       var featureLabel = FEATURE_LABELS[featureType];
@@ -249,13 +257,14 @@ function(
       optionsPane.style.backgroundImage = 'url("' + field.imageUrl + '")';
       var html = '<div class="field-description">' + field.description +
         '</div>';
-      html += '<h2 class="table-label">' + featureLabel + ' ' + field.label  +
+      html += '<h2 class="chart-title">' + featureLabel + ' ' + field.label  +
         ' Scores</h2>';
-      html += makeChartDiv('current-chart', YEAR_CURRENT);
+      html += makeLegend();
+      html += makeChartDiv('chart');
       html += makeTable(tablesCurrent[featureType][field.indField]);
       variableInfo.innerHTML = html;
       makeChart(
-        'current-chart',
+        'chart',
         tablesBaseline[featureType][field.indField],
         tablesCurrent[featureType][field.indField]);
     },
