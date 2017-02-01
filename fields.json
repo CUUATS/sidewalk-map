@@ -176,7 +176,7 @@
                     "label": "Overall Compliance",
                     "aggField": "SidewalkScoreCompliance",
                     "isDefault": true,
-                    "trends": "<p>While overall ADA compliance for sidewalks appears to have declined between the baseline and current years, the numbers only tell part of the story. The decrease in overall compliance is almost entirely due to changes in vertical fault scores, which can be attributed to several factors:</p>"
+                    "trends": "<p>While overall ADA compliance for sidewalks appears to have declined between the baseline and current years, the numbers only tell part of the story. The decrease in overall compliance is almost entirely due to changes in vertical fault scores, which are the result of several factors:</p><ul><li>Challenges of tracking spot improvements, such as beveling</li><li>Difficulty of precisely measuring faults</li><li>Scoring of blocks based on the single largest fault</li><li>Enlargement of faults due to freeze/thaw cycles and other factors</li></ul><p>Of these factors, only the last one reflects a true degredation of sidewalk ADA compliance. CUUATS is working with its local partners to develop a tracking mechanism that better reflects sidewalk accessibility in light of the strict vertical fault thresholds set by PROWAG."
                 }
             ],
             "label": "ADA Compliance"
