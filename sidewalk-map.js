@@ -1,4 +1,3 @@
-google.charts.load('current', {packages:['corechart']});
 require([
   'esri/renderers/ClassBreaksRenderer',
   'dojo/_base/Color',
@@ -180,28 +179,31 @@ function(
       html += '</tbody></table>';
       return html;
     },
-    makeChartData = function(table) {
-      var data = [table[0].slice(0, 2)];
-      for (var i = 1; i < table.length; i++) {
-        var row = table[i];
-        if (row[row.length - 1].indexOf('%') > -1)
-          data.push([
-            row[0],
-            parseFloat(row[row.length - 2].replace(',', ''))
-          ]);
+    getChartInfo = function(baseline, current) {
+      var data = {
+          labels: [],
+          series: [
+            [],
+            []
+          ]
+        },
+        colors = [];
+      for (var i = 1; i < baseline.length; i++) {
+        var bRow = baseline[i],
+          cRow = current[i];
+        if (bRow[bRow.length - 1].indexOf('%') > -1) {
+          data.labels.push(bRow[0]);
+          data.series[0].push(
+            parseFloat(bRow[bRow.length - 2].replace(',', '')));
+          data.series[1].push(
+            parseFloat(cRow[cRow.length - 2].replace(',', '')));
+          colors.push(getScoreColor(bRow[bRow.length - 3]));
+        }
       }
-      return data;
-    },
-    makeChartSlices = function(table) {
-      var slices = {};
-      for (var i = 1; i < table.length; i++) {
-        var row = table[i];
-        if (row[row.length - 1].indexOf('%') > -1)
-          slices[i - 1] = {
-            color: getScoreColor(row[row.length - 3])
-          };
-      }
-      return slices;
+      return {
+        data: data,
+        colors: colors
+      };
     },
     getScoreColor = function(text) {
       var scoreInt = parseInt(text);
@@ -212,31 +214,18 @@ function(
           return breakDef.color;
       }
     },
-    makeChart = function(containerId, table) {
-      // If the library hasn't loaded yet, defer drawing the chart unitl it has.
-      if (typeof google.visualization.PieChart === 'undefined')
-        return google.charts.setOnLoadCallback(function() {
-          makeChart(containerId, table);
+    makeChart = function(containerId, baseline, current) {
+      chartInfo = getChartInfo(baseline, current);
+      new Chartist.Bar('#' + containerId, chartInfo.data, {})
+        .on('draw', function(item) {
+          if (item.type === 'bar' && item.seriesIndex === 1)
+            item.element.attr({
+              style: 'stroke: ' + chartInfo.colors[item.index]
+            });
         });
-
-      makeChartSlices(table);
-      var container = document.getElementById(containerId),
-        chart = new google.visualization.PieChart(container);
-      chart.draw(google.visualization.arrayToDataTable(makeChartData(table)), {
-        fontName: 'Lato',
-        legend: 'none',
-        pieHole: 0.4,
-        pieSliceTextStyle: {
-          color: '#000000'
-        },
-        slices: makeChartSlices(table)
-      });
     },
     makeChartDiv = function(id, label) {
-      return '<div class="chart-wrapper" aria-hidden="true">' +
-        '<span class="chart-label">' + label +
-        '</span><div class="chart" id="' + id + '">' +
-        '</div></div>'
+      return '<div class="chart" id="' + id + '" aria-hidden="true"></div>';
     },
     showVariableInfo = function(featureType, field) {
       var featureLabel = FEATURE_LABELS[featureType];
@@ -248,9 +237,12 @@ function(
       html += '<h2 class="table-label">' + featureLabel + ' ' + field.label  +
         ' Scores</h2>';
       html += makeChartDiv('current-chart', YEAR_CURRENT);
-      html += makeTable(tables[featureType][field.indField]);
+      html += makeTable(tablesCurrent[featureType][field.indField]);
       variableInfo.innerHTML = html;
-      makeChart('current-chart', tables[featureType][field.indField]);
+      makeChart(
+        'current-chart',
+        tablesBaseline[featureType][field.indField],
+        tablesCurrent[featureType][field.indField]);
     },
     initLegend = function() {
       legend = new Legend({
@@ -525,7 +517,8 @@ function(
     }),
     featureFields = {},
     legend,
-    tables,
+    tablesBaseline,
+    tablesCurrent,
     fields,
     currentFeatureType,
     currentFieldName;
@@ -552,10 +545,12 @@ function(
 
     all({
       fields: request('fields.json', {handleAs: 'json'}),
-      tables: request('tables.json', {handleAs: 'json'})
+      tablesBaseline: request('tables-baseline.json', {handleAs: 'json'}),
+      tablesCurrent: request('tables-current.json', {handleAs: 'json'})
     }).then(function(res) {
-      tables = res.tables;
       fields = res.fields;
+      tablesBaseline = res.tablesBaseline;
+      tablesCurrent = res.tablesCurrent;
       initFieldSelection();
       initInfoWindows();
       updateState();
