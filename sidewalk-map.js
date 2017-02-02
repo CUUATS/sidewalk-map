@@ -1,11 +1,9 @@
 require([
   'esri/renderers/ClassBreaksRenderer',
   'dojo/_base/Color',
-  'dojo/Deferred',
   'esri/layers/FeatureLayer',
   'esri/InfoTemplate',
   'esri/layers/LayerDrawingOptions',
-  'esri/layers/VectorTileLayer',
   'esri/dijit/Legend',
   'esri/map',
   'esri/renderers/SimpleRenderer',
@@ -21,11 +19,9 @@ require([
 function(
   ClassBreaksRenderer,
   Color,
-  Deferred,
   FeatureLayer,
   InfoTemplate,
   LayerDrawingOptions,
-  VectorTileLayer,
   Legend,
   Map,
   SimpleRenderer,
