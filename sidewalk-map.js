@@ -15,7 +15,6 @@ require([
   'dijit/Dialog',
   'dojo/promise/all',
   'dojo/_base/array',
-  'dojo/parser',
   'dojo/request',
   'dojo/domReady!'
 ],
@@ -36,9 +35,7 @@ function(
   Dialog,
   all,
   array,
-  parser,
   request) {
-  parser.parse();
   var AGG_URL = 'http://utility.arcgis.com/usrsvcs/servers/06fb34d68e7a4673ba885015b671387b/rest/services/CCRPC/SidewalkInventoryScoreAggregated/MapServer',
     AGG_DEFAULT_FEATURE = 'Sidewalk',
     AGG_DEFAULT_FIELD = 'ScoreCompliance',
