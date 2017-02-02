@@ -294,6 +294,15 @@ h1.gradient {
 .scores-table tbody tr:nth-child(odd) {
   background-color: #fefefe;
 }
+.scores-table a {
+  color: black;
+  text-decoration: none;
+}
+.scores-table a:active,
+.scores-table a:hover,
+.scores-table a:focus {
+  text-decoration: underline;
+}
 #legend-wrapper {
   background-color: white;
   bottom: 1em;
@@ -362,15 +371,6 @@ h2.variable-group-title:first-child {
 .field-ScoreCondition .field-label,
 .field-ScoreCondition .scale-value {
   font-weight: bold;
-}
-.variable-link {
-  color: black;
-  text-decoration: none;
-}
-.variable-link:active,
-.variable-link:hover,
-.variable-link:focus {
-  text-decoration: underline;
 }
 .dijitDialogPaneContent {
   font-size: 16px;
@@ -484,6 +484,15 @@ h2.variable-group-title:first-child {
 }
 .expander-closed .expander-toggle::after {
   content: '\f0da';
+}
+.expander-body a {
+  color: #206e8b;
+  text-decoration: underline;
+}
+.expander-body a:active,
+.expander-body a:hover,
+.expander-body a:focus {
+  color: black;
 }
 .trends .expander-toggle::before {
   content: '\f080';

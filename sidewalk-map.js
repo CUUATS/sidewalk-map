@@ -307,6 +307,7 @@ function(
       html += makeTable(tablesBaseline[featureType][field.indField]);
       variableInfo.innerHTML = html;
       initExpanders();
+      initVariableLinks();
       makeChart(
         'chart',
         tablesBaseline[featureType][field.indField],
@@ -433,7 +434,7 @@ function(
       optionsPane.style.backgroundImage = 'none';
       variableInfo.innerHTML = feature.getContent();
       titleField.innerHTML = 'Feature Details';
-      initVariableLinks(feature.getLayer().name);
+      initVariableLinks();
       showAttachmentImage(feature);
     },
     showAttachmentImage = function(feature) {
@@ -462,15 +463,16 @@ function(
         imageLink.style.display = 'none';
       }
     },
-    initVariableLinks = function(featureType) {
+    initVariableLinks = function() {
       var links = document.getElementsByTagName('a');
       for (var i = 0; i < links.length; i++) {
         if (links[i].className == 'variable-link') {
           links[i].addEventListener('click', function(e) {
             e.preventDefault();
-            featureTypeSelect.value = featureType.replace(' ', '');
+            var fieldInfo = e.target.hash.substring(1).split('/');
+            featureTypeSelect.value = fieldInfo[0];
             featureTypeSelect.onchange();
-            fieldNameSelect.value = e.target.hash.substring(1);
+            fieldNameSelect.value = fieldInfo[1];
             updateState();
           });
         }
@@ -487,8 +489,8 @@ function(
         array.forEach(group.fields, function(field, i) {
           html += '<tr class="field field-' + field.indField +
             '"><td class="field-label"><a class="variable-link" href="#' +
-            field.indField + '">' + field.label + '</a></td>' +
-            '<td class="field-value">${' + field.indField +
+            label.replace(' ', '') + '/' + field.indField + '">' + field.label +
+            '</a></td>' + '<td class="field-value">${' + field.indField +
             ':renderRounded}</td>' + '${' + field.indField +
             ':renderScale}</tr>';
         });
