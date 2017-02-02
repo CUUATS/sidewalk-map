@@ -515,24 +515,42 @@ h2.variable-group-title:first-child {
   text-decoration: none;
 }
 @media screen and (max-width: 800px) {
+  #nav-container {
+    position: static;
+  }
+  #app-container {
+    padding: 0;
+    position: static;
+  }
   #map {
-    height: 30%;
+    height: 300px;
+    left: 0;
+    padding: 0;
+    position: relative;
+    top: 0;
     width: 100%;
   }
+  #loading {
+    bottom: 10px;
+    left: 10px;
+    right: auto;
+    top: auto;
+  }
   #sidebar {
-    top: 30%;
-    height: 70%;
+    position: static;
     padding: 0;
     width: 100%;
+  }
+  #content-pane {
+    overflow-y: auto;
   }
   #legend-wrapper {
     border-bottom: 1px solid #bbbbbb;
     border-left: 1px solid #bbbbbb;
     bottom: auto;
     left: auto;
-    padding: 50px 10px 10px;
     right: 0;
-    top: 0;
+    top: 40px;
   }
   .shadow {
     box-shadow: none;
