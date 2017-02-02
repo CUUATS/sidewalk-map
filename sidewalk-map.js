@@ -74,6 +74,10 @@ function(
         color: '#2e80bf'
       }
     ],
+    testWebGL = function() {
+      if (!window.WebGLRenderingContext) return false;
+      return document.createElement('canvas').getContext('webgl') != null;
+    },
     makeMunicLayer = function() {
       var layer = new FeatureLayer(MUNIC_URL, {
         definitionExpression: MUNIC_DEF,
@@ -408,16 +412,6 @@ function(
       updateButton.onclick = updateState;
       updateButton.removeAttribute('disabled');
     },
-    map = new Map('map', {
-      center: [-88.25, 40.07],
-      zoom: 11,
-      basemap: 'gray-vector'
-    }),
-    aggLayer = new FeatureLayer(AGG_URL + '/0', {
-      mode: FeatureLayer.MODE_SNAPSHOT,
-      outFields: ['*'],
-      opacity: 0.5
-    }),
     initInfoWindows = function() {
       crLayer.setInfoTemplate(makeInfoTemplate('Curb Ramp', fields.CurbRamp));
       swLayer.setInfoTemplate(makeInfoTemplate('Sidewalk', fields.Sidewalk));
@@ -555,7 +549,18 @@ function(
     setDirty = function() {
       updateButton.className = (isDirty()) ? 'button-dirty' : 'button-clean';
     },
+    hasWebGL = testWebGL(),
+    map = new Map('map', {
+      center: [-88.25, 40.07],
+      zoom: (hasWebGL) ? 11 : 12,
+      basemap: (hasWebGL) ? 'gray-vector' : 'gray'
+    }),
     municLayer = makeMunicLayer(),
+    aggLayer = new FeatureLayer(AGG_URL + '/0', {
+      mode: FeatureLayer.MODE_SNAPSHOT,
+      outFields: ['*'],
+      opacity: 0.5
+    }),
     crLayer = makeIndLayer(0, SimpleMarkerSymbol.STYLE_CIRCLE, 10, false),
     cwLayer = makeIndLayer(1, SimpleMarkerSymbol.STYLE_SQUARE, 10, false),
     psLayer = makeIndLayer(2, SimpleMarkerSymbol.STYLE_DIAMOND, 10, false),
@@ -597,7 +602,7 @@ function(
     aggLayer.setRenderer(makeAggRenderer());
     aggLayer.setScaleRange(0, 10000);
     aggLayer.on('click', function(e) {
-      map.centerAndZoom(e.graphic.geometry.getCentroid(), 15);
+      map.centerAndZoom(e.graphic.geometry.getCentroid(), (hasWebGL) ? 15 : 16);
     });
 
     map.on('load', function(e) {
