@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
 
 <head>
     <meta charset="utf-8">
@@ -17,13 +17,15 @@
 </head>
 
 <body class="tundra">
-    <div id="nav-container" class="shadow">
+    <div id="nav-container" class="shadow" role="navigation">
         <span id="app-title">Sidewalk Explorer</span>
         <a id="attribution" href="https://cuuats.org/">by CUUATS</a>
         <a id="about-link" class="nav-link" href="#">
           <i class="fa fa-info-circle" aria-hidden="true"></i>
           <span class="text">About</span>
         </a>
+    </div>
+    <div id="app-container" role="main">
         <div id="about-text">
             <div id="about-banner">
               <img id="about-image" src="images/about_banner.jpg" width="600" height="108" alt="Banner image showing scenes from the data collection process" />
@@ -71,8 +73,6 @@
                 </a>
             </div>
         </div>
-    </div>
-    <div id="app-container">
         <div id="map"><div id="loading"></div></div>
         <div id="sidebar" class="shadow">
             <div id="options-pane" class="sidebar-pane title-gradient">

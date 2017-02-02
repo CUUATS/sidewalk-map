@@ -185,8 +185,8 @@ function(
       html += '</tr>';
       return html;
     },
-    makeTable = function(data) {
-      var html = '<table class="scores-table"><thead>';
+    makeTable = function(data, title) {
+      var html = '<table class="scores-table" title="' + title + '"><thead>';
       html += makeTableRow(data[0], 'th');
       html += '</thead><tbody>';
       array.forEach(data.slice(1), function(row) {
@@ -301,10 +301,12 @@ function(
       html += makeChartDiv('chart');
       html += '<h2 class="table-title">Current (' + YEAR_CURRENT +
         ') Scores</h2>';
-      html += makeTable(tablesCurrent[featureType][field.indField]);
+      html += makeTable(
+        tablesCurrent[featureType][field.indField], 'Current Scores');
       html += '<h2 class="table-title">Baseline (' + YEAR_BASELINE +
         ') Scores</h2>';
-      html += makeTable(tablesBaseline[featureType][field.indField]);
+      html += makeTable(
+        tablesBaseline[featureType][field.indField], 'Baseline Scores');
       variableInfo.innerHTML = html;
       initExpanders();
       initVariableLinks();
@@ -484,8 +486,10 @@ function(
 
       var html = '';
       array.forEach(groups, function(group, i) {
-        html += '<h2 class="variable-group-title">' + group.label + '</h2>';
-        html += '<table class="field-values scores-table"><thead><tr><th>Variable</th><th>Value</th><th>Chart</th></tr></thead><tbody>';
+        html += '<h2 class="variable-group-title">' + group.label + '</h2>' +
+          '<table class="field-values scores-table" title="' +
+          group.label + '"><thead><tr><th>Variable</th><th>Value</th>' +
+          '<th>Chart</th></tr></thead><tbody>';
         array.forEach(group.fields, function(field, i) {
           html += '<tr class="field field-' + field.indField +
             '"><td class="field-label"><a class="variable-link" href="#' +
