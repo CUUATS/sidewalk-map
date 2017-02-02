@@ -135,6 +135,17 @@ label {
   top: 0;
   width: 65%;
 }
+#loading {
+  background-image: url(images/loading.gif);
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 31px;
+  position: absolute;
+  right: 15px;
+  top: 50px;
+  width: 31px;
+  z-index: 1000;
+}
 #sidebar {
   background-color: white;
   box-sizing: border-box;

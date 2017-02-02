@@ -579,6 +579,7 @@ function(
     imageLink = document.getElementById('image-link'),
     aboutLink = document.getElementById('about-link'),
     aboutText = document.getElementById('about-text'),
+    loading = document.getElementById('loading'),
     aboutDialog = new Dialog({
       title: 'About Sidewalk Explorer',
       content: aboutText.innerHTML,
@@ -613,6 +614,12 @@ function(
         initLegend();
       });
       map.addLayers([municLayer, aggLayer, crLayer, cwLayer, psLayer, swLayer]);
+    })
+    map.on('update-start', function() {
+      loading.style.display = 'block';
+    });
+    map.on('update-end', function() {
+      loading.style.display = 'none';
     });
 
     all({
