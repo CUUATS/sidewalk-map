@@ -367,6 +367,11 @@ h2.variable-group-title:first-child {
   color: black;
   text-decoration: none;
 }
+.variable-link:active,
+.variable-link:hover,
+.variable-link:focus {
+  text-decoration: underline;
+}
 .dijitDialogPaneContent {
   font-size: 16px;
   line-height: 1.2em;
@@ -466,7 +471,7 @@ h2.variable-group-title:first-child {
   display: block;
   text-decoration: none;
 }
-.expander-toggle:hover {
+.expander-toggle:hover .expander-toggle-inner {
   text-decoration: underline;
 }
 .expander-toggle::after {

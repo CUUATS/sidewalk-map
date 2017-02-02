@@ -268,7 +268,8 @@ function(
     makeExpander = function(className, title, body) {
       return '<div class="' + className + ' expander expander-closed">' +
         '<h2 class="expander-heading">' +
-        '<a href="#" class="expander-toggle">' + title + '</a></h2>' +
+        '<a href="#" class="expander-toggle">' +
+        '<span class="expander-toggle-inner">' + title + '</span></a></h2>' +
         '<div class="expander-body">' + body + '</div></div>';
     },
     initExpanders = function() {
@@ -277,7 +278,7 @@ function(
         if (links[i].className == 'expander-toggle') {
           links[i].addEventListener('click', function(e) {
             e.preventDefault();
-            var container = e.target.parentNode.parentNode,
+            var container = this.parentNode.parentNode,
               cls = container.className;
             container.className = (cls.indexOf('-closed') > -1) ?
               cls.replace('-closed', '-open') : cls.replace('-open', '-closed');
