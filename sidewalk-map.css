@@ -236,17 +236,12 @@ h1.gradient {
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 3px;
 }
-.control .select-wrapper::after {
-  content: '\25BC';
-  position: absolute;
-  right: 10px;
-  top: 8px;
-  z-index: 10;
-}
 .control select {
   appearance: none;
-  background-color: transparent;
-  background-image: none;
+  background-color: rgba(0, 0, 0, 0.9);
+  background-image: url(images/select-caret.png);
+  background-position: right center;
+  background-repeat: no-repeat;
   border: 0 none transparent;
   box-shadow: none;
   box-sizing: border-box;
@@ -260,12 +255,6 @@ h1.gradient {
   z-index: 20;
   -moz-appearance: none;
   -webkit-appearance: none;
-}
-.control select:active,
-.control select:hover,
-.control select:focus {
-  background-color: rgba(255, 255, 255, 0.1);
-  outline: none;
 }
 .control select::-ms-expand {
   display: none;
