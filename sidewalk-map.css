@@ -28,15 +28,12 @@ h1 {
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
   text-transform: uppercase;
 }
-h2.variable-name {
+h2.chart-title,
+h2.table-title {
   font-size: 1.2em;
-  font-weight: 400;
-  margin-top: 0;
-}
-h3.table-label {
-  font-size: 1;
   font-weight: 600;
   margin-bottom: 0.5em;
+  text-align: center;
 }
 label {
   font-weight: bold;
@@ -285,6 +282,7 @@ h1.gradient {
 }
 .scores-table {
 	border-spacing: 0;
+  margin-bottom: 1em;
   width: 100%;
 }
 .scores-table th,
@@ -319,6 +317,9 @@ h1.gradient {
 }
 #legend .esriLegendService {
   padding-bottom: 0;
+}
+.field-description p:first-child {
+  margin-top: 0;
 }
 h2.variable-group-title {
   font-size: 1.2em;
@@ -380,6 +381,124 @@ h2.variable-group-title:first-child {
 .dijitDialogPaneContent {
   font-size: 16px;
   line-height: 1.2em;
+}
+.chart-legend {
+  text-align: center;
+}
+.legend-symbol {
+  display: inline-block;
+  height: 15px;
+  vertical-align: middle;
+  width: 15px;
+}
+.symbol-baseline {
+  background-color: #bbbbbb;
+}
+.symbol-current {
+  border-left: 3px solid #2e80bf;
+  border-right: 3px solid #e61c1f;
+  width: 9px;
+  margin-left: 1em;
+}
+.symbol-current::after {
+  background-color: #fcfc5d;
+  border-left: 3px solid #80cee8;
+  border-right: 3px solid #ffb061;
+  content: '';
+  height: 15px;
+  display: block;
+  width: 3px;
+}
+.chart-wrapper {
+  height: 300px;
+  margin: 0 0 1em 0;
+  padding: 0 0 0.9em 0.9em;
+  position: relative;
+  width: 100%;
+}
+.chart {
+  height: 300px;
+  width: 100%;
+}
+.chart-xaxis-label {
+  bottom: 0;
+  font-size: 0.9em;
+  font-weight: bold;
+  left: 0;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+.chart-yaxis-label {
+  font-size: 0.9em;
+  font-weight: bold;
+  left: -300px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  transform: rotate(270deg);
+  transform-origin: 100% 0;
+  width: 300px;
+}
+.ct-bar {
+  stroke-width: 3.75%;
+}
+.ct-series-a .ct-bar {
+  stroke: #bbbbbb;
+}
+.ct-label {
+  color: black;
+  fill: black;
+  font-size: 0.85rem;
+}
+.expander {
+  background-color: #dbeff6;
+  border: 1px solid #00aeef;
+  border-radius: 2px;
+  color: #206e8b;
+  font-size: 0.9em;
+  padding: 10px 15px;
+}
+.expander-closed .expander-body {
+  display: none;
+}
+.expander-heading {
+  font-size: 1em;
+  line-height: 1em;
+  margin: 0;
+  padding: 0;
+}
+.expander-open .expander-heading {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #00aeef;
+}
+.expander-toggle {
+  color: #206e8b;
+  display: block;
+  text-decoration: none;
+}
+.expander-toggle:hover {
+  text-decoration: underline;
+}
+.expander-toggle::after {
+  content: '\f0d7';
+  float: right;
+  font-family: FontAwesome;
+  font-weight: normal;
+  margin: 0 0 5px 10px;
+  text-decoration: none;
+}
+.expander-closed .expander-toggle::after {
+  content: '\f0da';
+}
+.trends .expander-toggle::before {
+  content: '\f080';
+  float: left;
+  font-family: FontAwesome;
+  font-size: 1.2em;
+  font-weight: normal;
+  margin: 0 10px 5px 0;
+  text-decoration: none;
 }
 @media screen and (max-width: 800px) {
   #map {

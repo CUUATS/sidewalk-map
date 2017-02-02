@@ -52,6 +52,8 @@ function(
       Crosswalk: 'Crosswalks',
       PedestrianSignal: 'Pedestrian Signals'
     },
+    YEAR_BASELINE = '2014-2015',
+    YEAR_CURRENT = '2016',
     BREAKS = [
       {
         maxValue: 60,
@@ -196,17 +198,121 @@ function(
       html += '</tbody></table>';
       return html;
     },
+    getChartInfo = function(baseline, current) {
+      var data = {
+          labels: [],
+          series: [
+            [],
+            []
+          ]
+        },
+        colors = [];
+      for (var i = 1; i < baseline.length; i++) {
+        var bRow = baseline[i],
+          cRow = current[i];
+        if (bRow[bRow.length - 1].indexOf('%') > -1) {
+          data.labels.push(bRow[0]);
+          data.series[0].push(
+            parseFloat(bRow[bRow.length - 2].replace(',', '')));
+          data.series[1].push(
+            parseFloat(cRow[cRow.length - 2].replace(',', '')));
+          colors.push(getScoreColor(bRow[bRow.length - 3]));
+        }
+      }
+      return {
+        data: data,
+        colors: colors,
+        axisLabels: {
+          x: baseline[0][0],
+          y: baseline[0][baseline[0].length - 2]
+        }
+      };
+    },
+    getScoreColor = function(text) {
+      var scoreInt = parseInt(text);
+      for (var i = 0; i < BREAKS.length; i++) {
+        var breakDef = BREAKS[i];
+        if (text == breakDef.label ||
+            (!isNaN(scoreInt) && scoreInt <= breakDef.maxValue))
+          return breakDef.color;
+      }
+    },
+    addAxisLabel = function(container, className, text) {
+      var el = document.createElement('div');
+      el.className = className;
+      el.appendChild(document.createTextNode(text));
+      container.parentNode.appendChild(el);
+    },
+    makeChart = function(containerId, baseline, current) {
+      var chartInfo = getChartInfo(baseline, current),
+        container = document.getElementById(containerId);
+
+      addAxisLabel(container, 'chart-xaxis-label', chartInfo.axisLabels.x);
+      addAxisLabel(container, 'chart-yaxis-label', chartInfo.axisLabels.y);
+      new Chartist.Bar('#' + containerId, chartInfo.data, {})
+        .on('draw', function(item) {
+          if (item.type === 'bar' && item.seriesIndex === 1)
+            item.element.attr({
+              style: 'stroke: ' + chartInfo.colors[item.index]
+            });
+        });
+    },
+    makeChartDiv = function(id) {
+      return '<div class="chart-wrapper"><div class="chart" id="' + id +
+        '" aria-hidden="true"></div></div>';
+    },
+    makeLegend = function() {
+      return '<div class="chart-legend"><span class="legend-item">' +
+        '<span class="legend-symbol symbol-baseline"></span> Baseline (' +
+        YEAR_BASELINE + ')</span>' +
+        '<span class="legend-symbol symbol-current"></span> Current (' +
+        YEAR_CURRENT + ')</span></div>';
+    },
+    makeExpander = function(className, title, body) {
+      return '<div class="' + className + ' expander expander-closed">' +
+        '<h2 class="expander-heading">' +
+        '<a href="#" class="expander-toggle">' + title + '</a></h2>' +
+        '<div class="expander-body">' + body + '</div></div>';
+    },
+    initExpanders = function() {
+      var links = document.getElementsByTagName('a');
+      for (var i = 0; i < links.length; i++) {
+        if (links[i].className == 'expander-toggle') {
+          links[i].addEventListener('click', function(e) {
+            e.preventDefault();
+            var container = e.target.parentNode.parentNode,
+              cls = container.className;
+            container.className = (cls.indexOf('-closed') > -1) ?
+              cls.replace('-closed', '-open') : cls.replace('-open', '-closed');
+          });
+        }
+      }
+    },
     showVariableInfo = function(featureType, field) {
-      var featureLabel = FEATURE_LABELS[featureType];
+      var featureLabel = FEATURE_LABELS[featureType].slice(0, -1);
       titleFeature.innerHTML = featureLabel + ':';
       titleField.innerHTML = field.label;
       optionsPane.style.backgroundImage = 'url("' + field.imageUrl + '")';
       var html = '<div class="field-description">' + field.description +
         '</div>';
-      html += '<h3 class="table-label">' + featureLabel + ' ' + field.label  +
-        ' Scores</h3>';
-      html += makeTable(tables[featureType][field.indField]);
+      if (field.trends) html +=
+        makeExpander('trends', 'What&apos;s going on here?', field.trends);
+      html += '<h2 class="chart-title">' + featureLabel + ' ' + field.label  +
+        ' Scores</h2>';
+      html += makeLegend();
+      html += makeChartDiv('chart');
+      html += '<h2 class="table-title">Current (' + YEAR_CURRENT +
+        ') Scores</h2>';
+      html += makeTable(tablesCurrent[featureType][field.indField]);
+      html += '<h2 class="table-title">Baseline (' + YEAR_BASELINE +
+        ') Scores</h2>';
+      html += makeTable(tablesBaseline[featureType][field.indField]);
       variableInfo.innerHTML = html;
+      initExpanders();
+      makeChart(
+        'chart',
+        tablesBaseline[featureType][field.indField],
+        tablesCurrent[featureType][field.indField]);
     },
     initLegend = function() {
       legend = new Legend({
@@ -482,7 +588,8 @@ function(
     }),
     featureFields = {},
     legend,
-    tables,
+    tablesBaseline,
+    tablesCurrent,
     fields,
     currentFeatureType,
     currentFieldName;
@@ -509,10 +616,12 @@ function(
 
     all({
       fields: request('fields.json', {handleAs: 'json'}),
-      tables: request('tables.json', {handleAs: 'json'})
+      tablesBaseline: request('tables-baseline.json', {handleAs: 'json'}),
+      tablesCurrent: request('tables-current.json', {handleAs: 'json'})
     }).then(function(res) {
-      tables = res.tables;
       fields = res.fields;
+      tablesBaseline = res.tablesBaseline;
+      tablesCurrent = res.tablesCurrent;
       initFieldSelection();
       initInfoWindows();
       updateState();
