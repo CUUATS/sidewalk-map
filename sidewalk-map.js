@@ -90,6 +90,18 @@ function(
       )));
       return layer;
     },
+    makeMissingLayer = function() {
+      var layer = new FeatureLayer(IND_URL + '/4', {
+        mode: FeatureLayer.MODE_ONDEMAND
+      });
+      layer.setRenderer(new SimpleRenderer(new SimpleLineSymbol(
+        SimpleLineSymbol.STYLE_DASH,
+        new Color('#999999'),
+        2
+      )));
+      layer.setScaleRange(10001, 0);
+      return layer;
+    },
     makeIndLayer = function(idx, markerType, markerSize, visible) {
       var layer = new FeatureLayer(IND_URL + '/' + idx, {
         mode: FeatureLayer.MODE_ONDEMAND,
@@ -174,6 +186,11 @@ function(
           }
         } else {
           layer.hide();
+        }
+        if (featureTypeSelect.selectedIndex == 0) {
+          missingLayer.show();
+        } else {
+          missingLayer.hide();
         }
       });
     },
@@ -319,6 +336,10 @@ function(
       legend = new Legend({
         map: map,
         layerInfos: [
+          {
+            layer: missingLayer,
+            title: 'No Sidewalk'
+          },
           {
             layer: aggLayer,
             title: 'Average Scores'
@@ -572,6 +593,7 @@ function(
     cwLayer = makeIndLayer(1, SimpleMarkerSymbol.STYLE_SQUARE, 10, false),
     psLayer = makeIndLayer(2, SimpleMarkerSymbol.STYLE_DIAMOND, 10, false),
     swLayer = makeIndLayer(3, MARKER_TYPE_LINE, 3, true),
+    missingLayer = makeMissingLayer(),
     fieldNameSelect = document.getElementById('fieldName'),
     featureTypeSelect = document.getElementById('featureType'),
     updateButton = document.getElementById('updateMap'),
@@ -617,7 +639,15 @@ function(
       map.on('layers-add-result', function(e) {
         initLegend();
       });
-      map.addLayers([municLayer, aggLayer, crLayer, cwLayer, psLayer, swLayer]);
+      map.addLayers([
+        municLayer,
+        aggLayer,
+        crLayer,
+        cwLayer,
+        psLayer,
+        swLayer,
+        missingLayer
+      ]);
     })
     map.on('update-start', function() {
       loading.style.display = 'block';
