@@ -153,7 +153,8 @@
                     "imageUrl": "images/sw_vertical_fault_size.jpg",
                     "indField": "ScoreLargestVerticalFault",
                     "description": "<p>Vertical faults are points where the surface of the sidewalk is uneven, usually due to heaving or settling of panels. In order to be ADA compliant, all vertical faults must be less than \u00bd inch. In addition, all faults between &frac14; inch and &frac12; inch must be beveled, or ground down to remove the fault (PROWAG R302.7.2). Larger vertical faults can create a tripping hazard and can impede mobility devices such as wheelchairs. Field staff recorded the size of the largest vertical fault in each block as well as the total number of vertical faults (included in the condition index). The compliance score for vertical faults is based on the maximum vertical fault size observed in each block of sidewalk.</p>",
-                    "label": "Largest Vertical Fault"
+                    "label": "Largest Vertical Fault",
+                    "trends": "<p>While vertical fault scores appear to have declined between the baseline and current years, the numbers only tell part of the story. The decrease is the result of several factors:</p><ul><li>Challenges of tracking spot improvements, such as beveling</li><li>Difficulty of precisely measuring faults</li><li>Scoring of blocks based on the single largest fault</li><li>Limited fault size categories</li><li>Enlargement of faults due to freeze/thaw cycles and other factors</li></ul><p>Of these factors, only the last one reflects a true degredation of sidewalk ADA compliance. As a result of these limitations, the vertical fault scores are excluded from the overall sidewalk compliance scores."
                 },
                 {
                     "aggField": "SidewalkScoreObstructionTypes",
@@ -171,12 +172,11 @@
                 },
                 {
                     "indField": "ScoreCompliance",
-                    "description": "<p>The combined compliance score for sidewalks was calculated by equally weighting each of the four compliance criteria. Equal weights were used because any of these factors can severely reduce the mobility and safety of individuals with disabilities.</p>",
+                    "description": "<p>The combined compliance score for sidewalks was calculated by equally weighting the scores for <a class=\"variable-link\" href=\"#Sidewalk/ScoreMaxCrossSlope\">maximum cross slope</a>, <a class=\"variable-link\" href=\"#Sidewalk/ScoreObstructionTypes\">obstruction types</a>, and <a class=\"variable-link\" href=\"#Sidewalk/ScoreWidth\">sidewalk width</a>. Equal weights were used because any of these factors can severely reduce the mobility and safety of individuals with disabilities. <a class=\"variable-link\" href=\"#Sidewalk/ScoreLargestVerticalFault\">Vertical fault scores</a> were excluded from the compliance scores because the collection method is not precise enough for annual reporting.</p>",
                     "imageUrl": "images/sw_compliance.jpg",
                     "label": "Overall Compliance",
                     "aggField": "SidewalkScoreCompliance",
-                    "isDefault": true,
-                    "trends": "<p>While overall ADA compliance for sidewalks appears to have declined between the baseline and current years, the numbers only tell part of the story. The decrease in overall compliance is almost entirely due to changes in <a class=\"variable-link\" href=\"#Sidewalk/ScoreLargestVerticalFault\">vertical fault scores</a>, which are the result of several factors:</p><ul><li>Challenges of tracking spot improvements, such as beveling</li><li>Difficulty of precisely measuring faults</li><li>Scoring of blocks based on the single largest fault</li><li>Limited fault size categories</li><li>Enlargement of faults due to freeze/thaw cycles and other factors</li></ul><p>Of these factors, only the last one reflects a true degredation of sidewalk ADA compliance. CUUATS is working with its local partners to develop a tracking mechanism that better reflects sidewalk accessibility in light of the strict vertical fault thresholds set by PROWAG."
+                    "isDefault": true
                 }
             ],
             "label": "ADA Compliance"
