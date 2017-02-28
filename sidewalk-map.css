@@ -518,6 +518,18 @@ h2.variable-group-title:first-child {
   margin: 0 10px 5px 0;
   text-decoration: none;
 }
+.info-sidewalk-scorecompliance .ct-series-a,
+.info-sidewalk-scorecompliance .chart-legend span:first-child,
+.info-sidewalk-scorecompliance .table-title-baseline,
+.info-sidewalk-scorecompliance .table-baseline {
+  display: none;
+}
+.info-sidewalk-scorelargestverticalfault .ct-series-a,
+.info-sidewalk-scorelargestverticalfault .chart-legend span:first-child,
+.info-sidewalk-scorelargestverticalfault .table-title-baseline,
+.info-sidewalk-scorelargestverticalfault .table-baseline {
+  display: none;
+}
 @media screen and (max-width: 800px) {
   #nav-container {
     position: static;
