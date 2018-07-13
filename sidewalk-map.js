@@ -46,7 +46,7 @@ function(
       PedestrianSignal: 'Pedestrian Signals'
     },
     YEAR_BASELINE = '2014-2015',
-    YEAR_CURRENT = '2016',
+    YEAR_CURRENT = '2017',
     BREAKS = [
       {
         maxValue: 60,
@@ -74,6 +74,19 @@ function(
         color: '#2e80bf'
       }
     ],
+    getParameterByName = function(name, url) {
+      // Source: https://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
+      if (!url) url = window.location.href;
+      name = name.replace(/[\[\]]/g, '\\$&');
+      var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+          results = regex.exec(url);
+      if (!results) return null;
+      if (!results[2]) return '';
+      return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    },
+    getCurrentYear = function() {
+      return getParameterByName('year') || YEAR_CURRENT;
+    },
     testWebGL = function() {
       if (!window.WebGLRenderingContext) return false;
       return document.createElement('canvas').getContext('webgl') != null;
@@ -280,7 +293,7 @@ function(
         '<span class="legend-symbol symbol-baseline"></span> Baseline (' +
         YEAR_BASELINE + ')</span>' +
         '<span class="legend-symbol symbol-current"></span> Current (' +
-        YEAR_CURRENT + ')</span></div>';
+        getCurrentYear() + ')</span></div>';
     },
     makeExpander = function(className, title, body) {
       return '<div class="' + className + ' expander expander-closed">' +
@@ -316,7 +329,7 @@ function(
         ' Scores</h2>';
       html += makeLegend();
       html += makeChartDiv('chart');
-      html += '<h2 class="table-title">Current (' + YEAR_CURRENT +
+      html += '<h2 class="table-title">Current (' + getCurrentYear() +
         ') Scores</h2>';
       html += makeTable(
         tablesCurrent[featureType][field.indField], 'Current Scores');
@@ -659,7 +672,8 @@ function(
     all({
       fields: request('fields.json', {handleAs: 'json'}),
       tablesBaseline: request('tables-baseline.json', {handleAs: 'json'}),
-      tablesCurrent: request('tables-current.json', {handleAs: 'json'})
+      tablesCurrent: request(
+        'tables-' + getCurrentYear() + '.json', {handleAs: 'json'})
     }).then(function(res) {
       fields = res.fields;
       tablesBaseline = res.tablesBaseline;
