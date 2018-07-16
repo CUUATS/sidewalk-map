@@ -171,7 +171,7 @@
                 },
                 {
                     "indField": "ScoreCompliance",
-                    "description": "<p>The combined compliance score for sidewalks was calculated by equally weighting each of the four compliance criteria. Equal weights were used because any of these factors can severely reduce the mobility and safety of individuals with disabilities. The compliance scores for 236 blocks of sidewalk changed between the baseline and current years.</p>",
+                    "description": "<p>The combined compliance score for sidewalks was calculated by equally weighting each of the four compliance criteria. Equal weights were used because any of these factors can severely reduce the mobility and safety of individuals with disabilities.</p>",
                     "imageUrl": "images/sw_compliance.jpg",
                     "label": "Overall Compliance",
                     "aggField": "SidewalkScoreCompliance",
