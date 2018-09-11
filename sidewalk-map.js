@@ -46,7 +46,7 @@ function(
       PedestrianSignal: 'Pedestrian Signals'
     },
     YEAR_BASELINE = '2014-2015',
-    YEAR_CURRENT = '2017',
+    YEAR_CURRENT = '2018',
     BREAKS = [
       {
         maxValue: 60,
